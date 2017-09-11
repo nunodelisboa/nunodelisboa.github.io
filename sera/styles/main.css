@@ -1,0 +1,138 @@
+a img	{ 
+border:none; 
+}
+
+.header { 
+background-color:#008b94; 
+background-image:-webkit-gradient(linear, 0% 0%, 100% 0%, from(#008b94), to(#A6A6A6), color-stop(.8,#878787));
+color:white;
+font-family:verdana;
+width:100%;
+}
+
+.disclaimer {
+font-family:verdana;
+font-size:10px;
+text-align:center
+}
+
+.error {
+color:red;
+font-family:verdana
+}
+
+.text {
+font-family:verdana;
+font-size:14px
+}
+
+.smalltext {
+font-family:verdana;
+font-size:9px
+}
+
+.tblheader {
+background-color:#005d62;
+color:white;
+font-family:verdana;
+}
+
+.tblrow {
+font-family:verdana;
+background-color:transparent
+}
+
+.tblrowhl {
+font-family:verdana;
+background-color:#008b94;
+color:white;
+cursor:pointer;
+}
+
+.menuitem {
+font-family:verdana;
+background-color:#008b94;
+color:white;
+cursor:pointer;
+height:20px;
+}
+
+.menuitemhl {
+font-family:verdana;
+background-color:#005d62;
+color:white;
+cursor:pointer;
+height:20px;
+}
+
+table.menutable {
+background-color:#a6a6a6;
+height:100%;
+width:100%;
+border:0px;
+}
+
+.list {
+font-family:verdana;
+background-color:#005d62;
+color:white;
+}
+
+table.listing {
+	font-family: verdana;
+	font-size: 12px;
+	border-width: 1px;
+	border-spacing: 0px;
+	border-style: groove;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: rgb(255, 250, 250);
+}
+table.listing th {
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: black;
+	background-color: #a6a6a6;
+	-moz-border-radius: 0px;
+}
+table.listing td {
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: black;
+	text-align: center;
+	-moz-border-radius: 0px;
+}
+
+td.editable {
+        border-width: 1px;
+        padding: 5px;
+        border-style: inset;
+        border-color: black;
+        text-align: center;
+        -moz-border-radius: 0px;
+	cursor: pointer;
+}
+
+table.presentation {
+background-repeat:repeat;
+background-position:40% 40%;
+height:100%;
+width:100%;
+}
+
+table.mainpane {
+width:100%;
+height:100%;
+border:0px;
+padding:0px;
+}
+
+html,body{
+margin:0;
+padding:0;
+height:90%;
+border:none
+font-family: lucida grande;
+}

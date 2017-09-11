@@ -1,0 +1,11 @@
+PerlModule HTML::Mason::ApacheHandler
+PerlSetVar  MasonCompRoot  /kdbio/home/ndm/public_html/sera
+PerlSetVar  MasonDataDir   /kdbio/home/ndm/sera_data
+PerlSetVar  MasonDeclineDirs 0
+
+SetHandler perl-script
+PerlHandler HTML::Mason::ApacheHandler
+
+<Perl>
+use lib qw( /kdbio/home/ndm/myperl/lib/perl5/site_perl/5.8.8/i486-linux-thread-multi/);
+</Perl>

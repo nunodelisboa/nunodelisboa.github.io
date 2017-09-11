@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>SERA</title>
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<script language=javascript>
+var values = ["nt", '0', '+'];
+function toggleValue(id){
+	var element = document.getElementById(id);
+	var index = values.indexOf(element.innerHTML);
+	var newIndex = ( index + 1 ) % 3;
+	element.innerHTML = values[newIndex];
+
+	if (newIndex == 1)
+		element.style.color = "red";
+	else if (newIndex == 2)
+		element.style.color = "green";
+	else
+		element.style.color = "black";
+}
+
+var reaction = ["nt", "-", "1+", "2+", "3+", "4+"];
+function toggleReactivity(id){
+        var element = document.getElementById(id);
+        var index = reaction.indexOf(element.innerHTML);
+        var newIndex = ( index + 1 ) % 6;
+        element.innerHTML = reaction[newIndex];
+
+        if (newIndex == 0)
+                element.style.color = "black";
+	else if (newIndex == 1)
+		element.style.color = "red";
+        else 
+                element.style.color = "green";
+
+}
+
+
+</script>
+</head>
+<body>
+
+<div align=center>
+<table width="96%" class=listing>
+<tr>
+<th rowspan=2 style="border-right-width:4px; border-bottom-width:4px">Donor Id</th>
+<th colspan=6>Rh-hr</th>
+<th colspan=6>Kell</th>
+<th colspan=2>Duffy</th>
+<th colspan=2>Kidd</th>
+<th colspan=2>Lewis</th>
+<th colspan=1>P</th>
+<th colspan=4>MNS</th>
+<th colspan=2>Luth.</th>
+<th colspan=2>Xg</th>
+<th rowspan=2 style="border-left-width:4px; border-bottom-width:4px">LISS</th>
+<th rowspan=2 style="border-bottom-width:4px;">Enzyme</th>
+<th rowspan=2 style="border-bottom-width:4px;">4&ordm;C</th>
+
+</tr>
+<tr>
+	<th style="border-bottom-width:4px">D</th>
+	<th style="border-bottom-width:4px;">C</th>
+	<th style="border-bottom-width:4px;">E</th>
+	<th style="border-bottom-width:4px;">c</th>
+	<th style="border-bottom-width:4px;">e</th>
+	<th style="border-bottom-width:4px;">C<sup>w</sup></th>
+	
+	<th style="border-bottom-width:4px;">K</th>
+	<th style="border-bottom-width:4px;">k</th>
+	<th style="border-bottom-width:4px;">Kp<sup>a</sup></th>
+	<th style="border-bottom-width:4px;">Kp<sup>b</sup></th>	
+	<th style="border-bottom-width:4px;">Js<sup>a</sup></th>
+        <th style="border-bottom-width:4px;">Js<sup>b</sup></th> 
+
+        <th style="border-bottom-width:4px;">Fy<sup>a</sup></th>
+        <th style="border-bottom-width:4px;">Fy<sup>b</sup></th>
+
+        <th style="border-bottom-width:4px;">Jk<sup>a</sup></th>
+        <th style="border-bottom-width:4px;">Jk<sup>b</sup></th>
+
+        <th style="border-bottom-width:4px;">Le<sup>a</sup></th>
+        <th style="border-bottom-width:4px;">Le<sup>b</sup></th>
+
+	<th style="border-bottom-width:4px;">P<sub>1</sub></th>
+
+	<th style="border-bottom-width:4px;">M</th>
+	<th style="border-bottom-width:4px;">N</th>
+	<th style="border-bottom-width:4px;">S</th>
+	<th style="border-bottom-width:4px;">s</th>
+
+	<th style="border-bottom-width:4px;">Lu<sup>a</sup></th>
+	<th style="border-bottom-width:4px;">Lu<sup>b</sup></th>
+
+	<th style="border-bottom-width:4px;">Xg<sup>a</sup></th>
+	<th style="border-bottom-width:4px;">&#9794;&#9792;</th>
+</tr>
+% foreach my $i (1..$donors){
+<tr>
+<td style="border-right-width:4px"><% $i %></td>
+% foreach my $j (1..27){
+<td id=c<% $i %>_<% $j %> class=editable onClick="toggleValue('c<% $i %>_<% $j %>')">nt</td>
+% }
+<td id=c<% $i %>r1 style="border-left-width:4px" class=editable onClick="toggleReactivity('c<% $i %>r1')">nt</td>
+<td id=c<% $i %>r2 class=editable onClick="toggleReactivity('c<% $i %>r2')">nt</td>
+<td id=c<% $i %>r3 class=editable onClick="toggleReactivity('c<% $i %>r3')">nt</td>
+</tr>
+% }
+</table>
+</div>
+</body>
+</html>
+<%args>
+$donors => 10
+</%args>

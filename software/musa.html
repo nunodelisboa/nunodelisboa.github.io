@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>Nuno D. Mendes</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1 align="center"><a href="../index.html">Nuno D. Mendes</a></h1>
+
+<p align="center">
+<a href="../research.html">Research interests</a> |
+<a href="../publications.html">Publications</a> |
+<a href="../software.html">Software</a> |
+<a href="../shortcv.html">Short CV</a> |
+<a href="../personal.html">Personal</a> |
+<a href="../documents.html">Documents</a>
+</p>
+
+<hr>
+
+<h3><p align="center">MUSA</p></h3>
+
+<p>Contents:
+</p>
+
+<ul>
+<li>On-line version (soon available)</li>
+<li><a href="#download">Download</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#output">Notes on the Output</a></li>
+<li><a href="#citation">Citation</a></li>
+</ul>
+
+<hr>
+<h3><a name="download">Download</a></h3>
+
+<p>These implementations of <strong>MUSA</strong> are now available:</p>
+
+<table border=1>
+<tr bgcolor="d0d0d0">
+<th align="center">Version</th><th>Comments</th><th>Download</th>
+</tr>
+<tr><td align="center"><strong>0.5.6</strong></td><td></td><td align="center"><a href="MUSA/musa-0.5.6">[linux bin]</a></td>
+</tr>
+</table>
+
+<hr>
+<h3><a name="usage">Usage</a></h3>
+
+<p>MUSA does not require the specification of any parameters in order to search for motifs. There are, however, certain parameters that can be specified in order to focus the search:</p>
+
+
+<table align='center' border=1>
+<tr bgcolor="#d0d0d0"><th align='center'>Parameter</th><th>Description</th></tr>
+<tr><td align="center">&lambda;</td><td>Defines the length of &lambda;-mers that are used to build the motifs. No motif will be found whose length is shorter than &lambda;. By default &lambda; = 4. By specifying a larger value you will focus the search on larger motifs.</td></tr>
+<tr bgcolor="#dddddd"><td align="center">&epsilon;</td><td>Defines the tolerance for the distance between &lambda;-mers. In the case of complex motifs, it allows for some variation in the distance between components in occurrences of the same motif. By default &epsilon; = 0.</td></tr>
+<tr><td align="center"><i>sieve</i></td><td>Defines the proportion of sequences in which the motif must occur in order to be identified. By default, <i>sieve</i> = 30%.</td></tr>
+<tr bgcolor="#dddddd"><td align="center"><i>mindist</i></td><td>Defines the the minimum distance between two &lambda;-mers in complex motifs. You can use this option the force the search of complex motifs. By default <i>mindist</i> = 1, i.e., no restriction is used.</td></tr>
+<tr><td align="center"><i>maxdist</i></td><td>Defines the maximum distance between two &lambda;-mers in complex motifs. You can use this option to focus the search on limited portions of the sequence. By default <i>maxdist</i> = 500.</td></tr>
+</table>
+
+<br>
+
+
+<p>MUSA is available as a command-line program and is quite easy to use. Specify any of the options you might be interested in (which are described below) or simply run the program using the default options. You can also either specify a filename or receive the data directly from the standard input. The input sequences should be given in FASTA format.</p>
+
+<table bgcolor="#dddddd">
+<tr><td>
+<pre>
+Usage: musa [OPTION...] FASTA|-
+MUSA -- Inference of Complex Motifs
+
+  -b, --bothstrands          Search both strands
+  -e, --epsilon=EPSILON      Epsilon parameter (distance tolerance)
+  -l, --lambda=LAMBDA        Lambda parameter (size of lambda-mers)
+  -m, --mindist=mindist      Minimum distance between lambda-mers
+  -M, --maxdist=maxdist      Maximum distance between lambda-mers
+  -o, --output=FILE          Output to FILE instead of standard output
+  -q, --quiet                Behave quietly
+  -s, --sieve=SIEVE          Percent of minimum number of sequences
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+</pre>
+<tt>Report bugs to &lt;ndm+musa_bugs@algos.inesc-id.pt&gt;.</tt>
+</td>
+</tr>
+</table>
+
+<hr>
+<h3><a name="output">Notes on the Output</a></h3>
+<table bgcolor="#dddddd">
+<tr><td>Version 0.5</td></tr>
+<tr><td>
+<pre>
+# MUSA/0.5 Output
+# Sequences: 3 Motifs: 6
+# Motif                         Quorum          P-value
+ATGCGT <2> CATAT                  2 of 3        6.304220e-07
+ATGC  <4> CATAT                   3 of 3        7.824886e-07
+ATGC  <3> TCATAT                  2 of 3        1.633340e-05
+ATGCCTGTCATAT                     1 of 3        1.723221e-05
+ATGCGTGGCATAT                     1 of 3        8.292759e-05
+ATGCGTATCATAT                     1 of 3        1.929857e-04
+</pre>
+</td></tr>
+</table>
+
+<p>Above we can see an example of the output given by version 0.5 of MUSA. The first column corresponds to the motif found. If it is a complex motif, the distance between each component is given between &lt;&gt;. The second column corresponds to the quorum of the motif, i.e., the number of sequences of the dataset where the motif can be found. The last column corresponds to the statistical significance score computed for each motif.</p>
+
+<p>If the user specifies a value of &epsilon; greater than zero, then the distance between each component will be shown as an pair of distances (mininum,maximum).</p>
+
+<p>If the user performs the search for motifs in both strands, the output will generally show each motif and its reverse-complemented version. This may not happen, however, since the motif reconstruction procedure is not guaranteed to produce coherent reconstructions of biclusters composed of reverse-complemented pairs of configurations.</p>
+
+<hr>
+<h3><a name="citation">Citation</a></h3>
+
+To cite MUSA use:</br>
+
+<p>Mendes ND, Casimiro AC, Santos PM, S&aacute;-Correia I, Oliveira AL, Freitas AT. <strong>MUSA: a parameter free algorithm for the identification of biologically significant motifs.</strong> Bioinformatics. 2006 Dec 15; 22(24): 2996-3002</br>
+</br>
+Or simply copy</br>
+<pre>
+@Article{Mendes:2006:Bioinformatics:17068086,
+author = "Mendes, N D and Casimiro, A C and Santos, P M and S{\'a}-Correia, I and Oliveira, A L and Freitas, A T",
+title = {MUSA: a parameter free algorithm for the identification of biologically significant motifs},
+journal = "Bioinformatics",
+year = "2006",
+volume = "22",
+number = "24",
+pages = "2996-3002",
+month = "Dec",
+pmid = "17068086",
+url = "http://www.hubmed.org/display.cgi?uids=17068086",
+doi = "10.1093/bioinformatics/btl537"
+}
+</pre>
+
+
+<div id="eXTReMe"><a href="http://extremetracking.com/open?login=musapt">
+<img src="http://t1.extreme-dm.com/i.gif" style="border: 0;"
+height="38" width="41" id="EXim" alt="eXTReMe Tracker" /></a>
+<script type="text/javascript"><!--
+var EXlogin='musapt' // Login
+var EXvsrv='s9' // VServer
+EXs=screen;EXw=EXs.width;navigator.appName!="Netscape"?
+EXb=EXs.colorDepth:EXb=EXs.pixelDepth;
+navigator.javaEnabled()==1?EXjv="y":EXjv="n";
+EXd=document;EXw?"":EXw="na";EXb?"":EXb="na";
+EXd.write("<img src=http://e0.extreme-dm.com",
+"/"+EXvsrv+".g?login="+EXlogin+"&amp;",
+"jv="+EXjv+"&amp;j=y&amp;srw="+EXw+"&amp;srb="+EXb+"&amp;",
+"l="+escape(EXd.referrer)+" height=1 width=1>");//-->
+</script><noscript><div id="neXTReMe"><img height="1" width="1" alt=""
+src="http://e0.extreme-dm.com/s9.g?login=musapt&amp;j=n&amp;jv=n" />
+</div></noscript></div>
+
+<hr>
+
+<p align="center">
+<a href="../research.html">Research interests</a> |
+<a href="../publications.html">Publications</a> |
+<a href="../software.html">Software</a> |
+<a href="../shortcv.html">Short CV</a> |
+<a href="../personal.html">Personal</a> |
+<a href="../documents.html">Documents</a>
+</p>
+
+</body> 
+</html>
