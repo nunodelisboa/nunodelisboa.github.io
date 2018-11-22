@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <container style="height:100%;display:flex;align-content:center;justify-content:center">
+      <div style="display:flex;justify-content:space-around;flex-direction:column;height:100px">
+        <div id="name"></div>
+        <div style="display:flex"><button onclick="run()">Draw</button></div>
+      </div>
+    </container>
+  </body>
+  <script>
+    var people = ['Nuno', 'Flavio', 'Diana', 'Samuel', 'Martin'];
+    var element = document.getElementById('name');
+    function setElement(name, changeColor) {
+      element.textContent = name;
+      if (changeColor) {
+        element.style = 'color:red';
+      }
+    }
+    function randomChoose(list) {
+      var position = Math.random() * list.length;
+      return list[Math.floor(position)];
+    }
+
+    function makeCommand(i) {
+      return function() {
+        setElement(randomChoose(people), i === 49);
+      };
+    }
+
+    function run() {
+      reset();
+      for (var i = 0; i < 50; i++) {
+        setTimeout(makeCommand(i), 10 * i ** 1.5);
+      }
+    }
+    function reset() {
+      element.style = 'color:black';
+    }
+  </script>
+</html>
