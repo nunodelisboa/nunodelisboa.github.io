@@ -8,7 +8,7 @@
     </container>
   </body>
   <script>
-    var people = ['Nuno', 'Flavio', 'Diana', 'Samuel', 'Martin'];
+    var people = ['Nuno', 'Luis', 'Diogo', 'Samuel', 'Martin', 'Renato', 'Oliver', 'Helder', 'Nati'];
     var element = document.getElementById('name');
     function setElement(name, changeColor) {
       element.textContent = name;
@@ -17,8 +17,11 @@
       }
     }
     function randomChoose(list) {
-      var position = Math.random() * list.length;
-      return list[Math.floor(position)];
+      var array = new Uint32Array(list.length);
+      window.crypto.getRandomValues(array);
+      var min = Math.min(...array);
+      var index = array.indexOf(min);
+      return list[index];
     }
 
     function makeCommand(i) {
