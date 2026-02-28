@@ -610,7 +610,7 @@ footer .foot-links a:hover { color: var(--accent); }
       </p>
       <div class="hero-links">
         <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" class="btn btn-primary">LinkedIn</a>
-        <a href="mailto:nuno@ilinx.net" class="btn btn-ghost">nuno@ilinx.net</a>
+        <a href="#" onclick="this.href='mai'+'lto:'+'nuno'+'@'+'ilinx.net'; return true;" class="btn btn-ghost">nuno@ilinx.net</a>
         <a href="#experience" class="btn btn-ghost">View Work ↓</a>
       </div>
     </div>
@@ -846,7 +846,7 @@ footer .foot-links a:hover { color: var(--accent); }
       Feel free to get in touch for professional enquiries, collaborations, or just to say hello.
     </p>
     <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
-      <a href="mailto:nuno@ilinx.net" class="btn btn-primary">nuno@ilinx.net</a>
+      <a href="#" onclick="this.href='mai'+'lto:'+'nuno'+'@'+'ilinx.net'; return true;" class="btn btn-primary">nuno@ilinx.net</a>
       <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" class="btn btn-ghost">LinkedIn</a>
       <a href="https://github.com/nunodelisboa" target="_blank" class="btn btn-ghost">GitHub</a>
     </div>
@@ -856,11 +856,25 @@ footer .foot-links a:hover { color: var(--accent); }
     <span class="foot-name">Nuno D. Mendes</span>
     <div class="foot-links">
       <a href="http://nunomendes.eu">nunomendes.eu</a>
-      <a href="mailto:nuno@ilinx.net">Email</a>
+      <a href="#" onclick="this.href='mai'+'lto:'+'nuno'+'@'+'ilinx.net'; return true;">Email</a>
       <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank">LinkedIn</a>
     </div>
   </footer>
 
   <script>
     // Intersection observer for scroll animations
-    const observer 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.timeline-item, .research-card, .edu-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
