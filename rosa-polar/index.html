@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosa Polar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–bg: #080810;
+–surface: #0f0f1a;
+–border: rgba(255,255,255,0.07);
+–text: #e8e4f0;
+–muted: rgba(232,228,240,0.45);
+}
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘DM Mono’, monospace;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 2rem 1rem;
+overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 0;
+opacity: 0.4;
+}
+
+.container {
+position: relative;
+z-index: 1;
+width: 100%;
+max-width: 540px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 2.5rem;
+}
+
+header {
+text-align: center;
+}
+
+.title {
+font-family: ‘DM Serif Display’, serif;
+font-size: clamp(2rem, 6vw, 3rem);
+letter-spacing: -0.01em;
+line-height: 1;
+background: linear-gradient(135deg, #f9c5d1 0%, #fce4a8 40%, #a8d8f0 80%, #c5b4f9 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.subtitle {
+margin-top: 0.4rem;
+font-size: 0.72rem;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–muted);
+}
+
+.formula {
+margin-top: 1rem;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 0.7rem 1.4rem;
+font-family: ‘DM Serif Display’, serif;
+font-size: 1.1rem;
+color: rgba(232,228,240,0.85);
+letter-spacing: 0.03em;
+display: inline-block;
+}
+
+/* Controls */
+.controls {
+display: flex;
+gap: 1.5rem;
+align-items: flex-end;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.knob-group {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 0.6rem;
+}
+
+.knob-label {
+font-size: 0.65rem;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–muted);
+}
+
+.knob-value {
+font-family: ‘DM Serif Display’, serif;
+font-size: 2.8rem;
+line-height: 1;
+color: var(–text);
+min-width: 2.5ch;
+text-align: center;
+}
+
+.knob-btns {
+display: flex;
+gap: 0.4rem;
+}
+
+.btn {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 1px solid var(–border);
+background: var(–surface);
+color: var(–text);
+font-size: 1.1rem;
+cursor: pointer;
+transition: all 0.15s;
+display: flex; align-items: center; justify-content: center;
+}
+.btn:hover {
+background: rgba(255,255,255,0.1);
+border-color: rgba(255,255,255,0.2);
+transform: scale(1.08);
+}
+.btn:active { transform: scale(0.96); }
+
+.divider {
+color: var(–muted);
+font-family: ‘DM Serif Display’, serif;
+font-size: 2.5rem;
+padding-bottom: 0.2rem;
+opacity: 0.4;
+}
+
+/* Canvas area */
+.canvas-wrap {
+position: relative;
+width: min(420px, 90vw);
+height: min(420px, 90vw);
+}
+
+canvas {
+width: 100%;
+height: 100%;
+border-radius: 50%;
+display: block;
+}
+
+.canvas-glow {
+position: absolute;
+inset: -20px;
+border-radius: 50%;
+pointer-events: none;
+background: radial-gradient(circle, var(–petal-glow, rgba(200,150,255,0.12)) 0%, transparent 70%);
+z-index: -1;
+transition: background 1s ease;
+}
+
+/* Progress ring */
+.progress-ring {
+position: absolute;
+inset: -8px;
+pointer-events: none;
+}
+.progress-ring circle {
+fill: none;
+stroke: var(–petal-color, rgba(200,150,255,0.5));
+stroke-width: 1.5;
+stroke-linecap: round;
+transition: stroke 0.5s;
+}
+.progress-ring .track { opacity: 0.1; }
+.progress-ring .fill {
+stroke-dasharray: 1000;
+stroke-dashoffset: 1000;
+transition: stroke-dashoffset 0.05s linear, stroke 0.5s;
+}
+
+/* Info pill */
+.info-pill {
+display: flex;
+gap: 1.5rem;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 999px;
+padding: 0.5rem 1.5rem;
+font-size: 0.7rem;
+letter-spacing: 0.1em;
+color: var(–muted);
+}
+.info-pill span { display: flex; gap: 0.4rem; align-items: center; }
+.info-pill strong { color: var(–text); font-weight: 400; }
+
+/* Replay btn */
+.replay-btn {
+background: none;
+border: 1px solid var(–border);
+color: var(–muted);
+font-family: ‘DM Mono’, monospace;
+font-size: 0.68rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+padding: 0.55rem 1.4rem;
+border-radius: 999px;
+cursor: pointer;
+transition: all 0.2s;
+}
+.replay-btn:hover {
+border-color: rgba(255,255,255,0.25);
+color: var(–text);
+background: rgba(255,255,255,0.04);
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1 class="title">Rosa Polar</h1>
+    <p class="subtitle">Polar Rose Curve</p>
+    <div class="formula" id="formulaDisplay">r(θ) = cos(n/d · θ)</div>
+  </header>
+
+  <div class="controls">
+    <div class="knob-group">
+      <div class="knob-label">numerator n</div>
+      <div class="knob-value" id="nDisplay">3</div>
+      <div class="knob-btns">
+        <button class="btn" onclick="adjust('n',-1)">−</button>
+        <button class="btn" onclick="adjust('n',+1)">+</button>
+      </div>
+    </div>
+
+```
+<div class="divider">/</div>
+
+<div class="knob-group">
+  <div class="knob-label">denominator d</div>
+  <div class="knob-value" id="dDisplay">2</div>
+  <div class="knob-btns">
+    <button class="btn" onclick="adjust('d',-1)">−</button>
+    <button class="btn" onclick="adjust('d',+1)">+</button>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="canvas-wrap">
+    <div class="canvas-glow" id="glow"></div>
+    <svg class="progress-ring" id="progressRing" viewBox="0 0 436 436">
+      <circle class="track" cx="218" cy="218" r="210"/>
+      <circle class="fill" id="progressFill" cx="218" cy="218" r="210" transform="rotate(-90 218 218)"/>
+    </svg>
+    <canvas id="canvas" width="840" height="840"></canvas>
+  </div>
+
+  <div class="info-pill" id="infoPill">
+    <span>petals <strong id="petalCount">—</strong></span>
+    <span>period <strong id="periodVal">—</strong></span>
+    <span>progress <strong id="progressPct">0%</strong></span>
+  </div>
+
+<button class="replay-btn" onclick="startAnimation()">↺ Replay</button>
+
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height, CX = W/2, CY = H/2;
+
+let n = 3, d = 2;
+let animId = null;
+
+// Color palettes keyed roughly by hue angle
+const PALETTES = [
+  { stroke: '#ff6b8a', glow: 'rgba(255,80,120,0.18)', ring: 'rgba(255,100,140,0.6)' },  // red-pink
+  { stroke: '#ff9f43', glow: 'rgba(255,140,60,0.18)', ring: 'rgba(255,160,80,0.6)' },   // orange
+  { stroke: '#ffd32a', glow: 'rgba(255,210,50,0.16)', ring: 'rgba(255,220,60,0.6)' },   // yellow
+  { stroke: '#a8e063', glow: 'rgba(140,220,80,0.16)', ring: 'rgba(160,230,100,0.6)' },  // lime
+  { stroke: '#26de81', glow: 'rgba(40,220,130,0.16)', ring: 'rgba(60,230,150,0.6)' },   // green
+  { stroke: '#45aaf2', glow: 'rgba(60,160,245,0.18)', ring: 'rgba(80,180,255,0.6)' },   // blue
+  { stroke: '#a55eea', glow: 'rgba(160,90,240,0.18)', ring: 'rgba(180,110,255,0.6)' },  // violet
+  { stroke: '#fd9644', glow: 'rgba(250,120,60,0.18)', ring: 'rgba(255,140,70,0.6)' },   // amber
+];
+
+function getPalette(n, d) {
+  return PALETTES[(n * 3 + d * 7) % PALETTES.length];
+}
+
+function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+
+function getTotalTheta(n, d) {
+  // Full curve needs lcm(n,d)/n * 2π * d... simplest: integrate until curve closes
+  // For r = cos(n/d * θ), period is 2πd/gcd(n,d), but we need full closure.
+  const g = gcd(n, d);
+  const rn = n / g, rd = d / g;
+  // Total angle = 2π * d (guarantees closure for rational n/d)
+  return 2 * Math.PI * d;
+}
+
+function petalCount(n, d) {
+  const g = gcd(n, d);
+  const rn = n / g, rd = d / g;
+  // odd numerator after reduction → rn petals; even → 2*rn petals
+  const petals = (rn % 2 === 0) ? 2 * rn : rn;
+  return petals;
+}
+
+function adjust(param, delta) {
+  if (param === 'n') n = Math.max(1, Math.min(12, n + delta));
+  if (param === 'd') d = Math.max(1, Math.min(12, d + delta));
+  document.getElementById('nDisplay').textContent = n;
+  document.getElementById('dDisplay').textContent = d;
+  document.getElementById('formulaDisplay').textContent = `r(θ) = cos(${n}/${d} · θ)`;
+  startAnimation();
+}
+
+function startAnimation() {
+  if (animId) cancelAnimationFrame(animId);
+  ctx.clearRect(0, 0, W, H);
+
+  const palette = getPalette(n, d);
+  const totalTheta = getTotalTheta(n, d);
+  const steps = Math.ceil(totalTheta / (Math.PI / 1800)); // fine resolution
+  const R = W * 0.44;
+
+  // Update UI colors
+  document.getElementById('glow').style.background =
+    `radial-gradient(circle, ${palette.glow} 0%, transparent 70%)`;
+  document.querySelector('.progress-ring .fill').style.stroke = palette.ring;
+  document.querySelector('.progress-ring .track').style.stroke = palette.ring;
+
+  const pc = petalCount(n, d);
+  document.getElementById('petalCount').textContent = pc;
+  document.getElementById('periodVal').textContent = `${(totalTheta / Math.PI).toFixed(0)}π`;
+
+  // Circumference for progress ring
+  const r_ring = 210;
+  const circ = 2 * Math.PI * r_ring;
+  const fillEl = document.getElementById('progressFill');
+  fillEl.style.strokeDasharray = circ;
+  fillEl.style.strokeDashoffset = circ;
+
+  // Build path incrementally
+  let step = 0;
+  const STEPS_PER_FRAME = Math.max(2, Math.floor(steps / 600));
+
+  // Draw a faint ghost of the full curve first
+  ctx.beginPath();
+  for (let i = 0; i <= steps; i++) {
+    const theta = (i / steps) * totalTheta;
+    const r = Math.cos((n / d) * theta) * R;
+    const x = CX + r * Math.cos(theta);
+    const y = CY + r * Math.sin(theta);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = palette.stroke + '18';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Animated stroke
+  function frame() {
+    const end = Math.min(step + STEPS_PER_FRAME, steps);
+
+    ctx.beginPath();
+    ctx.lineWidth = 3.2;
+    ctx.lineCap = 'round';
+
+    for (let i = step; i <= end; i++) {
+      const theta = (i / steps) * totalTheta;
+      const r = Math.cos((n / d) * theta) * R;
+      const x = CX + r * Math.cos(theta);
+      const y = CY + r * Math.sin(theta);
+
+      // Color shift along the curve
+      const hueShift = (i / steps) * 80;
+      const progress = i / steps;
+      ctx.strokeStyle = shiftedColor(palette.stroke, hueShift, progress);
+
+      if (i === step) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Draw moving dot
+    const theta = (end / steps) * totalTheta;
+    const r = Math.cos((n / d) * theta) * R;
+    const dotX = CX + r * Math.cos(theta);
+    const dotY = CY + r * Math.sin(theta);
+
+    // Clear dot area (redraw ghost underneath)
+    ctx.beginPath();
+    ctx.arc(dotX, dotY, 7, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    ctx.shadowColor = palette.stroke;
+    ctx.shadowBlur = 16;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Progress ring
+    const pct = end / steps;
+    fillEl.style.strokeDashoffset = circ * (1 - pct);
+    document.getElementById('progressPct').textContent = Math.round(pct * 100) + '%';
+
+    step = end;
+    if (step < steps) {
+      animId = requestAnimationFrame(frame);
+    } else {
+      document.getElementById('progressPct').textContent = '100%';
+    }
+  }
+
+  animId = requestAnimationFrame(frame);
+}
+
+function shiftedColor(hex, hueDelta, t) {
+  // Parse hex to hsl, shift hue
+  let r = parseInt(hex.slice(1,3),16)/255;
+  let g = parseInt(hex.slice(3,5),16)/255;
+  let b = parseInt(hex.slice(5,7),16)/255;
+
+  const max = Math.max(r,g,b), min = Math.min(r,g,b);
+  let h, s, l = (max+min)/2;
+  if (max===min) { h=s=0; }
+  else {
+    const d = max-min;
+    s = l>0.5 ? d/(2-max-min) : d/(max+min);
+    switch(max) {
+      case r: h=((g-b)/d+(g<b?6:0))/6; break;
+      case g: h=((b-r)/d+2)/6; break;
+      case b: h=((r-g)/d+4)/6; break;
+    }
+  }
+  h = (h + hueDelta/360 + t*0.15) % 1;
+  s = Math.min(1, s + 0.1);
+  l = Math.min(0.82, Math.max(0.45, l + 0.05));
+
+  // hsl to rgb
+  function hue2rgb(p,q,t){ if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p; }
+  const q2 = l<0.5?l*(1+s):l+s-l*s, p2=2*l-q2;
+  r=hue2rgb(p2,q2,h+1/3); g=hue2rgb(p2,q2,h); b=hue2rgb(p2,q2,h-1/3);
+  const alpha = 0.75 + t*0.25;
+  return `rgba(${Math.round(r*255)},${Math.round(g*255)},${Math.round(b*255)},${alpha})`;
+}
+
+// Init
+document.getElementById('nDisplay').textContent = n;
+document.getElementById('dDisplay').textContent = d;
+document.getElementById('formulaDisplay').textContent = `r(θ) = cos(${n}/${d} · θ)`;
+startAnimation();
+</script>
+
+</body>
+</html>
