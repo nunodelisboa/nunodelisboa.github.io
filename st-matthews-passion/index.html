@@ -1,1 +1,446 @@
-done
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matthäus-Passion BWV 244 — J.S. Bach</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Cinzel:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#c9a84c;--gold-l:#e8d5a0;--gold-d:#8a6d2b;
+--parch:#f5eed6;--ink:#2a1f14;--ink-l:#5a4a38;
+--burg:#6b1d2a;--navy:#1a1a2e;--cream:#faf6eb;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--navy);color:var(--ink);overflow-x:hidden}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.12) 0%,transparent 60%),
+radial-gradient(ellipse at 50% 80%,rgba(107,29,42,.08) 0%,transparent 50%),var(–navy);
+position:relative;padding:2rem;text-align:center}
+.hero::before{content:’’;position:absolute;inset:0;
+background:url(“data:image/svg+xml,%3Csvg width=‘60’ height=‘60’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cpath d=‘M30 5L35 25 55 30 35 35 30 55 25 35 5 30 25 25Z’ fill=‘none’ stroke=’%23c9a84c’ stroke-width=’.3’ opacity=’.06’/%3E%3C/svg%3E”);pointer-events:none}
+.cross{width:60px;height:100px;position:relative;margin-bottom:2rem;opacity:0;animation:fd 1.4s ease .3s forwards}
+.cross::before,.cross::after{content:’’;position:absolute;background:var(–gold)}
+.cross::before{width:3px;height:100%;left:50%;transform:translateX(-50%)}
+.cross::after{width:40px;height:3px;top:28%;left:50%;transform:translateX(-50%)}
+.hero h1{font-family:‘Cinzel’,serif;font-weight:400;font-size:clamp(2rem,5vw,4rem);color:var(–gold);letter-spacing:.15em;line-height:1.2;margin-bottom:.4rem;opacity:0;animation:fu 1.4s ease .6s forwards}
+.hero .sub{font-family:‘Cinzel’,serif;font-weight:400;font-size:clamp(.9rem,2vw,1.4rem);color:var(–gold-l);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fu 1.4s ease .9s forwards}
+.hero .tagline{font-family:‘Spectral’,serif;font-style:italic;font-size:clamp(.95rem,1.8vw,1.2rem);color:var(–gold-d);max-width:560px;line-height:1.6;opacity:0;animation:fu 1.4s ease 1.2s forwards}
+.hero .meta{margin-top:1.8rem;font-family:‘Spectral’,serif;font-size:.85rem;color:rgba(201,168,76,.4);letter-spacing:.08em;opacity:0;animation:fu 1.4s ease 1.5s forwards}
+.scroll-cue{position:absolute;bottom:2rem;color:var(–gold-d);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:fu 1.4s ease 2s forwards;cursor:pointer}
+.scroll-cue::after{content:‘↓’;display:block;text-align:center;margin-top:.4rem;font-size:1.1rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fd{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+.nav{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,var(–navy),rgba(26,26,46,.97));border-bottom:1px solid rgba(201,168,76,.2);padding:.6rem 1rem;backdrop-filter:blur(10px)}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.nav-title{font-family:‘Cinzel’,serif;color:var(–gold);font-size:.8rem;letter-spacing:.1em;white-space:nowrap}
+.nav-ctrls{display:flex;gap:.4rem;margin-left:auto;flex-wrap:wrap;align-items:center}
+.nbtn{font-family:‘Spectral’,serif;font-size:.75rem;padding:.3rem .7rem;border:1px solid rgba(201,168,76,.25);background:transparent;color:var(–gold-l);cursor:pointer;letter-spacing:.04em;transition:all .3s;border-radius:2px}
+.nbtn:hover,.nbtn.on{background:rgba(201,168,76,.15);border-color:var(–gold);color:var(–gold)}
+.search{font-family:‘Spectral’,serif;font-size:.8rem;padding:.3rem .7rem;border:1px solid rgba(201,168,76,.18);background:rgba(255,255,255,.03);color:var(–gold-l);width:160px;outline:none;border-radius:2px}
+.search::placeholder{color:rgba(201,168,76,.25)}
+.search:focus{border-color:var(–gold)}
+
+.part-div{background:var(–navy);padding:3.5rem 2rem;text-align:center}
+.part-div h2{font-family:‘Cinzel’,serif;color:var(–gold);font-size:clamp(1.3rem,3vw,2rem);letter-spacing:.2em}
+.part-div p{font-family:‘Spectral’,serif;font-style:italic;color:var(–gold-d);margin-top:.6rem;font-size:.95rem}
+.orn{display:flex;justify-content:center;gap:.3rem;margin-top:1rem}
+.orn span{display:block;width:6px;height:6px;border:1px solid var(–gold-d);transform:rotate(45deg);opacity:.5}
+
+.content{background:var(–parch);position:relative}
+.content::before{content:’’;position:absolute;inset:0;background:url(“data:image/svg+xml,%3Csvg width=‘200’ height=‘200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Ccircle cx=‘100’ cy=‘100’ r=‘80’ fill=‘none’ stroke=’%23c9a84c’ stroke-width=’.3’ opacity=’.03’/%3E%3C/svg%3E”);pointer-events:none}
+
+.mv{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem;border-bottom:1px solid rgba(201,168,76,.12);position:relative;transition:opacity .6s,transform .6s}
+.mv.hid{display:none}
+.mv-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.mv-num{font-family:‘Cinzel’,serif;font-size:.75rem;color:var(–gold-d);letter-spacing:.08em;min-width:1.6rem}
+.mv-type{font-family:‘Spectral’,serif;font-style:italic;font-size:.8rem;color:var(–burg);padding:.1rem .5rem;border:1px solid rgba(107,29,42,.18);border-radius:2px}
+.mv-scoring{font-family:‘Spectral’,serif;font-size:.75rem;color:var(–ink-l);opacity:.7;margin-left:auto}
+.mv-title{font-family:‘Cinzel’,serif;font-size:1.05rem;color:var(–ink);letter-spacing:.06em;width:100%;margin-top:.3rem}
+
+.lyrics{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:.8rem}
+@media(max-width:680px){.lyrics{grid-template-columns:1fr;gap:1rem}}
+.ly-label{font-family:‘Cinzel’,serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(–gold-d);margin-bottom:.6rem;padding-bottom:.3rem;border-bottom:1px solid rgba(201,168,76,.15)}
+.ly-text{font-size:1.05rem;line-height:1.75;color:var(–ink)}
+.ly-text.de{font-style:normal}
+.ly-text.en{font-style:italic;color:var(–ink-l)}
+.ly-text p{margin-bottom:.8rem}
+.ly-text .speak{font-weight:600;color:var(–burg);font-style:normal;font-size:.85rem;letter-spacing:.05em;display:block;margin-bottom:.15rem}
+
+.footer{background:var(–navy);padding:3rem 2rem;text-align:center}
+.footer p{font-family:‘Spectral’,serif;font-size:.85rem;color:rgba(201,168,76,.35);line-height:1.8}
+.footer .fi{font-family:‘Cinzel’,serif;color:var(–gold-d);font-size:.9rem;letter-spacing:.1em;margin-bottom:1rem}
+
+.toc-panel{position:fixed;right:-340px;top:0;width:320px;height:100vh;background:rgba(26,26,46,.98);border-left:1px solid rgba(201,168,76,.15);z-index:200;transition:right .4s;overflow-y:auto;padding:1.5rem}
+.toc-panel.open{right:0}
+.toc-close{position:absolute;top:.8rem;right:.8rem;background:none;border:none;color:var(–gold);font-size:1.4rem;cursor:pointer}
+.toc-panel h3{font-family:‘Cinzel’,serif;color:var(–gold);font-size:.9rem;letter-spacing:.15em;margin-bottom:1rem}
+.toc-panel .tp{margin-bottom:1rem}
+.toc-panel .tp-title{font-family:‘Cinzel’,serif;color:var(–burg);font-size:.8rem;letter-spacing:.1em;margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:1px solid rgba(107,29,42,.15)}
+.toc-panel a{display:block;font-family:‘Spectral’,serif;font-size:.78rem;color:var(–gold-l);text-decoration:none;padding:.18rem 0;transition:color .2s}
+.toc-panel a:hover{color:var(–gold)}
+.toc-panel .tn{color:var(–gold-d);margin-right:.3rem;font-size:.7rem}
+.toc-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199;display:none}
+.toc-overlay.open{display:block}
+
+body.lang-de .en-col{display:none}
+body.lang-en .de-col{display:none}
+body.lang-de .lyrics,body.lang-en .lyrics{grid-template-columns:1fr}
+</style>
+
+</head>
+<body>
+<div class="hero" id="top">
+  <div class="cross"></div>
+  <h1>Matthäus-Passion</h1>
+  <div class="sub">BWV 244</div>
+  <div class="tagline">The Passion of our Lord Jesus Christ<br>according to the Evangelist Matthew</div>
+  <div class="meta">Johann Sebastian Bach · Libretto: C.F. Henrici (Picander) · 1727</div>
+  <div class="scroll-cue" onclick="document.querySelector('.nav').scrollIntoView({behavior:'smooth'})">Enter</div>
+</div>
+
+<nav class="nav" id="mainnav">
+<div class="nav-inner">
+  <span class="nav-title">MP BWV 244</span>
+  <div class="nav-ctrls">
+    <button class="nbtn" onclick="toggleTOC()">☰ Contents</button>
+    <button class="nbtn on" id="btn-both" onclick="setLang('both')">DE + EN</button>
+    <button class="nbtn" id="btn-de" onclick="setLang('de')">Deutsch</button>
+    <button class="nbtn" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="nbtn on" id="btn-filter-all" onclick="filterType('all')">All</button>
+    <button class="nbtn" id="btn-filter-aria" onclick="filterType('aria')">Arias</button>
+    <button class="nbtn" id="btn-filter-chorus" onclick="filterType('chorus')">Choruses</button>
+    <button class="nbtn" id="btn-filter-chorale" onclick="filterType('chorale')">Chorales</button>
+    <button class="nbtn" id="btn-filter-recit" onclick="filterType('recit')">Recitatives</button>
+    <input class="search" placeholder="Search text…" oninput="doSearch(this.value)">
+  </div>
+</div>
+</nav>
+
+<div class="toc-overlay" id="toc-overlay" onclick="toggleTOC()"></div>
+<div class="toc-panel" id="toc-panel">
+  <button class="toc-close" onclick="toggleTOC()">×</button>
+  <h3>Table of Contents</h3>
+  <div id="toc-content"></div>
+</div>
+
+<div class="content" id="main-content"></div>
+
+<div class="footer">
+  <div class="fi">Soli Deo Gloria</div>
+  <p>Libretto by C.F. Henrici (Picander), with scripture from Matthew 26–27.<br>
+  English translations provided for study and appreciation.<br>
+  First performed Good Friday, 1727, Thomaskirche, Leipzig.</p>
+</div>
+
+<script>
+const L=[
+{p:1,n:1,t:"chorus",ti:"Kommt, ihr Töchter, helft mir klagen",s:"Double Chorus, Soloists, Orchestra, Ripieno",
+de:"Kommt, ihr Töchter, helft mir klagen,\nSehet — Wen? — den Bräutigam,\nSeht ihn — Wie? — als wie ein Lamm!\n\nSehet — Was? — seht die Geduld,\nSeht — Wohin? — auf unsre Schuld;\nSehet ihn aus Lieb und Huld\nHolz zum Kreuze selber tragen!\n\nO Lamm Gottes, unschuldig\nAm Stamm des Kreuzes geschlachtet,\nAllzeit erfunden geduldig,\nWiewohl du warest verachtet.\nAll Sünd hast du getragen,\nSonst müßten wir verzagen.\nErbarm dich unser, o Jesu!",
+en:"Come, you daughters, help me lament,\nBehold — Whom? — the Bridegroom,\nSee him — How? — as a Lamb!\n\nBehold — What? — see his patience,\nLook — Where? — upon our guilt;\nSee him, out of love and grace,\nBearing the wood of the cross himself!\n\nO Lamb of God, innocent,\nSlaughtered on the trunk of the cross,\nEver found patient,\nThough you were scorned.\nAll sin you have borne,\nElse we should despair.\nHave mercy on us, O Jesus!"},
+{p:1,n:2,t:"recit",ti:"Da Jesus diese Rede vollendet hatte",
+de:"<span class='speak'>Evangelist:</span>\nDa Jesus diese Rede vollendet hatte, sprach er zu seinen Jüngern:\n\n<span class='speak'>Jesus:</span>\nIhr wisset, daß nach zweien Tagen Ostern wird, und des Menschen Sohn wird überantwortet werden, daß er gekreuziget werde.",
+en:"<span class='speak'>Evangelist:</span>\nWhen Jesus had finished all these sayings, he said to his disciples:\n\n<span class='speak'>Jesus:</span>\nYou know that after two days the Passover is coming, and the Son of Man will be delivered up to be crucified."},
+{p:1,n:3,t:"chorale",ti:"Herzliebster Jesu",
+de:"Herzliebster Jesu, was hast du verbrochen,\nDaß man ein solch scharf Urteil hat gesprochen?\nWas ist die Schuld, in was für Missetaten\nBist du geraten?",
+en:"O dearest Jesus, what have you done wrong,\nThat such a harsh sentence has been pronounced?\nWhat is the crime, into what misdeeds\nHave you fallen?"},
+{p:1,n:4,t:"recit",ti:"Da versammleten sich die Hohenpriester",
+de:"<span class='speak'>Evangelist:</span>\nDa versammleten sich die Hohenpriester und Schriftgelehrten und die Ältesten im Volk in den Palast des Hohenpriesters, der da hieß Kaiphas, und hielten Rat, wie sie Jesum mit Listen griffen und töteten. Sie sprachen aber:",
+en:"<span class='speak'>Evangelist:</span>\nThen the chief priests, the scribes, and the elders of the people gathered in the palace of the high priest, who was called Caiaphas, and took counsel together how they might seize Jesus by trickery and kill him. But they said:"},
+{p:1,n:"4b",t:"chorus",ti:"Ja nicht auf das Fest",
+de:"Ja nicht auf das Fest, auf daß nicht ein Aufruhr werde im Volk.",
+en:"Not during the festival, lest there be an uproar among the people."},
+{p:1,n:5,t:"recit",ti:"Da nun Jesus war zu Bethanien",
+de:"<span class='speak'>Evangelist:</span>\nDa nun Jesus war zu Bethanien, im Hause Simonis des Aussätzigen, trat zu ihm ein Weib, die hatte ein Glas mit köstlichem Wasser und goß es auf sein Haupt, da er zu Tische saß. Da das seine Jünger sahen, wurden sie unwillig und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nNow when Jesus was in Bethany, in the house of Simon the leper, a woman came to him with an alabaster jar of very precious ointment and poured it on his head as he sat at the table. When his disciples saw it, they were indignant, saying:"},
+{p:1,n:"5b",t:"chorus",ti:"Wozu dienet dieser Unrat?",
+de:"Wozu dienet dieser Unrat? Dieses Wasser hätte mögen teuer verkauft und den Armen gegeben werden.",
+en:"What purpose does this waste serve? This ointment could have been sold for a great price and given to the poor."},
+{p:1,n:6,t:"recit",ti:"Was bekümmert ihr das Weib?",
+de:"<span class='speak'>Evangelist:</span>\nDa das Jesus merkete, sprach er zu ihnen:\n\n<span class='speak'>Jesus:</span>\nWas bekümmert ihr das Weib? Sie hat ein gut Werk an mir getan! Ihr habet allezeit Arme bei euch, mich aber habt ihr nicht allezeit. Daß sie dies Wasser hat auf meinen Leib gegossen, hat sie getan, daß man mich begraben wird. Wahrlich, ich sage euch: Wo dies Evangelium geprediget wird in der ganzen Welt, da wird man auch sagen zu ihrem Gedächtnis, was sie getan hat.",
+en:"<span class='speak'>Evangelist:</span>\nWhen Jesus noticed this, he said to them:\n\n<span class='speak'>Jesus:</span>\nWhy do you trouble the woman? She has done a good work for me! You will always have the poor with you, but you will not always have me. For in pouring this ointment on my body, she has done it to prepare me for burial. Truly I say to you: wherever this Gospel is preached in the whole world, what she has done will also be told in her memory."},
+{p:1,n:7,t:"recit",ti:"Du lieber Heiland du",s:"Alto, Orchestra",
+de:"Du lieber Heiland du,\nWenn deine Jünger töricht streiten,\nDaß dieses fromme Weib\nMit Salben deinen Leib\nZum Grabe bereiten,\nSo lasse mir inzwischen zu,\nVon meiner Augen Tränenflüssen\nEin Wasser auf dein Haupt zu gießen!",
+en:"You, dear Savior,\nWhen your disciples foolishly argue\nThat this devout woman\nWith ointment your body\nFor burial has prepared,\nThen let me meanwhile\nFrom the flowing tears of my eyes\nPour a water upon your head!"},
+{p:1,n:8,t:"aria",ti:"Buß und Reu",s:"Alto, Flutes, Continuo",
+de:"Buß und Reu\nKnirscht das Sündenherz entzwei,\nDaß die Tropfen meiner Zähren\nAngenehme Spezerei,\nTreuer Jesu, dir gebären.",
+en:"Penance and remorse\nGrind the sinful heart in two,\nSo that the drops of my tears\nBecome a pleasing spice,\nFaithful Jesus, for you."},
+{p:1,n:9,t:"recit",ti:"Da ging hin der Zwölfen einer",
+de:"<span class='speak'>Evangelist:</span>\nDa ging hin der Zwölfen einer, mit Namen Judas Ischarioth, zu den Hohenpriestern und sprach:\n\n<span class='speak'>Judas:</span>\nWas wollt ihr mir geben? Ich will ihn euch verraten.\n\n<span class='speak'>Evangelist:</span>\nUnd sie boten ihm dreißig Silberlinge. Und von dem an suchte er Gelegenheit, daß er ihn verriete.",
+en:"<span class='speak'>Evangelist:</span>\nThen one of the twelve, called Judas Iscariot, went to the chief priests and said:\n\n<span class='speak'>Judas:</span>\nWhat will you give me? I will betray him to you.\n\n<span class='speak'>Evangelist:</span>\nAnd they offered him thirty pieces of silver. And from that time he sought opportunity to betray him."},
+{p:1,n:10,t:"aria",ti:"Blute nur, du liebes Herz!",s:"Soprano, Flutes, Strings, Continuo",
+de:"Blute nur, du liebes Herz!\nAch, ein Kind, das du erzogen,\nDas an deiner Brust gesogen,\nDroht den Pfleger zu ermorden,\nDenn es ist zur Schlange worden.",
+en:"Bleed then, you dear heart!\nAh, a child whom you have raised,\nWho suckled at your breast,\nThreatens to murder its guardian,\nFor it has become a serpent."},
+{p:1,n:11,t:"recit",ti:"Aber am ersten Tage der süßen Brot",
+de:"<span class='speak'>Evangelist:</span>\nAber am ersten Tage der süßen Brot traten die Jünger zu Jesu und sprachen zu ihm:\n\n<span class='speak'>Disciples:</span>\nWo willst du, daß wir dir bereiten, das Osterlamm zu essen?\n\n<span class='speak'>Jesus:</span>\nGehet hin in die Stadt zu einem und sprecht zu ihm: Der Meister läßt dir sagen: Meine Zeit ist hier, ich will bei dir die Ostern halten mit meinen Jüngern.\n\n<span class='speak'>Evangelist:</span>\nUnd die Jünger taten, wie ihnen Jesus befohlen hatte, und bereiteten das Osterlamm. Und am Abend setzte er sich zu Tische mit den Zwölfen. Und da sie aßen, sprach er:\n\n<span class='speak'>Jesus:</span>\nWahrlich, ich sage euch: Einer unter euch wird mich verraten.\n\n<span class='speak'>Evangelist:</span>\nUnd sie wurden sehr betrübt und huben an, ein jeglicher unter ihnen, und sagten zu ihm:",
+en:"<span class='speak'>Evangelist:</span>\nBut on the first day of unleavened bread the disciples came to Jesus and said to him:\n\n<span class='speak'>Disciples:</span>\nWhere do you want us to prepare for you to eat the Passover lamb?\n\n<span class='speak'>Jesus:</span>\nGo into the city to a certain man and say to him: The Master says: My time is near, I will keep the Passover at your house with my disciples.\n\n<span class='speak'>Evangelist:</span>\nAnd the disciples did as Jesus had commanded them, and prepared the Passover lamb. And in the evening he sat down at the table with the twelve. And as they ate, he said:\n\n<span class='speak'>Jesus:</span>\nTruly I say to you: one of you will betray me.\n\n<span class='speak'>Evangelist:</span>\nAnd they were deeply sorrowful and began, each one of them, to say to him:"},
+{p:1,n:"11b",t:"chorus",ti:"Herr, bin ich's?",
+de:"Herr, bin ich's?",en:"Lord, is it I?"},
+{p:1,n:12,t:"recit",ti:"Er antwortete und sprach",
+de:"<span class='speak'>Evangelist:</span>\nEr antwortete und sprach:\n\n<span class='speak'>Jesus:</span>\nDer mit der Hand mit mir in die Schüssel tauchet, der wird mich verraten. Des Menschen Sohn gehet zwar dahin, wie von ihm geschrieben stehet; doch wehe dem Menschen, durch welchen des Menschen Sohn verraten wird! Es wäre ihm besser, daß derselbige Mensch noch nie geboren wäre.\n\n<span class='speak'>Evangelist:</span>\nDa antwortete Judas, der ihn verriet, und sprach:\n\n<span class='speak'>Judas:</span>\nBin ich's, Rabbi?\n\n<span class='speak'>Evangelist:</span>\nEr sprach zu ihm:\n\n<span class='speak'>Jesus:</span>\nDu sagest's.",
+en:"<span class='speak'>Evangelist:</span>\nHe answered and said:\n\n<span class='speak'>Jesus:</span>\nHe who dips his hand with me in the dish will betray me. The Son of Man goes indeed as it is written of him; but woe to that man by whom the Son of Man is betrayed! It would have been better for that man if he had never been born.\n\n<span class='speak'>Evangelist:</span>\nThen Judas, who betrayed him, answered and said:\n\n<span class='speak'>Judas:</span>\nIs it I, Rabbi?\n\n<span class='speak'>Evangelist:</span>\nHe said to him:\n\n<span class='speak'>Jesus:</span>\nYou have said it."},
+{p:1,n:13,t:"chorale",ti:"Ich bin's, ich sollte büßen",
+de:"Ich bin's, ich sollte büßen,\nAn Händen und an Füßen\nGebunden in der Höll.\nDie Geißeln und die Banden\nUnd was du ausgestanden,\nDas hat verdienet meine Seel.",
+en:"It is I, I should atone,\nBound hand and foot\nIn the depths of hell.\nThe scourges and the fetters\nAnd what you have endured,\nMy soul has deserved all this."},
+{p:1,n:14,t:"recit",ti:"Da sie aber aßen, nahm Jesus das Brot",
+de:"<span class='speak'>Evangelist:</span>\nDa sie aber aßen, nahm Jesus das Brot, dankete und brach's und gab's den Jüngern und sprach:\n\n<span class='speak'>Jesus:</span>\nNehmet, esset, das ist mein Leib.\n\n<span class='speak'>Evangelist:</span>\nUnd er nahm den Kelch und dankete, gab ihnen den und sprach:\n\n<span class='speak'>Jesus:</span>\nTrinket alle daraus; das ist mein Blut des neuen Testaments, welches vergossen wird für viele zur Vergebung der Sünden. Ich sage euch: Ich werde von nun an nicht mehr von diesem Gewächs des Weinstocks trinken bis an den Tag, da ich's neu trinken werde mit euch in meines Vaters Reich.",
+en:"<span class='speak'>Evangelist:</span>\nAnd as they were eating, Jesus took bread, gave thanks, broke it, and gave it to the disciples and said:\n\n<span class='speak'>Jesus:</span>\nTake, eat, this is my body.\n\n<span class='speak'>Evangelist:</span>\nAnd he took the cup, gave thanks, and gave it to them, saying:\n\n<span class='speak'>Jesus:</span>\nDrink of it, all of you; this is my blood of the new covenant, which is poured out for many for the forgiveness of sins. I say to you: I shall not drink again of this fruit of the vine until that day when I drink it new with you in my Father's kingdom."},
+{p:1,n:15,t:"recit",ti:"Wiewohl mein Herz in Tränen schwimmt",s:"Soprano, Oboes d'amore, Continuo",
+de:"Wiewohl mein Herz in Tränen schwimmt,\nDaß Jesus von mir Abschied nimmt,\nSo macht mich doch sein Testament erfreut:\nSein Fleisch und Blut, o Kostbarkeit,\nVermacht er mir in meine Hände.\nWie er es auf der Welt mit denen Seinen\nNicht böse können meinen,\nSo liebt er sie bis an das Ende.",
+en:"Although my heart swims in tears,\nThat Jesus takes his leave of me,\nYet his testament brings me joy:\nHis flesh and blood, O precious gift,\nHe bequeaths into my hands.\nAs he in this world toward his own\nCould never intend ill,\nSo he loves them to the end."},
+{p:1,n:16,t:"aria",ti:"Ich will dir mein Herze schenken",s:"Soprano, Oboes d'amore, Continuo",
+de:"Ich will dir mein Herze schenken,\nSenke dich, mein Heil, hinein!\nIch will mich in dir versenken;\nIst dir gleich die Welt zu klein,\nEi, so sollst du mir allein\nMehr als Welt und Himmel sein.",
+en:"I will give you my heart,\nSink yourself, my Savior, into it!\nI will immerse myself in you;\nThough the world is too small for you,\nYet for me alone you shall be\nMore than world and heaven."},
+{p:1,n:17,t:"recit",ti:"Und da sie den Lobgesang gesprochen hatten",
+de:"<span class='speak'>Evangelist:</span>\nUnd da sie den Lobgesang gesprochen hatten, gingen sie hinaus an den Ölberg. Da sprach Jesus zu ihnen:\n\n<span class='speak'>Jesus:</span>\nIn dieser Nacht werdet ihr euch alle ärgern an mir. Denn es stehet geschrieben: Ich werde den Hirten schlagen, und die Schafe der Herde werden sich zerstreuen. Wenn ich aber auferstehe, will ich vor euch hingehen in Galiläam.\n\n<span class='speak'>Evangelist:</span>\nPetrus aber antwortete und sprach zu ihm:\n\n<span class='speak'>Peter:</span>\nWenn sie auch alle sich an dir ärgerten, so will ich doch mich nimmermehr ärgern.\n\n<span class='speak'>Jesus:</span>\nWahrlich, ich sage dir: In dieser Nacht, ehe der Hahn krähet, wirst du mich dreimal verleugnen.\n\n<span class='speak'>Peter:</span>\nUnd wenn ich mit dir sterben müßte, so will ich dich nicht verleugnen.\n\n<span class='speak'>Evangelist:</span>\nDesgleichen sagten auch alle Jünger.",
+en:"<span class='speak'>Evangelist:</span>\nAnd when they had sung the hymn, they went out to the Mount of Olives. Then Jesus said to them:\n\n<span class='speak'>Jesus:</span>\nThis night you will all be offended because of me. For it is written: I will strike the shepherd, and the sheep of the flock will be scattered. But when I am risen, I will go before you into Galilee.\n\n<span class='speak'>Evangelist:</span>\nPeter answered and said to him:\n\n<span class='speak'>Peter:</span>\nEven if all are offended because of you, I will never be offended.\n\n<span class='speak'>Jesus:</span>\nTruly I say to you: this night, before the cock crows, you will deny me three times.\n\n<span class='speak'>Peter:</span>\nEven if I must die with you, I will not deny you.\n\n<span class='speak'>Evangelist:</span>\nLikewise said all the disciples."},
+{p:1,n:18,t:"chorale",ti:"Ich will hier bei dir stehen",
+de:"Ich will hier bei dir stehen;\nVerachte mich doch nicht!\nVon dir will ich nicht gehen,\nWenn dir dein Herze bricht.\nWenn dein Herz wird erblassen\nIm letzten Todesstoß,\nAlsdenn will ich dich fassen\nIn meinen Arm und Schoß.",
+en:"I will stand here beside you;\nDo not scorn me!\nFrom you I will not depart,\nWhen your heart is breaking.\nWhen your heart grows pale\nIn the last death-blow,\nThen I will hold you\nIn my arms and lap."},
+{p:1,n:19,t:"recit",ti:"Da kam Jesus mit ihnen zu einem Hofe",
+de:"<span class='speak'>Evangelist:</span>\nDa kam Jesus mit ihnen zu einem Hofe, der hieß Gethsemane, und sprach zu seinen Jüngern:\n\n<span class='speak'>Jesus:</span>\nSetzet euch hier, bis daß ich dort hingehe und bete.\n\n<span class='speak'>Evangelist:</span>\nUnd nahm zu sich Petrum und die zween Söhne Zebedäi und fing an zu trauern und zu zagen. Da sprach Jesus zu ihnen:\n\n<span class='speak'>Jesus:</span>\nMeine Seele ist betrübt bis an den Tod; bleibet hier und wachet mit mir.\n\n<span class='speak'>Evangelist:</span>\nUnd ging hin ein wenig, fiel nieder auf sein Angesicht und betete und sprach:\n\n<span class='speak'>Jesus:</span>\nMein Vater, ist's möglich, so gehe dieser Kelch von mir; doch nicht wie ich will, sondern wie du willst.",
+en:"<span class='speak'>Evangelist:</span>\nThen Jesus came with them to a garden called Gethsemane, and said to his disciples:\n\n<span class='speak'>Jesus:</span>\nSit here while I go over there and pray.\n\n<span class='speak'>Evangelist:</span>\nAnd he took with him Peter and the two sons of Zebedee and began to grieve and to be in anguish. Then Jesus said to them:\n\n<span class='speak'>Jesus:</span>\nMy soul is sorrowful unto death; remain here and watch with me.\n\n<span class='speak'>Evangelist:</span>\nAnd he went a little farther, fell on his face, and prayed, saying:\n\n<span class='speak'>Jesus:</span>\nMy Father, if it is possible, let this cup pass from me; yet not as I will, but as you will."},
+{p:1,n:20,t:"recit",ti:"O Schmerz!",s:"Tenor, Chorus II, Continuo",
+de:"<span class='speak'>Tenor:</span>\nO Schmerz! Hier zittert das gequälte Herz;\nWie sinkt es hin, wie bleicht sein Angesicht!\n\n<span class='speak'>Chorus II:</span>\nWas ist die Ursach aller solcher Plagen?\n\n<span class='speak'>Tenor:</span>\nDer Richter führt ihn vor Gericht.\nDa ist kein Trost, kein Helfer nicht.\n\n<span class='speak'>Chorus II:</span>\nAch! meine Sünden haben dich geschlagen.\n\n<span class='speak'>Tenor:</span>\nEr leidet alle Höllenqualen,\nEr soll vor fremden Raub bezahlen.\n\n<span class='speak'>Chorus II:</span>\nIch, ach Herr Jesu, habe dies verschuldet, was du erduldet.\n\n<span class='speak'>Tenor:</span>\nAch, könnte meine Liebe dir,\nMein Heil, dein Zittern und dein Zagen\nVermindern oder helfen tragen,\nWie gerne blieb ich hier!",
+en:"<span class='speak'>Tenor:</span>\nO grief! Here trembles the tormented heart;\nHow it sinks down, how pale his countenance!\n\n<span class='speak'>Chorus II:</span>\nWhat is the cause of all these torments?\n\n<span class='speak'>Tenor:</span>\nThe Judge leads him before the court.\nThere is no comfort, no helper there.\n\n<span class='speak'>Chorus II:</span>\nAh! My sins have struck you down.\n\n<span class='speak'>Tenor:</span>\nHe suffers all the torments of hell,\nHe must pay for another's theft.\n\n<span class='speak'>Chorus II:</span>\nI, ah Lord Jesus, have brought about what you endure.\n\n<span class='speak'>Tenor:</span>\nAh, could my love for you,\nMy Savior, your trembling and your anguish\nLessen or help to bear,\nHow gladly would I stay here!"},
+{p:1,n:21,t:"aria",ti:"Ich will bei meinem Jesu wachen",s:"Tenor, Chorus II, Oboe, Strings",
+de:"<span class='speak'>Tenor:</span>\nIch will bei meinem Jesu wachen.\n\n<span class='speak'>Chorus II:</span>\nSo schlafen unsre Sünden ein.\n\n<span class='speak'>Tenor:</span>\nMeinen Tod büßet seine Seelennot;\nSein Trauren machet mich voll Freuden.\n\n<span class='speak'>Chorus II:</span>\nDrum muß uns sein verdienstlich Leiden\nRecht bitter und doch süße sein.",
+en:"<span class='speak'>Tenor:</span>\nI will watch beside my Jesus.\n\n<span class='speak'>Chorus II:</span>\nThen shall our sins fall asleep.\n\n<span class='speak'>Tenor:</span>\nMy death is atoned for by his soul's anguish;\nHis sorrow fills me with joy.\n\n<span class='speak'>Chorus II:</span>\nTherefore his meritorious suffering\nMust be truly bitter and yet sweet for us."},
+{p:1,n:22,t:"recit",ti:"Und er kam zu seinen Jüngern",
+de:"<span class='speak'>Evangelist:</span>\nUnd er kam zu seinen Jüngern und fand sie schlafend und sprach zu Petro:\n\n<span class='speak'>Jesus:</span>\nKönnet ihr denn nicht eine Stunde mit mir wachen? Wachet und betet, daß ihr nicht in Anfechtung fallet! Der Geist ist willig, aber das Fleisch ist schwach.\n\n<span class='speak'>Evangelist:</span>\nZum andernmal ging er hin, betete und sprach:\n\n<span class='speak'>Jesus:</span>\nMein Vater, ist's nicht möglich, daß dieser Kelch von mir gehe, ich trinke ihn denn, so geschehe dein Wille.",
+en:"<span class='speak'>Evangelist:</span>\nAnd he came to his disciples and found them sleeping, and said to Peter:\n\n<span class='speak'>Jesus:</span>\nCould you not then watch with me one hour? Watch and pray, so that you do not fall into temptation! The spirit indeed is willing, but the flesh is weak.\n\n<span class='speak'>Evangelist:</span>\nAgain he went away a second time, prayed, and said:\n\n<span class='speak'>Jesus:</span>\nMy Father, if it is not possible that this cup pass from me without my drinking it, then your will be done."},
+{p:1,n:23,t:"chorale",ti:"Was mein Gott will, das g'scheh allzeit",
+de:"Was mein Gott will, das g'scheh allzeit,\nSein Will, der ist der beste,\nZu helfen den'n er ist bereit,\nDie an ihn gläuben feste.\nEr hilft aus Not, der fromme Gott,\nUnd züchtiget mit Maßen.\nWer Gott vertraut, fest auf ihn baut,\nDen will er nicht verlassen.",
+en:"What my God wills, may it always come to pass,\nHis will is ever the best,\nHe is ready to help those\nWho believe firmly in him.\nHe helps in distress, the good God,\nAnd chastens with moderation.\nWho trusts in God, builds firmly on him,\nHim he will not forsake."},
+{p:1,n:24,t:"recit",ti:"Und er kam und fand sie aber schlafend",
+de:"<span class='speak'>Evangelist:</span>\nUnd er kam und fand sie aber schlafend, und ihre Augen waren voll Schlafs. Und er ließ sie und ging abermal hin und betete zum drittenmal und redete dieselbigen Worte. Da kam er zu seinen Jüngern und sprach zu ihnen:\n\n<span class='speak'>Jesus:</span>\nAch! wollt ihr nun schlafen und ruhen? Siehe, die Stunde ist hier, daß des Menschen Sohn in der Sünder Hände überantwortet wird. Stehet auf, lasset uns gehen; siehe, er ist da, der mich verrät.\n\n<span class='speak'>Evangelist:</span>\nUnd als er noch redete, siehe, da kam Judas, der Zwölfen einer, und mit ihm eine große Schar mit Schwerten und mit Stangen von den Hohenpriestern und Ältesten des Volks. Und der Verräter hatte ihnen ein Zeichen gegeben und gesagt: Welchen ich küssen werde, der ist's, den greifet! Und alsbald trat er zu Jesu und sprach:\n\n<span class='speak'>Judas:</span>\nGegrüßet seist du, Rabbi!\n\n<span class='speak'>Evangelist:</span>\nUnd küssete ihn. Jesus aber sprach zu ihm:\n\n<span class='speak'>Jesus:</span>\nMein Freund, warum bist du kommen?\n\n<span class='speak'>Evangelist:</span>\nDa traten sie hinzu und legten die Hände an Jesum und griffen ihn.",
+en:"<span class='speak'>Evangelist:</span>\nAnd he came and found them sleeping again, for their eyes were heavy. And he left them and went away again and prayed the third time, saying the same words. Then he came to his disciples and said to them:\n\n<span class='speak'>Jesus:</span>\nAh! Will you now sleep and take your rest? Behold, the hour is at hand when the Son of Man is delivered into the hands of sinners. Rise, let us go; behold, he who betrays me is here.\n\n<span class='speak'>Evangelist:</span>\nAnd while he was still speaking, behold, Judas, one of the twelve, came, and with him a great crowd with swords and clubs, from the chief priests and elders of the people. Now the betrayer had given them a sign, saying: the one I kiss is the man; seize him! And at once he came up to Jesus and said:\n\n<span class='speak'>Judas:</span>\nHail, Rabbi!\n\n<span class='speak'>Evangelist:</span>\nAnd he kissed him. But Jesus said to him:\n\n<span class='speak'>Jesus:</span>\nMy friend, why have you come?\n\n<span class='speak'>Evangelist:</span>\nThen they came and laid hands on Jesus and seized him."},
+{p:1,n:25,t:"chorus",ti:"So ist mein Jesus nun gefangen",s:"Soprano, Alto, Double Chorus, Orchestra",
+de:"<span class='speak'>Soprano & Alto:</span>\nSo ist mein Jesus nun gefangen.\nMond und Licht ist vor Schmerzen untergangen,\nWeil mein Jesus ist gefangen.\nSie führen ihn, er ist gebunden.\n\n<span class='speak'>Double Chorus:</span>\nLaßt ihn, haltet, bindet nicht!\n\n<span class='speak'>All:</span>\nSind Blitze, sind Donner in Wolken verschwunden?\nEröffne den feurigen Abgrund, o Hölle,\nZertrümmre, verderbe, verschlinge, zerschelle\nMit plötzlicher Wut\nDen falschen Verräter, das mördrische Blut!",
+en:"<span class='speak'>Soprano & Alto:</span>\nSo my Jesus is now captured.\nMoon and light have set in grief,\nBecause my Jesus is taken.\nThey lead him away, he is bound.\n\n<span class='speak'>Double Chorus:</span>\nRelease him, stop, do not bind him!\n\n<span class='speak'>All:</span>\nHave lightning and thunder vanished in the clouds?\nOpen your fiery abyss, O hell,\nShatter, destroy, swallow up, dash to pieces\nWith sudden fury\nThe false betrayer, the murderous blood!"},
+{p:1,n:26,t:"recit",ti:"Und siehe, einer aus denen",
+de:"<span class='speak'>Evangelist:</span>\nUnd siehe, einer aus denen, die mit Jesu waren, reckete die Hand aus und schlug des Hohenpriesters Knecht und hieb ihm ein Ohr ab. Da sprach Jesus zu ihm:\n\n<span class='speak'>Jesus:</span>\nStecke dein Schwert an seinen Ort; denn wer das Schwert nimmt, der soll durchs Schwert umkommen. Oder meinest du, daß ich nicht könnte meinen Vater bitten, daß er mir zuschickte mehr denn zwölf Legion Engel? Wie würde aber die Schrift erfüllet? Es muß also gehen.\n\n<span class='speak'>Evangelist:</span>\nZu der Stund sprach Jesus zu den Scharen:\n\n<span class='speak'>Jesus:</span>\nIhr seid ausgegangen als zu einem Mörder mit Schwerten und mit Stangen, mich zu fahen; bin ich doch täglich bei euch gesessen und habe gelehret im Tempel, und ihr habt mich nicht gegriffen. Aber das ist alles geschehen, daß erfüllet würden die Schriften der Propheten.\n\n<span class='speak'>Evangelist:</span>\nDa verließen ihn alle Jünger und flohen.",
+en:"<span class='speak'>Evangelist:</span>\nAnd behold, one of those with Jesus stretched out his hand and drew his sword, struck the servant of the high priest, and cut off his ear. Then Jesus said to him:\n\n<span class='speak'>Jesus:</span>\nPut your sword back in its place; for all who take the sword shall perish by the sword. Or do you think that I could not ask my Father, and he would send me more than twelve legions of angels? But how then should the Scriptures be fulfilled? It must happen thus.\n\n<span class='speak'>Evangelist:</span>\nAt that hour Jesus said to the crowds:\n\n<span class='speak'>Jesus:</span>\nYou have come out as against a murderer with swords and clubs to capture me; yet daily I sat with you and taught in the temple, and you did not seize me. But all this has happened so that the writings of the prophets might be fulfilled.\n\n<span class='speak'>Evangelist:</span>\nThen all the disciples forsook him and fled."},
+{p:1,n:27,t:"chorale",ti:"O Mensch, bewein dein Sünde groß",
+de:"O Mensch, bewein dein Sünde groß,\nDarum Christus seins Vaters Schoß\nÄußert und kam auf Erden;\nVon einer Jungfrau rein und zart\nFür uns er hie geboren ward,\nEr wollt der Mittler werden.\nDen Toten er das Leben gab\nUnd legt darbei all Krankheit ab,\nBis sich die Zeit herdrange,\nDaß er für uns geopfert würd,\nTrüg unsrer Sünden schwere Bürd\nWohl an dem Kreuze lange.",
+en:"O mankind, bewail your great sin,\nFor which Christ left his Father's bosom\nAnd came to earth;\nFrom a virgin pure and tender\nFor us he here was born,\nHe wished to be our Mediator.\nTo the dead he gave life\nAnd laid aside all sickness,\nUntil the time approached\nThat he should be sacrificed for us,\nBearing the heavy burden of our sins\nLong upon the cross."},
+
+// ========== PART II ==========
+{p:2,n:28,t:"aria",ti:"Ach! nun ist mein Jesus hin!",s:"Alto, Chorus II, Flute, Oboe, Strings",
+de:"<span class='speak'>Alto:</span>\nAch! nun ist mein Jesus hin!\n\n<span class='speak'>Chorus II:</span>\nWo ist denn dein Freund hingegangen, o du Schönste unter den Weibern?\n\n<span class='speak'>Alto:</span>\nIst es möglich, kann ich schauen?\nAch! mein Lamm in Tigerklauen,\nAch! wo ist mein Jesus hin?\n\n<span class='speak'>Chorus II:</span>\nSo wollen wir mit dir ihn suchen.\n\n<span class='speak'>Alto:</span>\nAch! was soll ich der Seele sagen,\nWenn sie mich wird ängstlich fragen?\nAch! wo ist mein Jesus hin?",
+en:"<span class='speak'>Alto:</span>\nAh! Now my Jesus is gone!\n\n<span class='speak'>Chorus II:</span>\nWhere has your friend gone, O fairest among women?\n\n<span class='speak'>Alto:</span>\nIs it possible, can I behold it?\nAh! My Lamb in tiger's claws,\nAh! Where is my Jesus gone?\n\n<span class='speak'>Chorus II:</span>\nThen we will seek him with you.\n\n<span class='speak'>Alto:</span>\nAh! What shall I tell my soul\nWhen it anxiously asks me?\nAh! Where is my Jesus gone?"},
+{p:2,n:29,t:"recit",ti:"Die aber Jesum gegriffen hatten",
+de:"<span class='speak'>Evangelist:</span>\nDie aber Jesum gegriffen hatten, führeten ihn zu dem Hohenpriester Kaiphas, dahin die Schriftgelehrten und Ältesten sich versammlet hatten. Petrus aber folgete ihm nach von ferne bis in den Palast des Hohenpriesters und ging hinein und setzte sich bei die Knechte, auf daß er sähe, wo es hinaus wollte. Die Hohenpriester aber und Ältesten und der ganze Rat suchten falsch Zeugnis wider Jesum, auf daß sie ihn töteten, und funden keines. Und wiewohl viel falsche Zeugen herzutraten, funden sie doch keines. Zuletzt traten herzu zween falsche Zeugen und sprachen:\n\n<span class='speak'>Witnesses:</span>\nEr hat gesagt: Ich kann den Tempel Gottes abbrechen und in dreien Tagen ihn bauen.",
+en:"<span class='speak'>Evangelist:</span>\nAnd those who had seized Jesus led him to Caiaphas the high priest, where the scribes and the elders had gathered. But Peter followed him at a distance to the high priest's palace, and went in and sat with the servants, to see the end. Now the chief priests and the elders and the whole council sought false testimony against Jesus, that they might put him to death, but found none. And though many false witnesses came forward, they found none. At last two false witnesses came forward and said:\n\n<span class='speak'>Witnesses:</span>\nHe said: I am able to destroy the temple of God and to build it in three days."},
+{p:2,n:30,t:"recit",ti:"Und der Hohepriester stund auf",
+de:"<span class='speak'>Evangelist:</span>\nUnd der Hohepriester stund auf und sprach zu ihm:\n\n<span class='speak'>High Priest:</span>\nAntwortest du nichts zu dem, das diese wider dich zeugen?\n\n<span class='speak'>Evangelist:</span>\nAber Jesus schwieg stille. Und der Hohepriester antwortete und sprach zu ihm:\n\n<span class='speak'>High Priest:</span>\nIch beschwöre dich bei dem lebendigen Gott, daß du uns sagest, ob du seiest Christus, der Sohn Gottes?\n\n<span class='speak'>Jesus:</span>\nDu sagest's. Doch sage ich euch: Von nun an wird's geschehen, daß ihr sehen werdet des Menschen Sohn sitzen zur Rechten der Kraft und kommen in den Wolken des Himmels.\n\n<span class='speak'>Evangelist:</span>\nDa zerriß der Hohepriester seine Kleider und sprach:\n\n<span class='speak'>High Priest:</span>\nEr hat Gott gelästert! Was dürfen wir weiter Zeugnis? Siehe, jetzt habt ihr seine Gotteslästerung gehöret. Was dünket euch?\n\n<span class='speak'>Evangelist:</span>\nSie antworteten und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nAnd the high priest stood up and said to him:\n\n<span class='speak'>High Priest:</span>\nHave you no answer to what these men testify against you?\n\n<span class='speak'>Evangelist:</span>\nBut Jesus was silent. And the high priest answered and said to him:\n\n<span class='speak'>High Priest:</span>\nI adjure you by the living God, tell us whether you are the Christ, the Son of God?\n\n<span class='speak'>Jesus:</span>\nYou have said it. But I tell you: from now on you will see the Son of Man sitting at the right hand of Power and coming on the clouds of heaven.\n\n<span class='speak'>Evangelist:</span>\nThen the high priest tore his robes and said:\n\n<span class='speak'>High Priest:</span>\nHe has blasphemed God! What further testimony do we need? Behold, now you have heard his blasphemy. What do you think?\n\n<span class='speak'>Evangelist:</span>\nThey answered and said:"},
+{p:2,n:"30b",t:"chorus",ti:"Er ist des Todes schuldig!",de:"Er ist des Todes schuldig!",en:"He is guilty of death!"},
+{p:2,n:31,t:"recit",ti:"Da speieten sie aus in sein Angesicht",
+de:"<span class='speak'>Evangelist:</span>\nDa speieten sie aus in sein Angesicht und schlugen ihn mit Fäusten. Etliche aber schlugen ihn ins Angesicht und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nThen they spat in his face and struck him with their fists. And some struck him in the face, saying:"},
+{p:2,n:"31b",t:"chorus",ti:"Weissage uns, Christe",de:"Weissage uns, Christe, wer ist's, der dich schlug?",en:"Prophesy to us, Christ, who is it that struck you?"},
+{p:2,n:32,t:"chorale",ti:"Wer hat dich so geschlagen",
+de:"Wer hat dich so geschlagen,\nMein Heil, und dich mit Plagen\nSo übel zugericht'?\nDu bist ja nicht ein Sünder\nWie wir und unsre Kinder,\nVon Missetaten weißt du nicht.",
+en:"Who has struck you so,\nMy Savior, and with torments\nSo cruelly used you?\nYou are surely not a sinner\nLike us and our children;\nOf misdeeds you know nothing."},
+{p:2,n:33,t:"recit",ti:"Petrus aber saß draußen im Palast",
+de:"<span class='speak'>Evangelist:</span>\nPetrus aber saß draußen im Palast; und es trat zu ihm eine Magd und sprach:\n\n<span class='speak'>Maid I:</span>\nUnd du warest auch mit dem Jesu aus Galiläa.\n\n<span class='speak'>Peter:</span>\nIch weiß nicht, was du sagest.\n\n<span class='speak'>Evangelist:</span>\nAls er aber zur Tür hinausging, sahe ihn eine andere und sprach zu denen, die da waren:\n\n<span class='speak'>Maid II:</span>\nDieser war auch mit dem Jesu von Nazareth.\n\n<span class='speak'>Peter:</span>\nIch kenne des Menschen nicht.\n\n<span class='speak'>Evangelist:</span>\nUnd über eine kleine Weile traten hinzu, die da stunden, und sprachen zu Petro:",
+en:"<span class='speak'>Evangelist:</span>\nBut Peter sat outside in the palace; and a maid came to him and said:\n\n<span class='speak'>Maid I:</span>\nYou too were with Jesus of Galilee.\n\n<span class='speak'>Peter:</span>\nI do not know what you are saying.\n\n<span class='speak'>Evangelist:</span>\nAnd when he had gone out to the gate, another maid saw him and said to those who were there:\n\n<span class='speak'>Maid II:</span>\nThis man was also with Jesus of Nazareth.\n\n<span class='speak'>Peter:</span>\nI do not know the man.\n\n<span class='speak'>Evangelist:</span>\nAnd after a little while the bystanders came up and said to Peter:"},
+{p:2,n:"33b",t:"chorus",ti:"Wahrlich, du bist auch einer von denen",de:"Wahrlich, du bist auch einer von denen; denn deine Sprache verrät dich.",en:"Surely you are also one of them; for your speech betrays you."},
+{p:2,n:34,t:"recit",ti:"Da hub er an, sich zu verfluchen",
+de:"<span class='speak'>Evangelist:</span>\nDa hub er an, sich zu verfluchen und zu schwören:\n\n<span class='speak'>Peter:</span>\nIch kenne des Menschen nicht.\n\n<span class='speak'>Evangelist:</span>\nUnd alsbald krähete der Hahn. Da dachte Petrus an die Worte Jesu, da er zu ihm sagte: Ehe der Hahn krähen wird, wirst du mich dreimal verleugnen. Und ging heraus und weinete bitterlich.",
+en:"<span class='speak'>Evangelist:</span>\nThen he began to invoke a curse on himself and to swear:\n\n<span class='speak'>Peter:</span>\nI do not know the man.\n\n<span class='speak'>Evangelist:</span>\nAnd immediately the cock crowed. Then Peter remembered the words of Jesus, who had said to him: Before the cock crows, you will deny me three times. And he went out and wept bitterly."},
+{p:2,n:35,t:"aria",ti:"Erbarme dich, mein Gott",s:"Alto, Solo Violin, Strings, Continuo",
+de:"Erbarme dich, mein Gott,\nUm meiner Zähren willen!\nSchaue hier, Herz und Auge\nWeint vor dir bitterlich.\nErbarme dich, mein Gott.",
+en:"Have mercy, my God,\nFor the sake of my tears!\nLook here, heart and eyes\nWeep before you bitterly.\nHave mercy, my God."},
+{p:2,n:36,t:"chorale",ti:"Bin ich gleich von dir gewichen",
+de:"Bin ich gleich von dir gewichen,\nStell ich mich doch wieder ein;\nHat uns doch dein Sohn verglichen\nDurch sein' Angst und Todespein.\nIch verleugne nicht die Schuld;\nAber deine Gnad und Huld\nIst viel größer als die Sünde,\nDie ich stets in mir befinde.",
+en:"Though I have strayed from you,\nI present myself once more;\nFor your Son has reconciled us\nThrough his anguish and death-agony.\nI do not deny my guilt;\nBut your grace and favor\nAre far greater than the sin\nThat I always find in me."},
+{p:2,n:37,t:"recit",ti:"Des Morgens aber hielten alle Hohepriester",
+de:"<span class='speak'>Evangelist:</span>\nDes Morgens aber hielten alle Hohepriester und die Ältesten des Volks einen Rat über Jesum, daß sie ihn töteten. Und bunden ihn, führeten ihn hin und überantworteten ihn dem Landpfleger Pontio Pilato. Da das sahe Judas, der ihn verraten hatte, daß er verdammt war zum Tode, gereuete es ihn und brachte herwieder die dreißig Silberlinge den Hohenpriestern und Ältesten und sprach:\n\n<span class='speak'>Judas:</span>\nIch habe übel getan, daß ich unschuldig Blut verraten habe.\n\n<span class='speak'>Priests:</span>\nWas gehet uns das an? Da siehe du zu!\n\n<span class='speak'>Evangelist:</span>\nUnd er warf die Silberlinge in den Tempel, hub sich davon, ging hin und erhängete sich selbst.",
+en:"<span class='speak'>Evangelist:</span>\nIn the morning, all the chief priests and the elders of the people took counsel against Jesus, to put him to death. And they bound him, led him away, and delivered him to Pontius Pilate, the governor. When Judas, who had betrayed him, saw that he was condemned to death, he repented and brought back the thirty pieces of silver to the chief priests and elders, and said:\n\n<span class='speak'>Judas:</span>\nI have sinned, for I have betrayed innocent blood.\n\n<span class='speak'>Priests:</span>\nWhat is that to us? See to it yourself!\n\n<span class='speak'>Evangelist:</span>\nAnd he threw down the silver pieces in the temple, departed, went out, and hanged himself."},
+{p:2,n:38,t:"aria",ti:"Gebt mir meinen Jesum wieder!",s:"Bass, Solo Violin, Continuo",
+de:"Gebt mir meinen Jesum wieder!\nSeht, das Geld, den Mörderlohn,\nWirft euch der verlorne Sohn\nZu den Füßen nieder!",
+en:"Give me back my Jesus!\nSee, the money, the murderer's wage,\nThe lost son throws down\nAt your feet!"},
+{p:2,n:39,t:"recit",ti:"Die Hohenpriester aber nahmen die Silberlinge",
+de:"<span class='speak'>Evangelist:</span>\nDie Hohenpriester aber nahmen die Silberlinge und sprachen:\n\n<span class='speak'>Priests:</span>\nEs taugt nicht, daß wir sie in den Gotteskasten legen, denn es ist Blutgeld.\n\n<span class='speak'>Evangelist:</span>\nSie hielten aber einen Rat und kauften einen Töpfersacker darum zum Begräbnis der Pilger. Daher ist derselbige Acker genennet der Blutacker bis auf den heutigen Tag. Da ist erfüllet, das gesagt ist durch den Propheten Jeremias, da er spricht: Sie haben genommen dreißig Silberlinge, damit bezahlet ward der Verkaufte, welchen sie kauften von den Kindern Israel, und haben sie gegeben um einen Töpfersacker, als mir der Herr befohlen hat.",
+en:"<span class='speak'>Evangelist:</span>\nThe chief priests took the silver pieces and said:\n\n<span class='speak'>Priests:</span>\nIt is not lawful to put them into the treasury, for it is blood money.\n\n<span class='speak'>Evangelist:</span>\nSo they took counsel and bought with them the potter's field, to bury strangers in. Therefore that field has been called the Field of Blood to this day. Then was fulfilled what was spoken by the prophet Jeremiah: And they took the thirty pieces of silver, the price of him on whom a price was set by the children of Israel, and they gave them for the potter's field, as the Lord commanded me."},
+{p:2,n:40,t:"recit",ti:"Jesus aber stund vor dem Landpfleger",
+de:"<span class='speak'>Evangelist:</span>\nJesus aber stund vor dem Landpfleger; und der Landpfleger fragte ihn und sprach:\n\n<span class='speak'>Pilate:</span>\nBist du der Jüden König?\n\n<span class='speak'>Jesus:</span>\nDu sagest's.\n\n<span class='speak'>Evangelist:</span>\nUnd da er verklagt ward von den Hohenpriestern und Ältesten, antwortete er nichts. Da sprach Pilatus zu ihm:\n\n<span class='speak'>Pilate:</span>\nHörest du nicht, wie hart sie dich verklagen?\n\n<span class='speak'>Evangelist:</span>\nUnd er antwortete ihm nicht auf ein Wort, also daß sich auch der Landpfleger sehr verwunderte.",
+en:"<span class='speak'>Evangelist:</span>\nNow Jesus stood before the governor; and the governor asked him:\n\n<span class='speak'>Pilate:</span>\nAre you the King of the Jews?\n\n<span class='speak'>Jesus:</span>\nYou have said it.\n\n<span class='speak'>Evangelist:</span>\nAnd when he was accused by the chief priests and elders, he answered nothing. Then Pilate said to him:\n\n<span class='speak'>Pilate:</span>\nDo you not hear how gravely they accuse you?\n\n<span class='speak'>Evangelist:</span>\nAnd he gave him no answer, not even to a single charge, so that the governor marveled greatly."},
+{p:2,n:41,t:"chorale",ti:"Befiehl du deine Wege",
+de:"Befiehl du deine Wege\nUnd was dein Herze kränkt,\nDer allertreusten Pflege\nDes, der den Himmel lenkt.\nDer Wolken, Luft und Winden\nGibt Wege, Lauf und Bahn,\nDer wird auch Wege finden,\nDa dein Fuß gehen kann.",
+en:"Entrust your ways\nAnd what grieves your heart\nTo the most faithful care\nOf him who guides the heavens.\nHe who gives clouds, air and winds\nTheir paths, courses and ways,\nHe will also find pathways\nWhere your foot can walk."},
+{p:2,n:42,t:"recit",ti:"Auf das Fest aber hatte der Landpfleger",
+de:"<span class='speak'>Evangelist:</span>\nAuf das Fest aber hatte der Landpfleger Gewohnheit, dem Volk einen Gefangenen loszugeben, welchen sie wollten. Er hatte aber zu der Zeit einen Gefangenen, einen sonderlichen vor andern, der hieß Barrabas. Und da sie versammlet waren, sprach Pilatus zu ihnen:\n\n<span class='speak'>Pilate:</span>\nWelchen wollet ihr, daß ich euch losgebe? Barrabam oder Jesum, von dem gesagt wird, er sei Christus?\n\n<span class='speak'>Evangelist:</span>\nDenn er wußte wohl, daß sie ihn aus Neid überantwortet hatten. Und da er auf dem Richtstuhl saß, schickete sein Weib zu ihm und ließ ihm sagen:\n\n<span class='speak'>Pilate's Wife:</span>\nHabe du nichts zu schaffen mit diesem Gerechten; ich habe heute viel erlitten im Traum von seinetwegen!\n\n<span class='speak'>Evangelist:</span>\nAber die Hohenpriester und die Ältesten überredeten das Volk, daß sie um Barrabam bitten sollten und Jesum umbrächten. Da antwortete nun der Landpfleger und sprach zu ihnen:\n\n<span class='speak'>Pilate:</span>\nWelchen wollt ihr unter diesen zweien, den ich euch soll losgeben?\n\n<span class='speak'>Evangelist:</span>\nSie sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nNow at the festival the governor was accustomed to release to the people one prisoner whom they wanted. And at that time they had a notable prisoner called Barabbas. So when they had gathered, Pilate said to them:\n\n<span class='speak'>Pilate:</span>\nWhom do you want me to release to you? Barabbas or Jesus, who is called Christ?\n\n<span class='speak'>Evangelist:</span>\nFor he knew well that they had delivered him up out of envy. And while he was sitting on the judgment seat, his wife sent to him, saying:\n\n<span class='speak'>Pilate's Wife:</span>\nHave nothing to do with this righteous man; for I have suffered much today in a dream because of him!\n\n<span class='speak'>Evangelist:</span>\nBut the chief priests and the elders persuaded the people to ask for Barabbas and to destroy Jesus. The governor answered and said to them:\n\n<span class='speak'>Pilate:</span>\nWhich of these two do you want me to release to you?\n\n<span class='speak'>Evangelist:</span>\nThey said:"},
+{p:2,n:"42b",t:"chorus",ti:"Barrabam!",de:"Barrabam!",en:"Barabbas!"},
+{p:2,n:43,t:"recit",ti:"Pilatus sprach zu ihnen",
+de:"<span class='speak'>Evangelist:</span>\nPilatus sprach zu ihnen:\n\n<span class='speak'>Pilate:</span>\nWas soll ich denn machen mit Jesu, von dem gesagt wird, er sei Christus?\n\n<span class='speak'>Evangelist:</span>\nSie sprachen alle:",
+en:"<span class='speak'>Evangelist:</span>\nPilate said to them:\n\n<span class='speak'>Pilate:</span>\nWhat then shall I do with Jesus, who is called Christ?\n\n<span class='speak'>Evangelist:</span>\nThey all said:"},
+{p:2,n:"43b",t:"chorus",ti:"Laß ihn kreuzigen!",de:"Laß ihn kreuzigen!",en:"Let him be crucified!"},
+{p:2,n:44,t:"recit",ti:"Der Landpfleger sagte",
+de:"<span class='speak'>Evangelist:</span>\nDer Landpfleger sagte:\n\n<span class='speak'>Pilate:</span>\nWas hat er denn Übles getan?",
+en:"<span class='speak'>Evangelist:</span>\nThe governor said:\n\n<span class='speak'>Pilate:</span>\nWhat evil has he done?"},
+{p:2,n:45,t:"recit",ti:"Er hat uns allen wohlgetan",s:"Soprano, Oboes da caccia, Continuo",
+de:"Er hat uns allen wohlgetan,\nDen Blinden gab er das Gesicht,\nDie Lahmen macht er gehend,\nEr sagt' uns seines Vaters Wort,\nEr trieb die Teufel fort,\nBetrübte hat er aufgericht'.\nEr nahm die Sünder auf und an.\nSonst hat mein Jesus nichts getan.",
+en:"He has done good to us all,\nTo the blind he gave sight,\nThe lame he made to walk,\nHe told us his Father's word,\nHe drove out devils,\nThe sorrowful he raised up.\nHe received sinners and took them in.\nMy Jesus has done nothing else."},
+{p:2,n:46,t:"aria",ti:"Aus Liebe will mein Heiland sterben",s:"Soprano, Flute, Oboes da caccia",
+de:"Aus Liebe will mein Heiland sterben,\nVon einer Sünde weiß er nichts.\nDaß das ewige Verderben\nUnd die Strafe des Gerichts\nNicht auf meiner Seele bliebe.",
+en:"Out of love my Savior is willing to die,\nOf any sin he knows nothing,\nSo that eternal ruin\nAnd the punishment of judgment\nShould not remain upon my soul."},
+{p:2,n:47,t:"recit",ti:"Sie schrieen aber noch mehr",de:"<span class='speak'>Evangelist:</span>\nSie schrieen aber noch mehr und sprachen:",en:"<span class='speak'>Evangelist:</span>\nBut they cried out all the more, saying:"},
+{p:2,n:"47b",t:"chorus",ti:"Laß ihn kreuzigen! (II)",de:"Laß ihn kreuzigen!",en:"Let him be crucified!"},
+{p:2,n:48,t:"recit",ti:"Da aber Pilatus sahe",
+de:"<span class='speak'>Evangelist:</span>\nDa aber Pilatus sahe, daß er nichts schaffete, sondern daß ein viel größer Getümmel ward, nahm er Wasser und wusch die Hände vor dem Volk und sprach:\n\n<span class='speak'>Pilate:</span>\nIch bin unschuldig an dem Blut dieses Gerechten, sehet ihr zu!\n\n<span class='speak'>Evangelist:</span>\nDa antwortete das ganze Volk und sprach:",
+en:"<span class='speak'>Evangelist:</span>\nWhen Pilate saw that he was getting nowhere, but rather that a riot was beginning, he took water and washed his hands before the people, saying:\n\n<span class='speak'>Pilate:</span>\nI am innocent of the blood of this righteous man; see to it yourselves!\n\n<span class='speak'>Evangelist:</span>\nAnd all the people answered and said:"},
+{p:2,n:"48b",t:"chorus",ti:"Sein Blut komme über uns",de:"Sein Blut komme über uns und unsre Kinder!",en:"His blood be upon us and upon our children!"},
+{p:2,n:49,t:"recit",ti:"Da gab er ihnen Barrabam los",
+de:"<span class='speak'>Evangelist:</span>\nDa gab er ihnen Barrabam los; aber Jesum ließ er geißeln und überantwortete ihn, daß er gekreuziget würde.",
+en:"<span class='speak'>Evangelist:</span>\nThen he released Barabbas to them; but Jesus he had scourged and delivered to be crucified."},
+{p:2,n:50,t:"recit",ti:"Erbarm es Gott!",s:"Alto, Strings, Continuo",
+de:"Erbarm es Gott!\nHier steht der Heiland angebunden.\nO Geißelung, o Schläg, o Wunden!\nIhr Henker, haltet ein!\nErweichet euch der Seelen Schmerz,\nDer Anblick solches Jammers nicht?\nAch ja! ihr habt ein Herz,\nDas muß der Martersäule gleich\nUnd noch viel härter sein.\nErbarmt euch, haltet ein!",
+en:"God have mercy!\nHere stands the Savior bound.\nO scourging, O blows, O wounds!\nYou torturers, cease!\nDoes the soul's anguish,\nThe sight of such misery not soften you?\nAh yes! You have a heart\nThat must be like the pillar of torture\nAnd yet far harder still.\nHave pity, cease!"},
+{p:2,n:51,t:"aria",ti:"Können Tränen meiner Wangen",s:"Alto, Strings, Continuo",
+de:"Können Tränen meiner Wangen\nNichts erlangen,\nO, so nehmt mein Herz hinein!\nAber laßt es bei den Fluten,\nWeil die Wunden milde bluten,\nAuch die Opferschale sein.",
+en:"If tears from my cheeks\nCan accomplish nothing,\nO, then take my heart instead!\nBut let it, beside the floods\nOf gently bleeding wounds,\nServe also as a sacrificial bowl."},
+{p:2,n:52,t:"recit",ti:"Da nahmen die Kriegsknechte",
+de:"<span class='speak'>Evangelist:</span>\nDa nahmen die Kriegsknechte des Landpflegers Jesum zu sich in das Richthaus und sammleten über ihn die ganze Schar und zogen ihn aus und legeten ihm einen Purpurmantel an und flochten eine Dornenkrone und setzten sie auf sein Haupt und ein Rohr in seine rechte Hand und beugeten die Knie vor ihm und spotteten ihn und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nThen the soldiers of the governor took Jesus into the judgment hall and gathered the whole battalion around him. And they stripped him and put a purple robe on him, and twisted a crown of thorns and put it on his head, and a reed in his right hand. And they knelt before him and mocked him, saying:"},
+{p:2,n:"52b",t:"chorus",ti:"Gegrüßet seist du, Jüdenkönig!",de:"Gegrüßet seist du, Jüdenkönig!",en:"Hail, King of the Jews!"},
+{p:2,n:53,t:"recit",ti:"Und speieten ihn an",
+de:"<span class='speak'>Evangelist:</span>\nUnd speieten ihn an und nahmen das Rohr und schlugen damit sein Haupt.",
+en:"<span class='speak'>Evangelist:</span>\nAnd they spat on him and took the reed and struck him on the head."},
+{p:2,n:54,t:"chorale",ti:"O Haupt voll Blut und Wunden",
+de:"O Haupt voll Blut und Wunden,\nVoll Schmerz und voller Hohn,\nO Haupt, zu Spott gebunden\nMit einer Dornenkron,\nO Haupt, sonst schön gezieret\nMit höchster Ehr und Zier,\nJetzt aber hoch schimpfieret,\nGegrüßet seist du mir!\n\nDu edles Angesichte,\nDafür sonst schrickt und scheut\nDas große Weltgewichte,\nWie bist du so bespeit,\nWie bist du so erbleichet!\nWer hat dein Augenlicht,\nDem sonst kein Licht nicht gleichet,\nSo schändlich zugericht'?",
+en:"O head full of blood and wounds,\nFull of grief and full of scorn,\nO head, bound in mockery\nWith a crown of thorns,\nO head, once beautifully adorned\nWith highest honor and splendor,\nBut now highly reviled:\nI salute you!\n\nYou noble countenance,\nBefore which otherwise trembles\nThe great weight of the world:\nHow you are spat upon,\nHow pale you have become!\nWho has so shamefully abused\nThe light of your eyes,\nWhich no other light can equal?"},
+{p:2,n:55,t:"recit",ti:"Und da sie ihn verspottet hatten",
+de:"<span class='speak'>Evangelist:</span>\nUnd da sie ihn verspottet hatten, zogen sie ihm den Mantel aus und zogen ihm seine Kleider an und führeten ihn hin, daß sie ihn kreuzigten. Und indem sie hinausgingen, funden sie einen Menschen von Kyrene mit Namen Simon; den zwungen sie, daß er ihm sein Kreuz trug.",
+en:"<span class='speak'>Evangelist:</span>\nAnd when they had mocked him, they took the robe off him, put his own clothes on him, and led him away to crucify him. And as they went out, they found a man of Cyrene named Simon; him they compelled to bear his cross."},
+{p:2,n:56,t:"recit",ti:"Ja freilich will in uns das Fleisch und Blut",s:"Bass, Flutes, Viola da gamba, Continuo",
+de:"Ja freilich will in uns das Fleisch und Blut\nZum Kreuz gezwungen sein;\nJe mehr es unsrer Seele gut,\nJe herber geht es ein.",
+en:"Indeed our flesh and blood\nMust be forced to the cross;\nThe better it is for our soul,\nThe more bitterly it resists."},
+{p:2,n:57,t:"aria",ti:"Komm, süßes Kreuz",s:"Bass, Viola da gamba, Continuo",
+de:"Komm, süßes Kreuz, so will ich sagen,\nMein Jesu, gib es immer her!\nWird mir mein Leiden einst zu schwer,\nSo hilfst du mir es selber tragen.",
+en:"Come, sweet cross, so I will say,\nMy Jesus, give it ever to me!\nIf my suffering becomes too heavy,\nYou yourself will help me bear it."},
+{p:2,n:58,t:"recit",ti:"Und da sie an die Stätte kamen",
+de:"<span class='speak'>Evangelist:</span>\nUnd da sie an die Stätte kamen mit Namen Golgatha, das ist verdeutschet Schädelstätt, gaben sie ihm Essig zu trinken mit Gallen vermischet; und da er's schmeckete, wollte er's nicht trinken. Da sie ihn aber gekreuziget hatten, teilten sie seine Kleider und warfen das Los darum; auf daß erfüllet würde, das gesagt ist durch den Propheten: Sie haben meine Kleider unter sich geteilet, und über mein Gewand haben sie das Los geworfen. Und sie saßen allda und hüteten sein. Und oben über sein Haupt hefteten sie die Ursach seines Todes beschrieben: Dies ist Jesus, der Jüden König. Und da wurden zween Mörder mit ihm gekreuziget, einer zur Rechten und einer zur Linken. Die aber vorübergingen, lästerten ihn und schüttelten ihre Köpfe und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nAnd when they came to a place called Golgotha, meaning Place of the Skull, they gave him vinegar to drink mixed with gall; and when he tasted it, he would not drink it. And when they had crucified him, they divided his garments and cast lots; so that what was spoken by the prophet might be fulfilled: They divided my garments among themselves, and for my clothing they cast lots. And they sat down and kept watch over him there. And above his head they set up the charge against him: This is Jesus, the King of the Jews. Then two robbers were crucified with him, one on the right and one on the left. And those who passed by mocked him and shook their heads, saying:"},
+{p:2,n:"58b",t:"chorus",ti:"Der du den Tempel Gottes zerbrichst",de:"Der du den Tempel Gottes zerbrichst und bauest ihn in dreien Tagen, hilf dir selber! Bist du Gottes Sohn, so steig herab vom Kreuz!",en:"You who destroy the temple of God and build it in three days, save yourself! If you are the Son of God, come down from the cross!"},
+{p:2,n:59,t:"recit",ti:"Desgleichen auch die Hohenpriester",
+de:"<span class='speak'>Evangelist:</span>\nDesgleichen auch die Hohenpriester spotteten sein samt den Schriftgelehrten und Ältesten und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nLikewise also the chief priests, with the scribes and elders, mocked him, saying:"},
+{p:2,n:"59b",t:"chorus",ti:"Andern hat er geholfen",de:"Andern hat er geholfen und kann sich selber nicht helfen. Ist er der König Israels, so steige er nun vom Kreuz, so wollen wir ihm glauben. Er hat Gott vertrauet; der erlöse ihn nun, lüstet's ihn; denn er hat gesagt: Ich bin Gottes Sohn.",en:"He helped others but cannot help himself. If he is the King of Israel, let him come down now from the cross, and we will believe him. He trusted in God; let God deliver him now, if he wants him; for he said: I am the Son of God."},
+{p:2,n:60,t:"recit",ti:"Eli, Eli, lama asabthani?",
+de:"<span class='speak'>Evangelist:</span>\nDesgleichen schmäheten ihn auch die Mörder, die mit ihm gekreuziget waren. Und von der sechsten Stunde an ward eine Finsternis über das ganze Land bis zu der neunten Stunde. Und um die neunte Stunde schrie Jesus laut und sprach:\n\n<span class='speak'>Jesus:</span>\nEli, Eli, lama asabthani?\n\n<span class='speak'>Evangelist:</span>\nDas ist: Mein Gott, mein Gott, warum hast du mich verlassen? Etliche aber, die da stunden, da sie das höreten, sprachen sie:",
+en:"<span class='speak'>Evangelist:</span>\nIn the same way the robbers who were crucified with him also reviled him. And from the sixth hour there was darkness over all the land until the ninth hour. And about the ninth hour Jesus cried out with a loud voice:\n\n<span class='speak'>Jesus:</span>\nEli, Eli, lama sabachthani?\n\n<span class='speak'>Evangelist:</span>\nThat is: My God, my God, why have you forsaken me? Some of the bystanders, when they heard it, said:"},
+{p:2,n:"60b",t:"chorus",ti:"Der rufet dem Elias!",de:"Der rufet dem Elias!",en:"He is calling for Elijah!"},
+{p:2,n:61,t:"recit",ti:"Und bald lief einer unter ihnen",
+de:"<span class='speak'>Evangelist:</span>\nUnd bald lief einer unter ihnen, nahm einen Schwamm und füllete ihn mit Essig und steckete ihn auf ein Rohr und tränkete ihn. Die andern aber sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nAnd one of them at once ran and took a sponge, filled it with vinegar, put it on a reed, and gave it to him to drink. But the others said:"},
+{p:2,n:"61b",t:"chorus",ti:"Halt! laß sehen",de:"Halt! laß sehen, ob Elias komme und ihm helfe.",en:"Wait! Let us see whether Elijah comes to save him."},
+{p:2,n:62,t:"recit",ti:"Aber Jesus schrie abermal laut",
+de:"<span class='speak'>Evangelist:</span>\nAber Jesus schrie abermal laut und verschied.",
+en:"<span class='speak'>Evangelist:</span>\nBut Jesus cried out again with a loud voice and died."},
+{p:2,n:63,t:"chorale",ti:"Wenn ich einmal soll scheiden",
+de:"Wenn ich einmal soll scheiden,\nSo scheide nicht von mir,\nWenn ich den Tod soll leiden,\nSo tritt du dann herfür!\nWenn mir am allerbängsten\nWird um das Herze sein,\nSo reiß mich aus den Ängsten\nKraft deiner Angst und Pein!",
+en:"When I one day must depart,\nDo not depart from me,\nWhen I must suffer death,\nThen come forth to me!\nWhen my heart is filled\nWith the greatest dread,\nThen rescue me from my fears\nBy the power of your anguish and pain!"},
+{p:2,n:64,t:"recit",ti:"Und siehe da, der Vorhang im Tempel zerriß",
+de:"<span class='speak'>Evangelist:</span>\nUnd siehe da, der Vorhang im Tempel zerriß in zwei Stück von obenan bis untenaus. Und die Erde erbebete, und die Felsen zerrissen, und die Gräber täten sich auf, und stunden auf viel Leiber der Heiligen, die da schliefen, und gingen aus den Gräbern nach seiner Auferstehung und kamen in die heilige Stadt und erschienen vielen. Aber der Hauptmann und die bei ihm waren und bewahreten Jesum, da sie sahen das Erdbeben und was da geschah, erschraken sie sehr und sprachen:",
+en:"<span class='speak'>Evangelist:</span>\nAnd behold, the curtain of the temple was torn in two from top to bottom. And the earth shook, and the rocks were split, and the tombs were opened, and many bodies of the saints who had fallen asleep were raised, and coming out of the tombs after his resurrection, they went into the holy city and appeared to many. When the centurion and those with him, keeping watch over Jesus, saw the earthquake and what took place, they were filled with awe and said:"},
+{p:2,n:"64b",t:"chorus",ti:"Wahrlich, dieser ist Gottes Sohn gewesen",de:"Wahrlich, dieser ist Gottes Sohn gewesen.",en:"Truly, this was the Son of God."},
+{p:2,n:65,t:"recit",ti:"Und es waren viel Weiber da",
+de:"<span class='speak'>Evangelist:</span>\nUnd es waren viel Weiber da, die von ferne zusahen, die da waren nachgefolget aus Galiläa und hatten ihm gedienet, unter welchen war Maria Magdalena und Maria, die Mutter Jacobi und Joses, und die Mutter der Kinder Zebedäi. Am Abend aber kam ein reicher Mann von Arimathia, der hieß Joseph, welcher auch ein Jünger Jesu war, der ging zu Pilato und bat ihn um den Leib Jesu. Da befahl Pilatus, man sollte ihm ihn geben.",
+en:"<span class='speak'>Evangelist:</span>\nAnd many women were there, looking on from afar, who had followed Jesus from Galilee, ministering to him, among whom were Mary Magdalene, and Mary the mother of James and Joseph, and the mother of the sons of Zebedee. When it was evening, there came a rich man from Arimathea, named Joseph, who was also a disciple of Jesus. He went to Pilate and asked for the body of Jesus. Then Pilate ordered it to be given to him."},
+{p:2,n:66,t:"recit",ti:"Am Abend, da es kühle war",s:"Bass, Strings, Continuo",
+de:"Am Abend, da es kühle war,\nWard Adams Fallen offenbar;\nAm Abend drücket ihn der Heiland nieder.\nAm Abend kam die Taube wieder\nUnd trug ein Ölblatt in dem Munde.\nO schöne Zeit! O Abendstunde!\nDer Friedensschluß ist nun mit Gott gemacht,\nDenn Jesus hat sein Kreuz vollbracht.\nSein Leib wird in dem Grab verscharret,\nSo ruhet nun, ihr heiligen Gebeine,\nDie ich mit Reu und Lust beseine!\nMein Jesu, gute Nacht!",
+en:"In the evening, when it was cool,\nAdam's fall was made manifest;\nIn the evening the Savior bowed down.\nIn the evening the dove returned\nAnd bore an olive leaf in its mouth.\nO beautiful time! O evening hour!\nThe peace has now been made with God,\nFor Jesus has accomplished his cross.\nHis body will be buried in the tomb.\nSo rest now, you holy remains,\nWhich I mourn with remorse and devotion!\nMy Jesus, good night!"},
+{p:2,n:67,t:"aria",ti:"Mache dich, mein Herze, rein",s:"Bass, Oboes da caccia, Strings, Continuo",
+de:"Mache dich, mein Herze, rein,\nIch will Jesum selbst begraben.\nDenn er soll nunmehr in mir\nFür und für\nSeine süße Ruhe haben.\nWelt, geh aus, laß Jesum ein!",
+en:"Make yourself clean, my heart,\nI will bury Jesus myself.\nFor he shall henceforth in me,\nFor ever and ever,\nHave his sweet rest.\nWorld, depart, let Jesus in!"},
+{p:2,n:68,t:"recit",ti:"Und Joseph nahm den Leib",
+de:"<span class='speak'>Evangelist:</span>\nUnd Joseph nahm den Leib und wickelte ihn in ein rein Leinwand und legte ihn in sein eigen neu Grab, welches er hatte lassen in einen Fels hauen, und wälzete einen großen Stein vor die Tür des Grabes und ging davon. Es war aber allda Maria Magdalena und die andere Maria, die satzten sich gegen das Grab. Des andern Tages, der da folget nach dem Rüsttage, kamen die Hohenpriester und Pharisäer sämtlich zu Pilato und sprachen:\n\n<span class='speak'>Priests:</span>\nHerr, wir haben gedacht, daß dieser Verführer sprach, da er noch lebete: Ich will nach dreien Tagen wieder auferstehen. Darum befiehl, daß man das Grab verwahre bis an den dritten Tag, auf daß nicht seine Jünger kommen und stehlen ihn und sagen zu dem Volk: Er ist von den Toten auferstanden, und werde der letzte Betrug ärger denn der erste.\n\n<span class='speak'>Pilate:</span>\nDa habt ihr die Hüter; gehet hin und verwahret's, wie ihr wisset.\n\n<span class='speak'>Evangelist:</span>\nSie gingen hin und verwahreten das Grab mit Hütern und versiegelten den Stein.",
+en:"<span class='speak'>Evangelist:</span>\nAnd Joseph took the body and wrapped it in a clean linen cloth and laid it in his own new tomb, which he had hewn in the rock. And he rolled a great stone to the entrance of the tomb and departed. Mary Magdalene and the other Mary were there, sitting opposite the tomb. The next day, which was after the day of Preparation, the chief priests and Pharisees gathered before Pilate and said:\n\n<span class='speak'>Priests:</span>\nSir, we remember that this deceiver said while he was still alive: After three days I will rise again. Therefore command that the tomb be made secure until the third day, lest his disciples come and steal him away and tell the people: He has risen from the dead, and the last deception would be worse than the first.\n\n<span class='speak'>Pilate:</span>\nYou have your guard; go, make it as secure as you know how.\n\n<span class='speak'>Evangelist:</span>\nSo they went and made the tomb secure by sealing the stone and setting a guard."},
+{p:2,n:69,t:"recit",ti:"Nun ist der Herr zur Ruh gebracht",s:"Soloists, Chorus, Orchestra",
+de:"<span class='speak'>Soloists:</span>\nNun ist der Herr zur Ruh gebracht.\n\n<span class='speak'>Chorus:</span>\nMein Jesu, gute Nacht!\n\n<span class='speak'>Soloists:</span>\nDie Müh ist aus, die unsre Sünden ihm gemacht.\n\n<span class='speak'>Chorus:</span>\nMein Jesu, gute Nacht!\n\n<span class='speak'>Soloists:</span>\nO selig Gebein,\nSeht, wie ich mit Reu und Lust an euch will hangen,\nMein Jesu, gute Nacht!",
+en:"<span class='speak'>Soloists:</span>\nNow the Lord is laid to rest.\n\n<span class='speak'>Chorus:</span>\nMy Jesus, good night!\n\n<span class='speak'>Soloists:</span>\nThe toil is over, which our sins brought upon him.\n\n<span class='speak'>Chorus:</span>\nMy Jesus, good night!\n\n<span class='speak'>Soloists:</span>\nO blessed remains,\nSee how I will cling to you with remorse and devotion,\nMy Jesus, good night!"},
+{p:2,n:70,t:"chorus",ti:"Wir setzen uns mit Tränen nieder",s:"Double Chorus, Orchestra",
+de:"Wir setzen uns mit Tränen nieder\nUnd rufen dir im Grabe zu:\nRuhe sanfte, sanfte ruh!\nRuht, ihr ausgesognen Glieder!\nEuer Grab und Leichenstein\nSoll dem ängstlichen Gewissen\nEin bequemes Ruhekissen\nUnd der Seelen Ruhstatt sein.\nHöchst vergnügt schlummern da die Augen ein.",
+en:"We sit down in tears\nAnd call to you in the grave:\nRest gently, gently rest!\nRest, you exhausted limbs!\nYour grave and tombstone\nShall be for the anxious conscience\nA comfortable pillow of rest\nAnd for the soul a place of repose.\nIn highest contentment the eyes close in slumber."}
+];
+
+function render(){
+  const c=document.getElementById('main-content');
+  let h='',cp=0;
+  L.forEach(m=>{
+    if(m.p!==cp){
+      cp=m.p;
+      h+=`<div class="part-div" id="part-${cp}"><h2>${cp===1?'Erster Teil — Part One':'Zweiter Teil — Part Two'}</h2><p>${cp===1?'The Anointing · The Last Supper · Gethsemane · The Arrest':'The Trial · The Crucifixion · The Burial'}</p><div class="orn"><span></span><span></span><span></span><span></span><span></span></div></div>`;
+    }
+    const id='mv-'+String(m.n).replace(/\./g,'_');
+    const tl={recit:'Recitative',aria:'Aria',chorus:'Chorus',chorale:'Chorale'}[m.t]||m.t;
+    const num=typeof m.n==='number'?m.n:'';
+    h+=`<div class="mv" id="${id}" data-type="${m.t}" data-part="${m.p}">
+<div class="mv-head"><span class="mv-num">${num}</span><span class="mv-type">${tl}</span>${m.s?`<span class="mv-scoring">${m.s}</span>`:''}</div>
+${m.ti?`<div class="mv-title">${m.ti}</div>`:''}
+<div class="lyrics">
+<div class="ly-col de-col"><div class="ly-label">Deutsch</div><div class="ly-text de">${m.de.split('\n\n').map(p=>'<p>'+p.replace(/\n/g,'<br>')+'</p>').join('')}</div></div>
+<div class="ly-col en-col"><div class="ly-label">English</div><div class="ly-text en">${m.en.split('\n\n').map(p=>'<p>'+p.replace(/\n/g,'<br>')+'</p>').join('')}</div></div>
+</div></div>`;
+  });
+  c.innerHTML=h;
+  buildTOC();
+  document.querySelectorAll('.mv').forEach(el=>obs.observe(el));
+}
+
+function buildTOC(){
+  const tc=document.getElementById('toc-content');
+  let h='',cp=0;
+  L.forEach((m,i)=>{
+    if(m.p!==cp){if(cp)h+='</div>';cp=m.p;h+=`<div class="tp"><div class="tp-title">${cp===1?'Part I':'Part II'}</div>`;}
+    const id='mv-'+String(m.n).replace(/\./g,'_');
+    const num=typeof m.n==='number'?m.n:'';
+    h+=`<a href="#${id}" onclick="toggleTOC()"><span class="tn">${num}</span>${m.ti||m.t}</a>`;
+  });
+  h+='</div>';
+  tc.innerHTML=h;
+}
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.05});
+
+let tocOpen=false;
+function toggleTOC(){tocOpen=!tocOpen;document.getElementById('toc-panel').classList.toggle('open',tocOpen);document.getElementById('toc-overlay').classList.toggle('open',tocOpen);}
+
+function setLang(l){
+  document.body.classList.remove('lang-de','lang-en');
+  document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('on'));
+  if(l==='de'){document.body.classList.add('lang-de');document.getElementById('btn-de').classList.add('on');}
+  else if(l==='en'){document.body.classList.add('lang-en');document.getElementById('btn-en').classList.add('on');}
+  else document.getElementById('btn-both').classList.add('on');
+}
+
+function filterType(t){
+  document.querySelectorAll('[id^="btn-filter"]').forEach(b=>b.classList.remove('on'));
+  document.getElementById('btn-filter-'+t).classList.add('on');
+  document.querySelectorAll('.mv').forEach(el=>{
+    el.classList.toggle('hid',t!=='all'&&el.dataset.type!==t);
+  });
+}
+
+function doSearch(q){
+  q=q.toLowerCase().trim();
+  document.querySelectorAll('.mv').forEach(el=>{
+    if(!q){el.classList.remove('hid');return;}
+    el.classList.toggle('hid',!el.textContent.toLowerCase().includes(q));
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
