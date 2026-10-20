@@ -2,7 +2,7 @@
 layout: default
 title: "About"
 permalink: /about/
-description: "About Nuno D. Mendes — Senior Software Engineer at Meta in New York; dual PhD in Computational Biology (IST · Lyon 1, 2011); education, languages and recommendations."
+description: "About Nuno D. Mendes — Senior Software Engineer at Meta in New York; dual PhD in Computational Biology (IST · Lyon 1, 2011); education and languages."
 redirect_from:
   - /shortcv.html
 ---
@@ -56,31 +56,11 @@ redirect_from:
     <div class="skill-list" style="margin-top: 1.2rem;">
       <span class="skill-pill">Portuguese — Native</span>
       <span class="skill-pill">English — Full professional</span>
-      <span class="skill-pill">French — Full professional</span>
+      <span class="skill-pill">French — Professional</span>
       <span class="skill-pill">Spanish — Professional working</span>
     </div>
   </div>
 
-  <div class="pub-section">
-    <h3 class="pub-section-title">Recommendations</h3>
-    <p class="software-note">
-      Received on LinkedIn over the years; the full texts live there.
-    </p>
-    <ul class="pub-list">
-      <li class="pub-item">
-        <div class="pub-title">Samuel Coelho</div>
-        <div class="pub-meta">Recommendation received · 2022</div>
-      </li>
-      <li class="pub-item">
-        <div class="pub-title">Allan Ebdrup</div>
-        <div class="pub-meta">Recommendation received · 2020</div>
-      </li>
-      <li class="pub-item">
-        <div class="pub-title">Ricardo Cerqueira</div>
-        <div class="pub-meta">Recommendation received · 2004</div>
-      </li>
-    </ul>
-  </div>
 
   <div class="hero-links" style="opacity: 1; animation: none;">
     <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" rel="noopener" class="btn btn-primary">LinkedIn</a>
