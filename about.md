@@ -24,7 +24,7 @@ redirect_from:
   </p>
   <p class="section-intro">
     The through-line: algorithms for DNA, then platforms for health, now
-    infrastructure at scale. I split my time between Lisbon and New York. The
+    infrastructure at scale. I live in New York now; Lisbon is where I come from. The
     academic work — <a href="{{ '/research/' | relative_url }}">publications</a>,
     <a href="{{ '/software/' | relative_url }}">software</a> and
     <a href="{{ '/teaching/' | relative_url }}">teaching</a> — stays on this

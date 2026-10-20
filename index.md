@@ -15,7 +15,7 @@ description: "Senior Software Engineer at Meta, formerly a computational biologi
     <p class="hero-bio">
       Engineer at Meta, formerly a computational biologist — algorithms for DNA,
       then platforms for health, now infrastructure at scale. Two decades across
-      telecom, research, health-tech and big tech, between Lisbon, Lyon and New York.
+      telecom, research, health-tech and big tech, from Lisbon and Lyon to New York.
     </p>
     <div class="hero-links">
       <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" rel="noopener" class="btn btn-primary">LinkedIn</a>
@@ -47,8 +47,8 @@ description: "Senior Software Engineer at Meta, formerly a computational biologi
           <div class="stat-label">Languages</div>
         </div>
         <div class="stat">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Cities · Lisbon — NY</div>
+          <div class="stat-num">NY</div>
+          <div class="stat-label">Based in New York</div>
         </div>
       </div>
     </div>
