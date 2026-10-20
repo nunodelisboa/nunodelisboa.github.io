@@ -1,0 +1,34 @@
+# Teaching — Nuno D. Mendes
+# Sources: documents.html and documents/python.html (Python course), molbiosys/
+# (practical class page and datasets), repo root listing (aula slides), and
+# redesign-concept.md (ISEGI-UNL provenance for the slides).
+# Every entry is labelled with its institution, per the redesign plan.
+
+teaching:
+  - title: "Introduction to Programming using Python"
+    institution: "Instituto Gulbenkian de Ciência — PhD Programme in Computational Biology (PDBC)"
+    period: "October 2006 (class of 2006)"
+    page: "documents/python.html"
+    materials:
+      - "Session slides 1–7: documents/python/session1.pdf … documents/python/session7.pdf"
+      - "Exercise series 1: documents/python/series1.pdf"
+      - "Exercise series 2: documents/python/series2.pdf"
+      - "Solution to session 7, exercise 2: documents/python/exercise/"
+    note: "Course page: documents/python.html (linked from documents.html under 'Courses'). Bibliography on the page: Pasteur Institute 'Programming Course for Biologists' and the Python documentation. The proposed solutions for both exercise series are still marked '(soon)' on the archived page — they were never posted."
+
+  - title: "Molecular Biosystems — Practical Class"
+    institution: "Molecular Biosystems course (institution not stated on the archived page)"
+    period: "Undated (archived)"
+    page: "molbiosys/index.html"
+    materials:
+      - "Exercise sheet: molbiosys/index.html"
+      - "Datasets: molbiosys/some-pre-let-7.fa, molbiosys/tRNAs.fa, molbiosys/upstream.fa, molbiosys/binding_sites.fa, molbiosys/hairpin.fa (hairpin set, ~4 MB)"
+    note: "Exercises: (1) Needleman–Wunsch dynamic-programming alignment by hand, incl. the semi-global variant; (2) ClustalOmega and LocARNA structural alignments of let-7 and tRNA sequences; (3) further work on the upstream.fa dataset. FLAG: the archived page names no institution or date; its dataset links point at his INESC-ID/KDBIO hosting (kdbio.inesc-id.pt), and the redesign concept groups it with his teaching archive without firmer provenance — confirm institution/year before publishing."
+
+  - title: "Authoring & Information Retrieval — lecture slides (aula 13–27)"
+    institution: "ISEGI-UNL (Universidade Nova de Lisboa)"
+    period: "Feb–Jul 2012"
+    page: "aula13.pdf – aula27.pdf (repo root)"
+    materials:
+      - "aula13.pdf, aula15.pdf, aula17.pdf, aula19.pdf, aula21.pdf, aula23.pdf, aula25.pdf, aula27.pdf — 8 PDFs at the repo root"
+    note: "From his Invited Lecturer role at ISEGI-UNL (see experience.yml): co-responsible for Authoring & Information Retrieval — SGML/XML, DTD/XML Schema, CSS, XSLT/XSL-FO. FLAG: the slides sit at the repo root completely unlabelled; their attribution to this course is the concept doc's inference from the role ('explains the aula slides'), not anything written on the files themselves — confirm before publishing."

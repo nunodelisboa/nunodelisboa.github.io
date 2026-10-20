@@ -1,0 +1,195 @@
+# Publications — Nuno D. Mendes
+# Extracted 20 Oct 2026 from publications.html in nunodelisboa/nunodelisboa.github.io,
+# reconciled against redesign-concept.md (LinkedIn addendum).
+# Reconciled rule: journal_papers = LinkedIn's 7 journal papers (6 from the old site
+# + the Frontiers in Physiology paper). The DILS 2014 paper sits in `conference`,
+# the Springer 2013 entry in `book_chapter` — neither is counted as a journal paper.
+# `url` = external publisher/article link as given on the old page;
+# `pdf` = repo-relative path inside nunodelisboa.github.io, only where one exists.
+#
+# FLAG: publications.html lists the 2014 arXiv preprint "Quantification of reachable
+# attractors in asynchronous discrete dynamics" (arXiv:1411.3539) first among its
+# "Journal or Conference articles". It is the preprint of the Frontiers 2018 paper
+# below, so it is recorded in that entry's note rather than as a separate item,
+# keeping journal_papers at exactly the reconciled 7.
+
+journal_papers:
+  - title: "Estimating attractor reachability in asynchronous logical models"
+    authors: "Nuno D. Mendes, Rui Henriques, Elisabeth Remy, Jorge Carneiro, Pedro T. Monteiro, Claudine Chaouiya"
+    venue: "Frontiers in Physiology"
+    year: 2018
+    url: "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2018.01161"
+    note: "Vol. 9, article 1161. DOI: 10.3389/fphys.2018.01161. The published Firefront/Avatar paper; on LinkedIn's publication list but absent from the old site's journal list. Preprint version: 'Quantification of reachable attractors in asynchronous discrete dynamics', arXiv:1411.3539, 2014 (authors: Mendes, Monteiro, Carneiro, Remy, Chaouiya)."
+
+  - title: "Composition and abstraction of logical regulatory modules: application to multicellular systems"
+    authors: "Nuno D. Mendes, Frédéric Lang, Yves-Stan Le Cornec, Radu Mateescu, Grégory Batt, Claudine Chaouiya"
+    venue: "Bioinformatics"
+    year: 2013
+    url: "http://bioinformatics.oxfordjournals.org/content/early/2013/01/22/bioinformatics.btt033.abstract"
+
+  - title: "Navigating the unexplored seascape of pre-miRNA candidates in single-genome approaches"
+    authors: "Nuno D. Mendes, Steffen Heyne, Ana T. Freitas, Marie-France Sagot, Rolf Backofen"
+    venue: "Bioinformatics"
+    year: 2012
+    url: "http://bioinformatics.oxfordjournals.org/content/early/2012/10/10/bioinformatics.bts574.long"
+
+  - title: "Combination of measures distinguishes pre-miRNAs from other stem-loops in the genome of the newly sequenced Anopheles darlingi"
+    authors: "Nuno D. Mendes, Ana T. Freitas, Ana T. Vasconcelos, Marie-France Sagot"
+    venue: "BMC Genomics"
+    year: 2010
+    url: "http://www.biomedcentral.com/1471-2164/11/529"
+
+  - title: "Current tools for the identification of miRNA genes and their targets"
+    authors: "Nuno D. Mendes, Ana T. Freitas, Marie-France Sagot"
+    venue: "Nucleic Acids Research"
+    year: 2009
+    url: "http://nar.oxfordjournals.org/cgi/content/abstract/gkp145v1"
+
+  - title: "YEASTRACT-DISCOVERER: new tools to improve the analysis of transcriptional regulatory associations in Saccharomyces cerevisiae"
+    authors: "Pedro T. Monteiro, Nuno D. Mendes, Miguel C. Teixeira, Sofia d'Orey, Sandra Tenreiro, Nuno P. Mira, Hélio Pais, Alexandre P. Francisco, Alexandra M. Carvalho, Artur B. Lourenço, Isabel Sá-Correia, Arlindo L. Oliveira, Ana T. Freitas"
+    venue: "Nucleic Acids Research"
+    year: 2007
+    url: "http://nar.oxfordjournals.org/cgi/content/abstract/gkm976v1"
+
+  - title: "MUSA: a parameter free algorithm for the identification of biologically significant motifs"
+    authors: "Nuno D. Mendes, Ana C. Casimiro, Pedro M. Santos, Isabel Sá-Correia, Arlindo L. Oliveira, Ana T. Freitas"
+    venue: "Bioinformatics"
+    year: 2006
+    note: "22(24): 2996–3002. DOI: 10.1093/bioinformatics/btl537 (citation block on software/musa.html). Detail page with abstract: publications/06-ndm-musa.html. No PDF of the paper itself is stored in the repo."
+
+book_chapter:
+  - title: "miRNA gene prediction"
+    authors: "N. D. Mendes"
+    venue: "Encyclopedia of Systems Biology (Springer-Verlag), eds. W. Dubitzky, O. Wolkenhauer, K.-H. Cho, H. Yokota"
+    year: 2013
+    url: "http://link.springer.com/referenceworkentry/10.1007/978-1-4419-9863-7_1361"
+    note: "3 pages."
+
+conference:
+  - title: "Towards a Plant Experimental Assay Ontology"
+    authors: "Nuno D. Mendes, Pedro T. Monteiro, Cátia Vaz, Inês Chaves"
+    venue: "DILS — Data Integration in the Life Sciences"
+    year: 2014
+    url: "http://dmir.inesc-id.pt/dils2014/wp-content/uploads/2014/07/final.pdf#page=47"
+    note: "Link is the conference proceedings PDF hosted at INESC-ID (external), paper at page 47. publications.html groups this under 'Journal or Conference articles'; it is a conference paper, not a journal article."
+
+abstracts_posters:
+  - title: "Epilog: a software for the logical modelling of epithelial patterning"
+    authors: "P. Varela, N. D. Mendes, P. T. Monteiro, A. Fauré, C. Chaouiya"
+    venue: "Bioinformatics Open Days, Braga, Portugal"
+    year: 2013
+
+  - title: "Identification of miRNAs and analysis of their expression in Eucalyptus globulus"
+    authors: "J. Oliveira, N. D. Mendes, V. Carocha, J. A. Paiva, A. T. Freitas"
+    venue: "Bioinformatics Open Days, Braga, Portugal"
+    year: 2013
+    note: "Work selected for oral presentation."
+
+  - title: "The microEGO project: unravelling the post-transcriptional regulation mechanisms on Eucalyptus wood formation"
+    authors: "V. Carocha, C. S. Graça, N. D. Mendes, J. Oliveira, A. J. Amaral, L. Neves, C. Araújo, S. Araújo, S. Pera, P. M. Fevereiro, J. Grima-Pettenati, A. T. Freitas, J. A. Paiva"
+    venue: "Plant and Animal Genome XXI Conference, San Diego, CA, USA"
+    year: 2012
+
+  - title: "Identification of miRNAs in E. globulus xylem tissues formed upon gravitropic stimulation"
+    authors: "V. Carocha, C. Graca, J. Amado, N. Mendes, A. Amaral, H. San-Clemente, P. Fonseca, I. Trindade, S. Araújo, H. Wang, N. Borralho, T. Quilhó, J. Rodrigues, P. Fevereiro, L. Neves, C. Araújo, A. Freitas, J. Grima-Pettenati, J. Paiva"
+    venue: "26th New Phytologist Symposium, Nancy, France"
+    year: 2011
+
+  - title: "CRAVELA: a framework to identify and evaluate miRNA regulatory modules"
+    authors: "N. D. Mendes, A. T. Freitas, A. T. Vasconcelos, M.-F. Sagot"
+    venue: "RECOMB 2010, Lisbon, Portugal"
+    year: 2010
+    note: "Poster selected for oral presentation."
+
+  - title: "Analysis of transcription regulatory associations in Saccharomyces cerevisiae using the YEASTRACT database"
+    authors: "M. C. Teixeira, P. Monteiro, S. Tenreiro, N. P. Mira, A. B. Lourenco, A. M. Carvalho, N. Mendes, S. d'Orey, H. Pais, A. T. Freitas, A. L. Oliveira, Isabel Sá-Correia"
+    venue: "3rd Conference on Physiology of Yeasts and Filamentous Fungi, Helsinki, Finland"
+    year: 2007
+    note: "Extended abstract, S245: 52."
+
+  - title: "Analysis of new and known DNA-binding site motifs in Saccharomyces cerevisiae using the YEASTRACT-DISCOVERER tools"
+    authors: "P. Monteiro, N. Mendes, M. C. Teixeira, S. d'Orey, S. Tenreiro, N. P. Mira, H. Pais, A. P. Francisco, A. M. Carvalho, A. B. Lourenco, I. Sá-Correia, A. L. Oliveira, A. T. Freitas"
+    venue: "Congresso Nacional MICROBIOTEC'07, Lisbon, Portugal"
+    year: 2007
+    note: "Poster and extended abstract."
+
+  - title: "Analysis of transcription regulatory associations in Saccharomyces cerevisiae using the YEASTRACT database"
+    authors: "M. C. Teixeira, P. Monteiro, S. Tenreiro, N. P. Mira, A. M. Carvalho, N. Mendes, A. Casimiro, C. Nogueira, C. Oliveira, A. T. Freitas, A. L. Oliveira, I. Sá-Correia"
+    venue: "Yeast Genetics and Molecular Biology Meeting, Princeton, USA"
+    year: 2006
+    note: "Poster, Book of Abstracts 529A. Same-titled companion poster to the FEMS 2006 entry below — both are listed on the old page and both are kept."
+
+  - title: "Analysis of transcription regulatory associations in Saccharomyces cerevisiae using the YEASTRACT database"
+    authors: "M. C. Teixeira, P. Monteiro, S. Tenreiro, N. P. Mira, A. M. Carvalho, N. Mendes, A. Casimiro, C. Nogueira, C. Oliveira, A. T. Freitas, A. L. Oliveira, I. Sá-Correia"
+    venue: "2nd FEMS Congress of European Microbiologists, Madrid, Spain"
+    year: 2006
+    note: "Poster, Book of Abstracts W12.4-P.COM.3."
+
+theses:
+  - title: "Efficient algorithms for the identifications of miRNA motifs in DNA sequences"
+    authors: "Nuno D. Mendes"
+    venue: "PhD thesis, IST/UTL and Université Claude Bernard Lyon 1"
+    year: 2011
+    pdf: "pub/publications/11-PhDThesis/11-ndm-phd-thesis.pdf.gz"
+    note: "Supervised by Ana T. Freitas and Marie-France Sagot. Detail page: publications/11-ndm-phd-thesis.html. Also in repo: defence presentation (phd_presentation.pdf) and no-notes version (phd_no_notes.pdf) at repo root. (Title as printed on the old page, 'identifications' included.)"
+
+  - title: "Inference of Complex Motifs using Biclustering Techniques"
+    authors: "Nuno D. Mendes"
+    venue: "Master's thesis, IST, Universidade Técnica de Lisboa"
+    year: 2005
+    pdf: "pub/publications/05-MscThesis/05-ndm-msc-thesis.pdf"
+    note: "Supervised by Ana T. Freitas and Arlindo L. Oliveira. Detail page: publications/05-ndm-msc-thesis.html. A PostScript version also exists at pub/publications/05-MscThesis/05-ndm-msc-thesis.ps."
+
+technical_reports:
+  # FLAG: publications.html files this under its "Technical Reports" legend, but the
+  # item itself is the undergraduate (licenciatura) graduation thesis (TFC).
+  # Kept in this section to mirror the old page, per the concept doc's inventory.
+  - title: "IUPAC Code Generation"
+    authors: "Nuno D. Mendes, David V. Nunes"
+    venue: "Graduation thesis (TFC), IST, Universidade Técnica de Lisboa"
+    year: 2004
+    pdf: "pub/publications/04-TFC/04-ndm-tfc.pdf"
+    note: "In Portuguese. Supervised by Ana T. Freitas and Arlindo L. Oliveira. Detail page: publications/04-ndm-tfc.html."
+
+talks:
+  - title: "Identification and quantification of reachable attractors over asynchronous dynamics"
+    authors: "Nuno D. Mendes"
+    venue: "EAO Seminar, Oeiras, Portugal"
+    year: 2013
+    note: "Nov 2013."
+
+  - title: "CRAVELA: Navigating the genome in search of miRNAs"
+    authors: "Nuno D. Mendes"
+    venue: "DataStorm Seminar, Porto Salvo, Portugal"
+    year: 2013
+    note: "Jul 2013."
+
+  - title: "Composition and abstraction of logical regulatory modules: applications to multicellular systems"
+    authors: "Nuno D. Mendes"
+    venue: "EAO Seminar, Oeiras, Portugal"
+    year: 2012
+    note: "Jan 2012. Talk title as printed ('applications', plural) differs slightly from the 2013 paper's title."
+
+  - title: "Dynamic modelling of large regulatory networks"
+    authors: "Nuno D. Mendes"
+    venue: "PDBC Meeting, Oeiras, Portugal"
+    year: 2011
+    note: "Dec 2011."
+
+  - title: "Towards a framework for the identification of miRNA regulatory modules"
+    authors: "Nuno D. Mendes"
+    venue: "Bioinformatics Seminar, Freiburg, Germany"
+    year: 2010
+    note: "Mar 2010."
+
+  - title: "A framework for the identification of miRNA regulatory modules: sieving pre-miRNA candidates"
+    authors: "Nuno D. Mendes"
+    venue: "First Regional Workshop on Small RNA Biology, Montevideo, Uruguay"
+    year: 2009
+    note: "Nov 2009. The old page spells the event 'Workship'; corrected to 'Workshop' here."
+
+  - title: "Efficient algorithms for the identification of miRNA motifs"
+    authors: "Nuno D. Mendes"
+    venue: "B2FI Seminar, Lyon, France"
+    year: 2008
+    note: "Dec 2008."

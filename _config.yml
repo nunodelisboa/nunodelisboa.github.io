@@ -1,0 +1,12 @@
+title: "Nuno D. Mendes"
+description: "Senior Software Engineer at Meta · PhD Computational Biology. Personal site, research archive (2004–2018) and software archive."
+url: "https://nunomendes.eu"
+lang: en
+
+markdown: kramdown
+
+plugins:
+  - jekyll-redirect-from
+
+exclude:
+  - README.md

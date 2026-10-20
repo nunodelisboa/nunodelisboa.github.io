@@ -1,0 +1,58 @@
+# Software — Nuno D. Mendes (publish copy for the Jekyll build)
+# Curated from ../../data/software.yml (audit record, kept unmodified there):
+# MUSA downloads structured as label/path pairs; editorial notes rewritten
+# into publishable text. Legacy framing per Nuno's instruction, 20 Oct 2026.
+
+software:
+  - name: "MUSA"
+    description: "Parameter-free, heuristic method for the extraction of conserved patterns (motifs) in a set of DNA input sequences. Command-line program taking FASTA input; optional parameters (lambda, epsilon, sieve, mindist, maxdist) focus the search."
+    url_or_path: "software/musa.html"
+    downloads:
+      - label: "musa-0.5.6 — Linux binary (latest)"
+        path: "software/MUSA/musa-0.5.6"
+      - label: "musa-0.5.6-src.tar.gz — source tarball"
+        path: "software/MUSA/musa-0.5.6-src.tar.gz"
+      - label: "musa-0.5.2 — Linux binary"
+        path: "software/MUSA/musa-0.5.2"
+      - label: "musa-0.5.2-src.tar.gz — source tarball"
+        path: "software/MUSA/musa-0.5.2-src.tar.gz"
+      - label: "musa-0.5.1 — Linux binary"
+        path: "software/MUSA/musa-0.5.1"
+      - label: "musa-0.5.1-src.tar.gz — source tarball"
+        path: "software/MUSA/musa-0.5.1-src.tar.gz"
+      - label: "musa-0.5 — Linux binary"
+        path: "software/MUSA/musa-0.5"
+      - label: "musa-0.4.1 — Linux binary"
+        path: "software/MUSA/musa-0.4.1"
+      - label: "musa-0.4 — Linux binary"
+        path: "software/MUSA/musa-0.4"
+      - label: "musa-0.3 — Linux binary"
+        path: "software/MUSA/musa-0.3"
+      - label: "musa-0.2 — Linux binary"
+        path: "software/MUSA/musa-0.2"
+    note: "Legacy — unmaintained. Cite: Mendes et al., Bioinformatics 22(24): 2996–3002, 2006."
+
+  - name: "CRAVELA"
+    description: "Framework to predict pre-miRNA candidates in single genomes, with optional conservation analysis in phylogenetically close species. Can incorporate RNA-seq data to predict mature sequences and estimate expression across conditions; candidates are evaluated by expression score, filtered with genome annotation when available, and analysed with stem-loop structural methods for metazoan genomes."
+    url_or_path: "http://cravela.org"
+    note: "Legacy — unmaintained. The project website is currently inaccessible."
+
+  - name: "Firefront/Avatar"
+    description: "Two methods for identifying the set of attractors reachable from a given initial condition, and evaluating their reachability probability, over asynchronous discrete dynamics. Firefront is a quasi-exact method that follows all concurrent trajectories simultaneously while propagating state probabilities; Avatar is a modified Monte Carlo algorithm that handles strongly connected components and avoids revisiting states by rewiring the state transition graph."
+    url_or_path: "http://compbio.igc.gulbenkian.pt/nmd/node/59"
+    note: "Legacy — unmaintained. Published as Mendes et al., Frontiers in Physiology, 2018; implemented as new functionality of GINsim 3.0."
+
+  - name: "GinSIM — Composition"
+    description: "Composition and abstraction support for logical regulatory networks inside GinSIM, a tool for the analysis and specification of logical regulatory networks — the software behind the multicellular-systems work."
+    url_or_path: "http://ginsim.org/beta"
+    note: "Legacy — unmaintained. Associated paper: Mendes et al., Bioinformatics, 2013."
+
+  - name: "Yeastract-Discoverer"
+    description: "DISCOVERER provides tools to identify complex motifs over-represented in the promoter regions of co-regulated genes. It is based on the MUSA and RISO algorithms: given a list of genes, it identifies over-represented motifs and compares them with transcription factor binding sites described in the YEASTRACT database."
+    url_or_path: "http://yeastract.com/discoverer/"
+    note: "Legacy — unmaintained. Associated paper: Monteiro, Mendes et al., Nucleic Acids Research, 2007."
+
+  - name: "modern-react-forms"
+    description: "A React library for building forms the modern way, with a README containing real usage examples."
+    url_or_path: "https://github.com/nunodelisboa/modern-react-forms"
+    note: "A personal GitHub project (2019– ), the only non-legacy entry in this archive."

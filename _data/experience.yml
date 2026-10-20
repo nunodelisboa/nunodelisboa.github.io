@@ -1,0 +1,148 @@
+# Experience — Nuno D. Mendes
+# The 20 reconciled roles from redesign-concept.md (LinkedIn addendum, 20 Oct 2026).
+# LinkedIn wins on titles and dates wherever the old website disagrees; every such
+# correction is flagged in a note. Order: reverse chronological by start date.
+# Locations are given where the concept doc / old homepage state them; for the
+# Portuguese industry roles they follow the employer's Lisbon base.
+
+experience:
+  - title: "Senior Software Engineer"
+    org: "Meta"
+    start: "Aug 2021"
+    end: "present"
+    location: "New York, NY"
+    note: "Current role. LinkedIn headline reads 'Software Engineer at Meta'; the role entry itself is Senior."
+
+  - title: "Senior Software Engineer"
+    org: "Heartbeat Health"
+    start: "Aug 2020"
+    end: "Jul 2021"
+    location: "New York, NY"
+
+  - title: "Senior Software Engineer / Team Lead / Head of Lisbon Office Operations"
+    org: "Practio"
+    start: "Feb 2018"
+    end: "Jul 2020"
+    location: "Lisbon, Portugal"
+    note: "Three LinkedIn entries for one tenure: Senior Software Engineer (Feb 2018–Dec 2019; JavaScript/Node.js/React/MySQL/MongoDB, digital-health platform), Head of Lisbon Office Operations (Mar 2019–Jul 2020; premises, procurement, HR liaison), Team Lead (Dec 2019–Jul 2020; mentoring plus individual-contributor work)."
+
+  - title: "Senior Software Engineer"
+    org: "Hitachi Vantara"
+    start: "Sep 2017"
+    end: "Jan 2018"
+    location: "Lisbon, Portugal"
+    note: "Pentaho PDI Data Exploration Tool (DET) reengineering and filters. Java, JavaScript, AngularJS. Continuation of the Pentaho role below after the acquisition — the old homepage merges the two into a single 'Pentaho 2017–2018' line."
+
+  - title: "Senior Software Engineer"
+    org: "Pentaho (from Hitachi Vantara)"
+    start: "Feb 2017"
+    end: "Sep 2017"
+    location: "Lisbon, Portugal"
+    note: "Same DET/PDI product as the Hitachi Vantara entry, pre-/post-acquisition naming."
+
+  - title: "Software Engineer + Head of R&D"
+    org: "Findmore Consulting"
+    start: "May 2016"
+    end: "Feb 2017"
+    location: "Lisbon, Portugal"
+    note: "Near-shore web application (PHP/Symfony/AngularJS) plus the scientific component of R&D grant proposals."
+
+  - title: "Perl Developer"
+    org: "NOS SGPS"
+    start: "Nov 2014"
+    end: "May 2016"
+    location: "Lisbon, Portugal"
+    concurrent: true
+    note: "Responsive web applications; Perl/Catalyst/Mojolicious, SOAP, JavaScript/jQuery. Concurrent with the BOLD by Devoteam entry: BOLD was the contracting firm, NOS the client. The old homepage lists BOLD alone, as a sequential job, and omits NOS entirely."
+
+  - title: "Consultant"
+    org: "BOLD by Devoteam"
+    start: "Nov 2014"
+    end: "May 2016"
+    location: "Lisbon, Portugal"
+    concurrent: true
+    note: "Contracting firm for the NOS engagement above (identical dates on LinkedIn). The old site also calls this firm 'Bold International'."
+
+  - title: "Associate Researcher"
+    org: "INESC-ID"
+    start: "Jan 2012"
+    end: "Mar 2015"
+    location: "Lisbon, Portugal"
+    note: "Coordination of the miRNA pipeline team (plants and human parasites); web interface and back-office for automated jobs. Dates corrected per LinkedIn — the old homepage says 2010–2014."
+
+  - title: "Software Engineer"
+    org: "HeartGenetics"
+    start: "Jul 2014"
+    end: "Oct 2014"
+    location: "Lisbon, Portugal"
+    note: "Data-model redesign and migration/integration (MySQL/PostgreSQL/Oracle), Perl Catalyst::REST backend, AngularJS, sysadmin. Title and span corrected per LinkedIn — the old homepage says 'Head of IT, 2014', which is wrong on both."
+
+  - title: "Postdoctoral Fellow"
+    org: "iBET"
+    start: "Jul 2013"
+    end: "Jun 2014"
+    location: "Oeiras, Portugal"
+    note: "OWL ontology for plant experimental assays, triple-store, XSLT visualisation. Research behind the DILS 2014 ontology paper."
+
+  - title: "Postdoctoral Fellow"
+    org: "Instituto Gulbenkian de Ciência"
+    start: "Jul 2011"
+    end: "Jun 2013"
+    location: "Oeiras, Portugal"
+    note: "Logical-model composition/abstraction (process algebras, LOTOS NT generated in Perl), GinSIM composition in Java, Firefront/Avatar attractor algorithms in Perl. Dates corrected per LinkedIn — the old homepage says 2012–2013."
+
+  - title: "Invited Lecturer"
+    org: "ISEGI-UNL"
+    start: "Feb 2012"
+    end: "Jul 2012"
+    location: "Lisbon, Portugal"
+    note: "Co-responsible for Authoring & Information Retrieval (SGML/XML, DTD/XML Schema, CSS, XSLT/XSL-FO). The aula13–aula27 lecture slides archived in the site repo belong to this teaching (see teaching.yml)."
+
+  - title: "PhD Student"
+    org: "INESC-ID"
+    start: "Jul 2010"
+    end: "Jun 2011"
+    location: "Lisbon, Portugal"
+    note: "Final PhD year: clustering/machine learning and PCA in R, MySQL. The legacy short CV instead lists INESC-ID 'Researcher, Sep 2004–Jun 2011' — superseded by the LinkedIn entries, per the reconciliation rule."
+
+  - title: "PhD Student"
+    org: "Université Claude Bernard Lyon 1"
+    start: "Jan 2007"
+    end: "Jun 2010"
+    location: "Lyon, France"
+    note: "Distributed Perl pipeline for pre-miRNA identification, C auxiliaries, MySQL, Mason web interface (LBBE/BAOBAB group). The legacy short CV lists the overlapping INRIA Rhône-Alpes 'Researcher, Nov 2006–Jun 2010', which appears on no other profile — not carried over; flagged in the concept doc."
+
+  - title: "PhD Student"
+    org: "Instituto Gulbenkian de Ciência"
+    start: "Oct 2005"
+    end: "Oct 2006"
+    location: "Oeiras, Portugal"
+    note: "Entry year of the Gulbenkian PhD Programme in Computational Biology (PDBC)."
+
+  - title: "Teaching Assistant"
+    org: "Instituto Superior Técnico"
+    start: "Oct 2004"
+    end: "Oct 2005"
+    location: "Lisbon, Portugal"
+    note: "Practical courses in Object-Oriented Programming and Compilers. The legacy short CV calls this role 'Monitor' (Sep 2004–Jul 2005); LinkedIn's title and dates win."
+
+  - title: "Senior Programmer"
+    org: "Novis"
+    start: "Jun 2000"
+    end: "Aug 2004"
+    location: "Lisbon, Portugal"
+    note: "Messaging and directory services, Perl and C, operations and maintenance — worked alongside the degree. Title/start corrected per LinkedIn: the legacy short CV says 'Software development, Feb 2000'."
+
+  - title: "Scientific Research Intern"
+    org: "INESC-ID"
+    start: "Sep 2003"
+    end: "Jul 2004"
+    location: "Lisbon, Portugal"
+    note: "IUPAC code generation for consensus sequences — the work behind the 2004 graduation thesis (see publications.yml, technical_reports)."
+
+  - title: "Customer Support"
+    org: "Clix"
+    start: "Jun 1999"
+    end: "May 2000"
+    location: "Lisbon, Portugal"
+    note: "Part-time. His first job — it appears on no version of the website; LinkedIn only."

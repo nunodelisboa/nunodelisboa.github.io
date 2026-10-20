@@ -1,0 +1,41 @@
+# Education — Nuno D. Mendes
+# 5 entries, per redesign-concept.md (LinkedIn addendum): LinkedIn lists 5 education
+# entries, the old website only 3. Sources: LinkedIn via the concept doc, cross-checked
+# against shortcv.html and publications.html (thesis details and supervisors).
+#
+# FLAG: the concept doc names 4 distinct programmes (dual PhD, MSc, the 2004 IST
+# postgraduate course, the Engineer's degree) while counting 5 LinkedIn entries.
+# The 5th is most plausibly the dual PhD listed once per awarding university —
+# the standard LinkedIn pattern — so the PhD is entered twice below (IST and
+# Lyon 1), each cross-referencing the other. Confirm before publishing.
+
+education:
+  - degree: "PhD in Computational Biology"
+    institution: "Instituto Superior Técnico (Universidade Técnica de Lisboa)"
+    start: 2006
+    end: 2011
+    note: "Dual award with Université Claude Bernard Lyon 1 (next entry) under a joint degree agreement. Thesis: 'Efficient algorithms for the identifications of miRNA motifs in DNA sequences'. Supervised by Ana T. Freitas (IST) and Marie-France Sagot (Lyon). Finished June 2011 (shortcv.html). Entered via the Gulbenkian PhD Programme in Computational Biology (PDBC)."
+
+  - degree: "PhD in Computational Biology"
+    institution: "Université Claude Bernard Lyon 1"
+    start: 2006
+    end: 2011
+    note: "Lyon half of the dual award with IST (previous entry) — one thesis, two diplomas. Hosted by the BAOBAB group at LBBE (École Doctorale E2M2). See the flag in this file's header about the '5 entries' count."
+
+  - degree: "MSc in Computer Science (Mestrado em Engenharia Informática e de Computadores)"
+    institution: "Instituto Superior Técnico"
+    start: 2004
+    end: 2005
+    note: "Thesis: 'Inference of Complex Motifs using Biclustering Techniques'. Supervised by Ana T. Freitas and Arlindo L. Oliveira. Finished November 2005 (shortcv.html); publications.html dates the thesis 2005."
+
+  - degree: "Postgraduate Course on Molecular Microbiology: Exploring Bioinformatics"
+    institution: "Instituto Superior Técnico"
+    start: 2004
+    end: 2004
+    note: "On LinkedIn's education list; absent from every version of the website."
+
+  - degree: "Engineer's degree in Information Systems and Computer Engineering (Licenciatura em Engenharia Informática e de Computadores)"
+    institution: "Instituto Superior Técnico"
+    start: 1996
+    end: 2004
+    note: "Five-year licenciatura, finished July 2004. Graduation thesis: 'IUPAC Code Generation', supervised by Ana T. Freitas and Arlindo L. Oliveira. Dates corrected per LinkedIn — the old homepage's 'BSc 2003' is wrong/shorthand."
