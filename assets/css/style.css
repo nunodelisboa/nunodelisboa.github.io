@@ -644,6 +644,11 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   padding: .9rem;
   box-shadow: 8px 8px 0 var(--blue-soft);
   margin-bottom: .5rem;
+  /* Break out of the text column so documents render near true size */
+  width: min(1280px, calc(100vw - 2.5rem));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .pdf-doc-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .9rem; }
@@ -668,8 +673,8 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
 .pdf-viewer iframe {
   display: block;
   width: 100%;
-  height: 78vh;
-  min-height: 480px;
+  height: 88vh;
+  min-height: 640px;
   border: 1px solid var(--rule);
   background: #fff;
 }
@@ -708,5 +713,5 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   footer { flex-direction: column; }
   .pdf-viewer { padding: .65rem; box-shadow: 5px 5px 0 var(--blue-soft); }
   .pdf-doc { flex: 1 1 42%; text-align: center; }
-  .pdf-viewer iframe { height: 62vh; min-height: 380px; }
+  .pdf-viewer iframe { height: 80vh; min-height: 520px; }
 }
