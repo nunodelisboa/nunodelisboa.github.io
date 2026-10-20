@@ -4,7 +4,11 @@ permalink: /
 description: "Senior Software Engineer at Meta, formerly a computational biologist — algorithms for DNA, then platforms for health, now infrastructure at scale."
 ---
 
-<section id="hero" style="border-top: none; padding: 0;">
+<div class="tile-band" aria-hidden="true">
+  <img src="{{ '/assets/img/azulejo-panel.webp' | relative_url }}" alt="" />
+</div>
+
+<section id="hero" style="border-top: none;">
   <div class="hero-left">
     <p class="hero-tag">Senior Software Engineer · Meta</p>
     <h1>Nuno <em>Dias</em><br />Mendes</h1>
@@ -51,21 +55,34 @@ description: "Senior Software Engineer at Meta, formerly a computational biologi
   </div>
 </section>
 
+<div class="tile-divider" aria-hidden="true"></div>
+
 <section id="background">
   <div class="section-header">
     <span class="section-num">01</span>
     <h2>Background</h2>
   </div>
-  <p class="section-intro" style="margin-top: 0;">
-    Before industry, there was a research career. I took a PhD in Computational
-    Biology in 2011 — a dual award from Instituto Superior Técnico and Université
-    Claude Bernard Lyon 1 — and spent the surrounding years as a doctoral and
-    postdoctoral researcher in Lisbon and Lyon, working on miRNA biology and the
-    logical modelling of gene regulatory networks. Those years are behind me;
-    what remains is the record, kept complete for anyone who still needs to cite it.
-  </p>
-  <div class="hero-links" style="opacity: 1; animation: none;">
-    <a href="{{ '/research/' | relative_url }}" class="btn btn-ghost">Full publication archive →</a>
-    <a href="{{ '/software/' | relative_url }}" class="btn btn-ghost">Software archive →</a>
+  <div class="bg-grid">
+    <div class="bg-copy">
+      <p>
+        Before industry, there was a research career. I took a PhD in Computational
+        Biology in 2011 — a dual award from Instituto Superior Técnico and Université
+        Claude Bernard Lyon 1 — and spent the surrounding years as a doctoral and
+        postdoctoral researcher in Lisbon and Lyon, working on miRNA biology and the
+        logical modelling of gene regulatory networks.
+      </p>
+      <p>
+        Those years are behind me; what remains is the record, kept complete for
+        anyone who still needs to cite it.
+      </p>
+      <div class="hero-links">
+        <a href="{{ '/research/' | relative_url }}" class="btn btn-ghost">Full publication archive →</a>
+        <a href="{{ '/software/' | relative_url }}" class="btn btn-ghost">Software archive →</a>
+      </div>
+    </div>
+    <figure class="plate">
+      <img src="{{ '/assets/img/azulejo-medallion.webp' | relative_url }}" alt="Detail of cobalt-blue Portuguese azulejo tiles with medallion motifs" />
+      <figcaption><span>Azulejos · Lisboa</span><span>Plate I</span></figcaption>
+    </figure>
   </div>
 </section>
