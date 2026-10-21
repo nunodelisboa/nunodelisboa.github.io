@@ -531,7 +531,7 @@ h2 {
   --lane-w: 12px;
   --lane-step: 18px;
   --lanes-off: calc(var(--bar-left) + var(--bar-width) + 12px);
-  --block-left: calc(var(--lanes-off) + (var(--lanes, 3) * var(--lane-step)) + 1.1rem);
+  --block-left: calc(var(--lanes-off) + (var(--lanes, 3) * var(--lane-step)) + 1.5rem);
   position: relative;
   height: var(--h-d);
 }
@@ -617,8 +617,8 @@ h2 {
   content: '';
   position: absolute;
   top: 1.05rem;
-  right: 100%;
-  width: var(--cw);
+  right: calc(100% + 5px);
+  width: calc(var(--cw) - 5px);
   height: 2px;
   background: var(--c, var(--rule));
   opacity: .55;
