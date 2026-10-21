@@ -64,7 +64,58 @@ redirect_from:
       {% endif %}
       {% endfor %}
     </ul>
+    {% if key == 'theses' %}
+    <div class="skill-group-title" style="margin-top: 1.2rem;">Theses — read in the page</div>
+    <div class="pdf-viewer" data-pdf-viewer>
+      <div class="pdf-doc-list" role="group" aria-label="Theses">
+        <button type="button" class="pdf-doc is-active" aria-pressed="true" data-pdf-title="PhD thesis — first 20 pages (preview)" data-pdf-src="{{ '/documents/phd-thesis-preview.pdf' | relative_url }}">PhD thesis — first 20 pages (preview)</button>
+        <button type="button" class="pdf-doc" aria-pressed="false" data-pdf-title="Master's thesis (2005)" data-pdf-src="{{ '/pub/publications/05-MscThesis/05-ndm-msc-thesis.pdf' | relative_url }}">Master's thesis (2005)</button>
+      </div>
+      <iframe data-pdf-frame title="PhD thesis — first 20 pages (preview)" src="{{ '/documents/phd-thesis-preview.pdf' | relative_url }}"></iframe>
+      <p class="pdf-fallback">PDF not rendering? <a data-pdf-open href="{{ '/documents/phd-thesis-preview.pdf' | relative_url }}" target="_blank" rel="noopener">Open PhD thesis — first 20 pages (preview) directly ↗</a> · Full PhD thesis: <a href="{{ '/pub/publications/11-PhDThesis/11-ndm-phd-thesis.pdf.gz' | relative_url }}">PDF (.gz)</a></p>
+    </div>
+    {% endif %}
+    {% if key == 'technical_reports' %}
+    <div class="skill-group-title" style="margin-top: 1.2rem;">Graduation thesis — read in the page</div>
+    <div class="pdf-viewer" data-pdf-viewer>
+      <div class="pdf-doc-list" role="group" aria-label="Graduation thesis">
+        <button type="button" class="pdf-doc is-active" aria-pressed="true" data-pdf-title="Graduation thesis / TFC (2004)" data-pdf-src="{{ '/pub/publications/04-TFC/04-ndm-tfc.pdf' | relative_url }}">Graduation thesis / TFC (2004)</button>
+      </div>
+      <iframe data-pdf-frame title="Graduation thesis / TFC (2004)" src="{{ '/pub/publications/04-TFC/04-ndm-tfc.pdf' | relative_url }}"></iframe>
+      <p class="pdf-fallback">PDF not rendering? <a data-pdf-open href="{{ '/pub/publications/04-TFC/04-ndm-tfc.pdf' | relative_url }}" target="_blank" rel="noopener">Open Graduation thesis / TFC (2004) directly ↗</a></p>
+    </div>
+    {% endif %}
   </div>
   {% endfor %}
 
 </div>
+
+<script>
+(function () {
+  var viewers = document.querySelectorAll('[data-pdf-viewer]');
+  Array.prototype.forEach.call(viewers, function (viewer) {
+    var frame = viewer.querySelector('[data-pdf-frame]');
+    var openLink = viewer.querySelector('[data-pdf-open]');
+    var docs = viewer.querySelectorAll('.pdf-doc');
+    if (!frame) { return; }
+    Array.prototype.forEach.call(docs, function (doc) {
+      doc.addEventListener('click', function () {
+        Array.prototype.forEach.call(docs, function (other) {
+          other.classList.remove('is-active');
+          other.setAttribute('aria-pressed', 'false');
+        });
+        doc.classList.add('is-active');
+        doc.setAttribute('aria-pressed', 'true');
+        var src = doc.getAttribute('data-pdf-src');
+        var title = doc.getAttribute('data-pdf-title');
+        frame.setAttribute('src', src);
+        frame.setAttribute('title', title);
+        if (openLink) {
+          openLink.setAttribute('href', src);
+          openLink.textContent = 'Open ' + title + ' directly ↗';
+        }
+      });
+    });
+  });
+})();
+</script>
