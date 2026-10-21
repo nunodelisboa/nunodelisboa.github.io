@@ -18,6 +18,9 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
     <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" rel="noopener">LinkedIn</a>.
   </p>
 
+  {% assign month_names = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
+
+  <div class="timeline">
     {% for role in site.data.experience.experience %}
     {% assign logo = site.data.logos[role.org] %}
     {% assign sy = role.start | split: ' ' | last | plus: 0 %}
