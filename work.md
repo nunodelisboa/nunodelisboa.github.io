@@ -128,13 +128,13 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
     {% assign push_m = eff_m | minus: mpos %}
     {% assign lane = lanes[forloop.index0] | plus: 0 %}
     {% assign tt = trim_ts[forloop.index0] %}{% assign tb = trim_bs[forloop.index0] %}
-    <span class="tl-span" style="--mpos: {{ mpos }}; --span: {{ total_months }}; --lane: {{ lane }}; --c: {{ logo.color }}; --trim-top: {{ tt }}; --trim-bot: {{ tb }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}" aria-hidden="true"></span>
-    <div class="timeline-item tl-block{% unless role.end == 'present' %} past{% endunless %}" style="--mpos: {{ mpos }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}; --lane: {{ lane }}; --c: {{ logo.color }}">
+    <span class="tl-span" style="--mpos: {{ mpos }}; --span: {{ total_months }}; --lane: {{ lane }}; --c: {{ logo.color }}; --trim-top: {{ tt }}; --trim-bot: {{ tb }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}"{% if role.end == 'present' %} data-cur="1" data-sy="{{ sy }}" data-sm="{{ sm }}"{% endif %} aria-hidden="true"></span>
+    <div class="timeline-item tl-block{% unless role.end == 'present' %} past{% endunless %}" style="--mpos: {{ mpos }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}; --lane: {{ lane }}; --c: {{ logo.color }}"{% if role.end == 'present' %} data-cur="1"{% endif %}>
       {% if logo %}
       <div class="org-logo{% if logo.dark %} org-logo-dark{% endif %}"><img src="{{ '/assets/img/logos/' | append: logo.file | relative_url }}" alt="{{ role.org }} logo" loading="lazy"></div>
       {% endif %}
       <div class="timeline-body">
-        <div class="timeline-meta">{{ role.start }} – {% if role.end == 'present' %}Present{% else %}{{ role.end }}{% endif %} · {{ role.location }}{% if role.end == 'present' %} · Current role{% endif %}{% if duration != '' %} · {{ duration }}{% endif %}</div>
+        <div class="timeline-meta">{{ role.start }} – {% if role.end == 'present' %}Present{% else %}{{ role.end }}{% endif %} · {{ role.location }}{% if role.end == 'present' %} · Current role{% endif %}{% if duration != '' %} · {% if role.end == 'present' %}<span class="tl-dur">{{ duration }}</span>{% else %}{{ duration }}{% endif %}{% endif %}</div>
         <div class="timeline-title">{{ role.title }}</div>
         <div class="timeline-company">{{ role.org }}</div>
         {% if role.concurrent %}
@@ -148,3 +148,64 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   </div>
 
 </div>
+
+<script>
+(function () {
+  var tl = document.querySelector('.timeline');
+  if (!tl) return;
+  var BASE = 2026; // P(y, m) base year in work.md: position 0 = Jan (BASE + 1)
+  var now = new Date();
+  var cy = now.getFullYear(), cm = now.getMonth() + 1;
+  var shift = Math.max(0, (cy - BASE) * 12);
+  var mposNow = (BASE - cy + 1) * 12 - (cm - 1) + shift;
+
+  // Current role: stretch its span to the current month, refresh its duration.
+  var span = tl.querySelector('.tl-span[data-cur="1"]');
+  var block = tl.querySelector('.tl-block[data-cur="1"]');
+  if (span && block) {
+    var sy = parseInt(span.getAttribute('data-sy'), 10);
+    var sm = parseInt(span.getAttribute('data-sm'), 10);
+    var total = (cy - sy) * 12 + (cm - sm) + 1;
+    if (total > 0) {
+      span.style.setProperty('--mpos', mposNow);
+      span.style.setProperty('--span', total);
+      block.style.setProperty('--mpos', mposNow);
+      var dur = block.querySelector('.tl-dur');
+      if (dur) {
+        var yrs = Math.floor(total / 12), mos = total % 12, parts = [];
+        if (yrs > 0) parts.push(yrs + ' yr' + (yrs > 1 ? 's' : ''));
+        if (mos > 0) parts.push(mos + ' mo' + (mos > 1 ? 's' : ''));
+        dur.textContent = parts.join(' ');
+      }
+    }
+  }
+
+  // Past the built axis (after Dec 2026): shift everything down whole years,
+  // add the missing year ticks, and grow the container to fit.
+  if (shift > 0) {
+    tl.style.setProperty('--shift', shift);
+    for (var Y = BASE + 1; Y <= cy; Y++) {
+      var mp = (BASE - Y + 1) * 12;
+      var tick = document.createElement('span');
+      tick.className = 'tl-tick';
+      tick.style.setProperty('--mpos', mp);
+      tick.setAttribute('aria-hidden', 'true');
+      var label = document.createElement('span');
+      label.className = 'tl-tick-label';
+      label.style.setProperty('--mpos', mp);
+      label.setAttribute('aria-hidden', 'true');
+      label.textContent = Y;
+      tl.appendChild(tick);
+      tl.appendChild(label);
+    }
+    var fit = function () {
+      var gs = getComputedStyle(tl);
+      var mpx = parseFloat(gs.getPropertyValue('--month-px')) || 0;
+      var base = parseFloat(gs.getPropertyValue(window.matchMedia('(max-width: 680px)').matches ? '--h-m' : '--h-d')) || 0;
+      if (mpx && base) tl.style.height = (base + shift * mpx) + 'px';
+    };
+    fit();
+    window.addEventListener('resize', fit);
+  }
+})();
+</script>
