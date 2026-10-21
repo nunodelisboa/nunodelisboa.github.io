@@ -616,7 +616,7 @@ h2 {
   height: calc(var(--push-d, 0) * var(--month-px));
   width: 2px;
   background: var(--c, var(--rule));
-  opacity: .45;
+  opacity: .6;
 }
 
 /* Institution logos — one normalized slot per timeline entry (/work) */

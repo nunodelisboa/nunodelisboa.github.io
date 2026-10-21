@@ -21,8 +21,8 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
 
   {% assign month_names = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
   {% assign axis_months = 348 %}
-  {% assign stack_months_d = 4 %}
-  {% assign stack_months_m = 8 %}
+  {% assign stack_months_d = 3 %}
+  {% assign stack_months_m = 5 %}
 
   {% comment %}
     Pre-pass: find the lowest stacked block bottom at each breakpoint.
