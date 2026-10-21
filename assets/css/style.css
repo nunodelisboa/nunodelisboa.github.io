@@ -577,13 +577,27 @@ h2 {
 .tl-span {
   position: absolute;
   left: calc(var(--lanes-off) + (var(--lane) * var(--lane-step)));
-  top: calc((var(--mpos) * var(--month-px)) - (var(--month-px) / 2));
-  height: calc(var(--span) * var(--month-px));
+  top: calc(((var(--mpos) + var(--trim-top, 0)) * var(--month-px)) - (var(--month-px) / 2));
+  height: calc((var(--span) - var(--trim-top, 0) - var(--trim-bot, 0)) * var(--month-px));
   width: var(--lane-w);
   border-radius: calc(var(--lane-w) / 2);
   background: var(--c);
   opacity: .8;
   z-index: 1;
+}
+
+/* Vertical tie: from the span's end-month point down to the heading's
+   connector, whenever the heading sits below its end month */
+.tl-span::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
+  top: calc((var(--month-px) / 2) - (var(--trim-top, 0) * var(--month-px)));
+  height: calc((var(--push-d, 0) * var(--month-px)) + .55rem);
+  width: 2px;
+  background: var(--c);
+  opacity: .65;
 }
 
 /* Entry block: logo + body, headed at the (possibly displaced) end month */
@@ -598,25 +612,12 @@ h2 {
 .tl-block::before {
   content: '';
   position: absolute;
-  top: calc(.55rem - (var(--push-d, 0) * var(--month-px)));
+  top: .55rem;
   right: 100%;
   width: var(--cw);
   height: 2px;
   background: var(--c, var(--rule));
   opacity: .55;
-}
-
-/* Leader: vertical hairline in the role's colour from the connector
-   (at the span's exact end month) down to a displaced heading */
-.tl-block::after {
-  content: '';
-  position: absolute;
-  right: calc(100% + var(--cw) - 1px);
-  top: calc(.55rem - (var(--push-d, 0) * var(--month-px)) + 1px);
-  height: calc(var(--push-d, 0) * var(--month-px));
-  width: 2px;
-  background: var(--c, var(--rule));
-  opacity: .6;
 }
 
 /* Institution logos — one normalized slot per timeline entry (/work) */
@@ -807,8 +808,7 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
      mobile displacement simulation and the smaller year-label column */
   .timeline { --month-px: 36px; --bar-left: 2.8rem; height: var(--h-m); --lane-w: 10px; --lane-step: 15px; }
   .tl-block { top: calc((var(--mpos) + var(--push-m)) * var(--month-px)); }
-  .tl-block::before { top: calc(.55rem - (var(--push-m, 0) * var(--month-px))); }
-  .tl-block::after { top: calc(.55rem - (var(--push-m, 0) * var(--month-px)) + 1px); height: calc(var(--push-m, 0) * var(--month-px)); }
+  .tl-span::after { height: calc((var(--push-m, 0) * var(--month-px)) + .55rem); }
   .tl-tick-label { width: 2.2rem; font-size: .62rem; }
   .org-logo { height: 44px; }
   .org-logo img { max-height: 34px; max-width: 120px; }
