@@ -528,7 +528,10 @@ h2 {
   --bar-left: 3.6rem;
   --bar-width: 6px;
   --bar-axis: calc(var(--bar-left) + (var(--bar-width) / 2));
-  --block-left: calc(var(--bar-left) + 2rem);
+  --lane-w: 12px;
+  --lane-step: 18px;
+  --lanes-off: calc(var(--bar-left) + var(--bar-width) + 12px);
+  --block-left: calc(var(--lanes-off) + (var(--lanes, 3) * var(--lane-step)) + 1.1rem);
   position: relative;
   height: var(--h-d);
 }
@@ -569,19 +572,36 @@ h2 {
   z-index: 1;
 }
 
-/* Role bullet: centred inside the thick bar at the role's end month */
-.tl-dot {
+/* Tenure span: a line in the logo's colour, in its own lane beside the bar,
+   running from the role's end month to its start month */
+.tl-span {
+  position: absolute;
+  left: calc(var(--lanes-off) + (var(--lane) * var(--lane-step)));
+  top: calc((var(--mpos) * var(--month-px)) - (var(--month-px) / 2));
+  height: calc(var(--span) * var(--month-px));
+  width: var(--lane-w);
+  border-radius: calc(var(--lane-w) / 2);
+  background: var(--c);
+  opacity: .8;
+  z-index: 1;
+}
+
+/* Role bullet: a miniature azulejo on the bar at the role's end month */
+.tl-bullet {
   position: absolute;
   left: var(--bar-axis);
   top: calc(var(--mpos) * var(--month-px));
-  width: 13px; height: 13px;
+  width: 17px; height: 17px;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: var(--cobalt);
-  box-shadow: 0 0 0 3px var(--paper);
+  border-radius: 4px;
+  background: url('../img/azulejo-bullet.webp') center / cover no-repeat;
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--rule-dark);
   z-index: 3;
 }
-.tl-dot.past { background: var(--rule-dark); }
+.tl-bullet.current {
+  width: 21px; height: 21px;
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--cobalt);
+}
 
 /* Entry block: logo + body, headed at the (possibly displaced) end month */
 .timeline-item { display: grid; grid-template-columns: 156px 1fr; column-gap: 1.6rem; align-items: start; }
@@ -594,11 +614,12 @@ h2 {
 .tl-block::before {
   content: '';
   position: absolute;
-  left: calc(-2rem + var(--bar-width));
   top: .55rem;
-  width: calc(2rem - var(--bar-width));
-  height: 1px;
-  background: var(--rule);
+  right: 100%;
+  width: calc(var(--block-left) - var(--lanes-off) - (var(--lane, 0) * var(--lane-step)) - (var(--lane-w) / 2));
+  height: 2px;
+  background: var(--c, var(--rule));
+  opacity: .55;
 }
 
 /* Institution logos — one normalized slot per timeline entry (/work) */
@@ -787,7 +808,9 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   .timeline-item { grid-template-columns: 1fr; row-gap: .6rem; }
   /* Timeline on mobile: same calendar scale at 7px per month, with the
      mobile displacement simulation and the smaller year-label column */
-  .timeline { --month-px: 36px; --bar-left: 2.8rem; height: var(--h-m); }
+  .timeline { --month-px: 36px; --bar-left: 2.8rem; height: var(--h-m); --lane-w: 10px; --lane-step: 15px; }
+  .tl-bullet { width: 15px; height: 15px; }
+  .tl-bullet.current { width: 18px; height: 18px; }
   .tl-block { top: calc((var(--mpos) + var(--push-m)) * var(--month-px)); }
   .tl-tick-label { width: 2.2rem; font-size: .62rem; }
   .org-logo { height: 44px; }

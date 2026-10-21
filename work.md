@@ -13,9 +13,9 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   </div>
 
   <p class="section-intro">
-    Twenty roles, 1999 to today — set on a true time scale: each heading
-    sits at the month the role ended, and a year of line is a year of
-    time. Fuller descriptions are on
+    Twenty roles, 1999 to today — set on a true time scale: each role
+    draws a line in its logo's colour for exactly as long as it lasted,
+    and a year of line is a year of time. Fuller descriptions are on
     <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" rel="noopener">LinkedIn</a>.
   </p>
 
@@ -32,6 +32,11 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   {% endcomment %}
   {% assign prev_bottom_d = 0 %}
   {% assign prev_bottom_m = 0 %}
+  {% assign lane_bottom_1 = -1 %}
+  {% assign lane_bottom_2 = -1 %}
+  {% assign lane_bottom_3 = -1 %}
+  {% assign lanes_csv = "" %}
+  {% assign lanes_used = 1 %}
   {% for role in site.data.experience.experience %}
     {% assign sy = role.start | split: ' ' | last | plus: 0 %}
     {% assign smon = role.start | split: ' ' | first %}
@@ -45,6 +50,10 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
       {% assign em = 1 %}{% for m in month_names %}{% if m == emon %}{% assign em = forloop.index %}{% endif %}{% endfor %}
     {% endif %}
     {% assign mpos = 2026 | minus: ey | plus: 1 | times: 12 | minus: em | plus: 1 %}
+    {% assign mpos_start = 2026 | minus: sy | plus: 1 | times: 12 | minus: sm | plus: 1 %}
+    {% if lane_bottom_1 < mpos %}{% assign lane = 0 %}{% assign lane_bottom_1 = mpos_start %}{% elsif lane_bottom_2 < mpos %}{% assign lane = 1 %}{% assign lane_bottom_2 = mpos_start %}{% else %}{% assign lane = 2 %}{% assign lane_bottom_3 = mpos_start %}{% endif %}
+    {% assign lanes_csv = lanes_csv | append: lane | append: "," %}
+    {% assign lane_no = lane | plus: 1 %}{% if lane_no > lanes_used %}{% assign lanes_used = lane_no %}{% endif %}
     {% assign eff_d = mpos %}
     {% if prev_bottom_d > eff_d %}{% assign eff_d = prev_bottom_d %}{% endif %}
     {% assign prev_bottom_d = eff_d | plus: stack_months_d %}
@@ -59,7 +68,8 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   {% assign timeline_height_d = timeline_months_d | times: 35 | plus: 24 %}
   {% assign timeline_height_m = timeline_months_m | times: 36 | plus: 24 %}
 
-  <div class="timeline" style="--h-d: {{ timeline_height_d }}px; --h-m: {{ timeline_height_m }}px">
+  {% assign lanes = lanes_csv | split: "," %}
+  <div class="timeline" style="--h-d: {{ timeline_height_d }}px; --h-m: {{ timeline_height_m }}px; --lanes: {{ lanes_used }}">
     {% for year in (1999..2026) %}
       {% assign tick_mpos = 2026 | minus: year | plus: 1 | times: 12 %}
       <span class="tl-tick" style="--mpos: {{ tick_mpos }}" aria-hidden="true"></span>
@@ -92,8 +102,10 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
     {% assign eff_m = mpos %}
     {% if prev_bottom_m > eff_m %}{% assign eff_m = prev_bottom_m %}{% endif %}
     {% assign push_m = eff_m | minus: mpos %}
-    <span class="tl-dot{% if role.end == 'present' %} current{% else %} past{% endif %}" style="--mpos: {{ mpos }}" aria-hidden="true"></span>
-    <div class="timeline-item tl-block{% unless role.end == 'present' %} past{% endunless %}" style="--mpos: {{ mpos }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}">
+    {% assign lane = lanes[forloop.index0] | plus: 0 %}
+    <span class="tl-span" style="--mpos: {{ mpos }}; --span: {{ total_months }}; --lane: {{ lane }}; --c: {{ logo.color }}" aria-hidden="true"></span>
+    <span class="tl-bullet{% if role.end == 'present' %} current{% endif %}" style="--mpos: {{ mpos }}" aria-hidden="true"></span>
+    <div class="timeline-item tl-block{% unless role.end == 'present' %} past{% endunless %}" style="--mpos: {{ mpos }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}; --lane: {{ lane }}; --c: {{ logo.color }}">
       {% if logo %}
       <div class="org-logo{% if logo.dark %} org-logo-dark{% endif %}"><img src="{{ '/assets/img/logos/' | append: logo.file | relative_url }}" alt="{{ role.org }} logo" loading="lazy"></div>
       {% endif %}

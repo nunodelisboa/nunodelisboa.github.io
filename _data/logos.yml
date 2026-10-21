@@ -5,37 +5,54 @@
 # dark: true = white/reversed logo that needs the ink chip (.org-logo-dark).
 
 "Meta":
+  color: "#0082FB"
   file: "meta.svg"
 "Heartbeat Health":
+  color: "#E00080"
   file: "heartbeat-health.png"
 "Practio":
+  color: "#232B33"
   file: "practio.svg"
 "Hitachi Vantara":
+  color: "#CC0000"
   file: "hitachi-vantara.svg"
 "Pentaho (from Hitachi Vantara)":
+  color: "#1F1F1F"
   file: "pentaho.jpg"
 "Findmore Consulting":
+  color: "#355C96"
   file: "findmore.png"
   dark: true
 "NOS SGPS":
+  color: "#231F20"
   file: "nos.svg"
 "BOLD by Devoteam":
+  color: "#F8485E"
   file: "bold-by-devoteam.svg"
 "INESC-ID":
+  color: "#005070"
   file: "inesc-id.png"
 "HeartGenetics":
+  color: "#009FE3"
   file: "heartgenetics.svg"
 "iBET":
+  color: "#2B2B2B"
   file: "ibet.svg"
 "Instituto Gulbenkian de Ciência":
+  color: "#262626"
   file: "gulbenkian-igc.svg"
 "ISEGI-UNL":
+  color: "#9EBB24"
   file: "isegi-unl.svg"
 "Université Claude Bernard Lyon 1":
+  color: "#E2001A"
   file: "lyon1.png"
 "Instituto Superior Técnico":
+  color: "#00A0E0"
   file: "ist.png"
 "Novis":
+  color: "#50B020"
   file: "novis.gif"
 "Clix":
+  color: "#E01080"
   file: "clix.png"
