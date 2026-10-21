@@ -104,7 +104,6 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
     {% assign push_m = eff_m | minus: mpos %}
     {% assign lane = lanes[forloop.index0] | plus: 0 %}
     <span class="tl-span" style="--mpos: {{ mpos }}; --span: {{ total_months }}; --lane: {{ lane }}; --c: {{ logo.color }}" aria-hidden="true"></span>
-    <span class="tl-bullet{% if role.end == 'present' %} current{% endif %}" style="--mpos: {{ mpos }}" aria-hidden="true"></span>
     <div class="timeline-item tl-block{% unless role.end == 'present' %} past{% endunless %}" style="--mpos: {{ mpos }}; --push-d: {{ push_d }}; --push-m: {{ push_m }}; --lane: {{ lane }}; --c: {{ logo.color }}">
       {% if logo %}
       <div class="org-logo{% if logo.dark %} org-logo-dark{% endif %}"><img src="{{ '/assets/img/logos/' | append: logo.file | relative_url }}" alt="{{ role.org }} logo" loading="lazy"></div>

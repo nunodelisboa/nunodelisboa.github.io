@@ -586,23 +586,6 @@ h2 {
   z-index: 1;
 }
 
-/* Role bullet: a miniature azulejo on the bar at the role's end month */
-.tl-bullet {
-  position: absolute;
-  left: var(--bar-axis);
-  top: calc(var(--mpos) * var(--month-px));
-  width: 17px; height: 17px;
-  transform: translate(-50%, -50%);
-  border-radius: 4px;
-  background: url('../img/azulejo-bullet.webp') center / cover no-repeat;
-  box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--rule-dark);
-  z-index: 3;
-}
-.tl-bullet.current {
-  width: 21px; height: 21px;
-  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--cobalt);
-}
-
 /* Entry block: logo + body, headed at the (possibly displaced) end month */
 .timeline-item { display: grid; grid-template-columns: 156px 1fr; column-gap: 1.6rem; align-items: start; }
 .tl-block {
@@ -823,8 +806,6 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   /* Timeline on mobile: same calendar scale at 7px per month, with the
      mobile displacement simulation and the smaller year-label column */
   .timeline { --month-px: 36px; --bar-left: 2.8rem; height: var(--h-m); --lane-w: 10px; --lane-step: 15px; }
-  .tl-bullet { width: 15px; height: 15px; }
-  .tl-bullet.current { width: 18px; height: 18px; }
   .tl-block { top: calc((var(--mpos) + var(--push-m)) * var(--month-px)); }
   .tl-block::before { top: calc(.55rem - (var(--push-m, 0) * var(--month-px))); }
   .tl-block::after { top: calc(.55rem - (var(--push-m, 0) * var(--month-px)) + 1px); height: calc(var(--push-m, 0) * var(--month-px)); }
