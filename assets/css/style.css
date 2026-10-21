@@ -594,7 +594,7 @@ h2 {
   left: 50%;
   margin-left: -1px;
   top: calc((var(--month-px) / 2) - (var(--trim-top, 0) * var(--month-px)));
-  height: calc((var(--push-d, 0) * var(--month-px)) + .55rem);
+  height: calc((var(--push-d, 0) * var(--month-px)) + 1.05rem);
   width: 2px;
   background: var(--c);
   opacity: .65;
@@ -606,13 +606,17 @@ h2 {
   --cw: calc(var(--block-left) - var(--lanes-off) - (var(--lane, 0) * var(--lane-step)) - (var(--lane-w) / 2));
   position: absolute;
   left: var(--block-left); right: 0;
+  padding: .7rem .9rem;
+  border-radius: 12px;
+  background: rgb(23 32 42 / .05);
+  background: color-mix(in srgb, var(--c, var(--rule)) 30%, var(--paper));
   top: calc((var(--mpos) + var(--push-d)) * var(--month-px));
   z-index: 1;
 }
 .tl-block::before {
   content: '';
   position: absolute;
-  top: .55rem;
+  top: 1.05rem;
   right: 100%;
   width: var(--cw);
   height: 2px;
@@ -808,7 +812,7 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
      mobile displacement simulation and the smaller year-label column */
   .timeline { --month-px: 36px; --bar-left: 2.8rem; height: var(--h-m); --lane-w: 10px; --lane-step: 15px; }
   .tl-block { top: calc((var(--mpos) + var(--push-m)) * var(--month-px)); }
-  .tl-span::after { height: calc((var(--push-m, 0) * var(--month-px)) + .55rem); }
+  .tl-span::after { height: calc((var(--push-m, 0) * var(--month-px)) + 1.05rem); }
   .tl-tick-label { width: 2.2rem; font-size: .62rem; }
   .org-logo { height: 44px; }
   .org-logo img { max-height: 34px; max-width: 120px; }
