@@ -5,6 +5,7 @@
 
 software:
   - name: "MUSA"
+    image: "software-musa.webp"
     description: "Parameter-free, heuristic method for the extraction of conserved patterns (motifs) in a set of DNA input sequences. Command-line program taking FASTA input; optional parameters (lambda, epsilon, sieve, mindist, maxdist) focus the search."
     url_or_path: "software/musa.html"
     downloads:
@@ -15,21 +16,25 @@ software:
     note: "Legacy — unmaintained. Cite: Mendes et al., Bioinformatics 22(24): 2996–3002, 2006."
 
   - name: "CRAVELA"
+    image: "software-cravela.webp"
     description: "Framework to predict pre-miRNA candidates in single genomes, with optional conservation analysis in phylogenetically close species. Can incorporate RNA-seq data to predict mature sequences and estimate expression across conditions; candidates are evaluated by expression score, filtered with genome annotation when available, and analysed with stem-loop structural methods for metazoan genomes."
     url_or_path: "http://cravela.org"
     note: "Legacy — unmaintained. The project website is currently inaccessible."
 
   - name: "Firefront/Avatar"
+    image: "software-firefront-avatar.webp"
     description: "Two methods for identifying the set of attractors reachable from a given initial condition, and evaluating their reachability probability, over asynchronous discrete dynamics. Firefront is a quasi-exact method that follows all concurrent trajectories simultaneously while propagating state probabilities; Avatar is a modified Monte Carlo algorithm that handles strongly connected components and avoids revisiting states by rewiring the state transition graph."
     url_or_path: "http://compbio.igc.gulbenkian.pt/nmd/node/59"
     note: "Legacy — unmaintained. Published as Mendes et al., Frontiers in Physiology, 2018; implemented as new functionality of GINsim 3.0."
 
   - name: "GinSIM — Composition"
+    image: "software-ginsim-composition.webp"
     description: "Composition and abstraction support for logical regulatory networks inside GinSIM, a tool for the analysis and specification of logical regulatory networks — the software behind the multicellular-systems work."
     url_or_path: "http://ginsim.org/beta"
     note: "Legacy — unmaintained. Associated paper: Mendes et al., Bioinformatics, 2013."
 
   - name: "Yeastract-Discoverer"
+    image: "software-yeastract-discoverer.webp"
     description: "DISCOVERER provides tools to identify complex motifs over-represented in the promoter regions of co-regulated genes. It is based on the MUSA and RISO algorithms: given a list of genes, it identifies over-represented motifs and compares them with transcription factor binding sites described in the YEASTRACT database."
     url_or_path: "http://yeastract.com/discoverer/"
     note: "Legacy — unmaintained. Associated paper: Monteiro, Mendes et al., Nucleic Acids Research, 2007."

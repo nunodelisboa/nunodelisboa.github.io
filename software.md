@@ -25,6 +25,7 @@ redirect_from:
     {% assign projects = site.data.software.software %}
     {% for p in projects %}
     <article class="software-card">
+      {% if p.image %}<figure class="software-illus"><img src="{{ '/assets/img/' | append: p.image | relative_url }}" alt="Illustration for {{ p.name }}" loading="lazy"></figure>{% endif %}
       <span class="card-tag">Legacy — unmaintained</span>
       <h3>{{ p.name }}</h3>
       <p class="software-desc">{{ p.description }}</p>

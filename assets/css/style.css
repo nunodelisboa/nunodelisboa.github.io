@@ -496,6 +496,9 @@ h2 {
 
 .card-tag.current { color: var(--cobalt); border-color: var(--cobalt); }
 
+.software-illus { margin: -1.5rem -1.5rem 1.1rem; }
+.software-illus img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--rule); }
+
 .software-desc { font-size: .92rem; color: var(--body); line-height: 1.7; }
 
 .software-note { font-size: .88rem; color: var(--muted); font-style: italic; line-height: 1.7; margin-top: .8rem; }
