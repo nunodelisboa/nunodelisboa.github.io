@@ -13,12 +13,8 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   </div>
 
   <p class="section-intro">
-    The dated record: twenty roles, from a part-time customer-support job in
-    1999 through a doctorate, two postdocs and a decade of industry, to Meta.
-    Titles and dates follow my LinkedIn profile, which is also where the
-    fuller descriptions live. Two entries — NOS and BOLD by Devoteam — are
-    marked concurrent: BOLD was the contracting firm, NOS the client, over the
-    same period.
+    Twenty roles, 1999 to today. Fuller descriptions are on
+    <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" rel="noopener">LinkedIn</a>.
   </p>
 
   <div class="timeline">
@@ -33,14 +29,5 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
     </div>
     {% endfor %}
   </div>
-
-  <p class="section-intro" style="margin-top: 1rem;">
-    Fuller role descriptions are on
-    <a href="https://www.linkedin.com/in/nunodiasmendes" target="_blank" rel="noopener">LinkedIn</a>.
-    The academic years behind the middle of this timeline are archived under
-    <a href="{{ '/research/' | relative_url }}">Research</a>,
-    <a href="{{ '/software/' | relative_url }}">Software</a> and
-    <a href="{{ '/teaching/' | relative_url }}">Teaching</a>.
-  </p>
 
 </div>
