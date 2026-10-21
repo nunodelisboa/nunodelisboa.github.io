@@ -606,6 +606,7 @@ h2 {
 /* Entry block: logo + body, headed at the (possibly displaced) end month */
 .timeline-item { display: grid; grid-template-columns: 156px 1fr; column-gap: 1.6rem; align-items: start; }
 .tl-block {
+  --cw: calc(var(--block-left) - var(--lanes-off) - (var(--lane, 0) * var(--lane-step)) - (var(--lane-w) / 2));
   position: absolute;
   left: var(--block-left); right: 0;
   top: calc((var(--mpos) + var(--push-d)) * var(--month-px));
@@ -614,12 +615,25 @@ h2 {
 .tl-block::before {
   content: '';
   position: absolute;
-  top: .55rem;
+  top: calc(.55rem - (var(--push-d, 0) * var(--month-px)));
   right: 100%;
-  width: calc(var(--block-left) - var(--lanes-off) - (var(--lane, 0) * var(--lane-step)) - (var(--lane-w) / 2));
+  width: var(--cw);
   height: 2px;
   background: var(--c, var(--rule));
   opacity: .55;
+}
+
+/* Leader: vertical hairline in the role's colour from the connector
+   (at the span's exact end month) down to a displaced heading */
+.tl-block::after {
+  content: '';
+  position: absolute;
+  right: calc(100% + var(--cw) - 1px);
+  top: calc(.55rem - (var(--push-d, 0) * var(--month-px)) + 1px);
+  height: calc(var(--push-d, 0) * var(--month-px));
+  width: 2px;
+  background: var(--c, var(--rule));
+  opacity: .45;
 }
 
 /* Institution logos — one normalized slot per timeline entry (/work) */
@@ -812,6 +826,8 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   .tl-bullet { width: 15px; height: 15px; }
   .tl-bullet.current { width: 18px; height: 18px; }
   .tl-block { top: calc((var(--mpos) + var(--push-m)) * var(--month-px)); }
+  .tl-block::before { top: calc(.55rem - (var(--push-m, 0) * var(--month-px))); }
+  .tl-block::after { top: calc(.55rem - (var(--push-m, 0) * var(--month-px)) + 1px); height: calc(var(--push-m, 0) * var(--month-px)); }
   .tl-tick-label { width: 2.2rem; font-size: .62rem; }
   .org-logo { height: 44px; }
   .org-logo img { max-height: 34px; max-width: 120px; }
