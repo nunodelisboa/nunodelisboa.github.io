@@ -14,22 +14,30 @@ redirect_from:
     <h2>About</h2>
   </div>
 
-  <p class="section-intro" style="margin-top: 0;">
-    I'm a Senior Software Engineer at Meta in New York. I arrived in industry
-    from research: a dual PhD in Computational Biology from Instituto
-    Superior Técnico and Université Claude Bernard Lyon 1 (2011), postdoctoral
-    years in Lisbon and Oeiras, then Lisbon's tech scene — Pentaho, and
-    Practio, where I led the Lisbon team — and health-tech in New York with
-    Heartbeat Health, before Meta in 2021.
-  </p>
-  <p class="section-intro">
-    The through-line: algorithms for DNA, then platforms for health, now
-    infrastructure at scale. I live in New York now; Lisbon is where I come from. The
-    academic work — <a href="{{ '/research/' | relative_url }}">publications</a>,
-    <a href="{{ '/software/' | relative_url }}">software</a> and
-    <a href="{{ '/teaching/' | relative_url }}">teaching</a> — stays on this
-    site as an archive of that earlier career.
-  </p>
+  <div class="bg-grid">
+    <div class="bg-copy">
+      <p class="section-intro" style="margin-top: 0;">
+        I'm a Senior Software Engineer at Meta in New York. I arrived in industry
+        from research: a dual PhD in Computational Biology from Instituto
+        Superior Técnico and Université Claude Bernard Lyon 1 (2011), postdoctoral
+        years in Lisbon and Oeiras, then Lisbon's tech scene — Pentaho, and
+        Practio, where I led the Lisbon team — and health-tech in New York with
+        Heartbeat Health, before Meta in 2021.
+      </p>
+      <p class="section-intro">
+        The through-line: algorithms for DNA, then platforms for health, now
+        infrastructure at scale. I live in New York now; Lisbon is where I come from. The
+        academic work — <a href="{{ '/research/' | relative_url }}">publications</a>,
+        <a href="{{ '/software/' | relative_url }}">software</a> and
+        <a href="{{ '/teaching/' | relative_url }}">teaching</a> — stays on this
+        site as an archive of that earlier career.
+      </p>
+    </div>
+    <figure class="plate">
+      <img src="{{ '/assets/img/portrait-sketch.webp' | relative_url }}" alt="Pencil sketch portrait of Nuno D. Mendes" loading="lazy" />
+      <figcaption>Portrait · graphite on paper</figcaption>
+    </figure>
+  </div>
 
   <div class="pub-section">
     <h3 class="pub-section-title">Education</h3>
