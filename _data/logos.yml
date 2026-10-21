@@ -1,0 +1,41 @@
+# Institution logos for the /work/ timeline.
+# Keyed by the EXACT org strings used in experience.yml; INESC-ID and
+# Instituto Gulbenkian de Ciência repeat across entries and reuse one file.
+# Files live in assets/img/logos/. All 17 approved by Nuno, 20 Oct 2026.
+# dark: true = white/reversed logo that needs the ink chip (.org-logo-dark).
+
+"Meta":
+  file: "meta.svg"
+"Heartbeat Health":
+  file: "heartbeat-health.png"
+"Practio":
+  file: "practio.svg"
+"Hitachi Vantara":
+  file: "hitachi-vantara.svg"
+"Pentaho (from Hitachi Vantara)":
+  file: "pentaho.jpg"
+"Findmore Consulting":
+  file: "findmore.png"
+  dark: true
+"NOS SGPS":
+  file: "nos.svg"
+"BOLD by Devoteam":
+  file: "bold-by-devoteam.svg"
+"INESC-ID":
+  file: "inesc-id.png"
+"HeartGenetics":
+  file: "heartgenetics.svg"
+"iBET":
+  file: "ibet.svg"
+"Instituto Gulbenkian de Ciência":
+  file: "gulbenkian-igc.svg"
+"ISEGI-UNL":
+  file: "isegi-unl.svg"
+"Université Claude Bernard Lyon 1":
+  file: "lyon1.png"
+"Instituto Superior Técnico":
+  file: "ist.png"
+"Novis":
+  file: "novis.gif"
+"Clix":
+  file: "clix.png"

@@ -524,7 +524,14 @@ h2 {
   background: linear-gradient(to bottom, var(--cobalt), var(--rule));
 }
 
-.timeline-item { position: relative; padding-left: 2rem; padding-bottom: 2.8rem; }
+.timeline-item { position: relative; padding-left: 2rem; padding-bottom: 2.8rem; display: grid; grid-template-columns: 156px 1fr; column-gap: 1.6rem; align-items: start; }
+
+/* Institution logos — one normalized slot per timeline entry (/work) */
+.org-logo { height: 52px; display: flex; align-items: center; }
+.org-logo img { max-height: 40px; max-width: 140px; width: auto; height: auto; object-fit: contain; display: block; }
+/* White/reversed logos (Findmore) sit on an ink chip */
+.org-logo-dark { background: var(--ink); border-radius: 8px; padding: .45rem .7rem; height: auto; justify-content: center; }
+.org-logo-dark img { max-height: 30px; }
 
 .timeline-item::before {
   content: '';
@@ -714,4 +721,8 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   .pdf-viewer { padding: .65rem; box-shadow: 5px 5px 0 var(--blue-soft); }
   .pdf-doc { flex: 1 1 42%; text-align: center; }
   .pdf-viewer iframe { height: 80vh; min-height: 520px; }
+  .timeline-item { grid-template-columns: 1fr; row-gap: .6rem; }
+  .org-logo { height: 44px; }
+  .org-logo img { max-height: 34px; }
+  .org-logo-dark { height: auto; justify-content: flex-start; }
 }

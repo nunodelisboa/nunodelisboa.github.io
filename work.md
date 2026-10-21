@@ -19,13 +19,19 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
 
   <div class="timeline">
     {% for role in site.data.experience.experience %}
+    {% assign logo = site.data.logos[role.org] %}
     <div class="timeline-item{% unless role.end == 'present' %} past{% endunless %}">
-      <div class="timeline-meta">{{ role.start }} – {% if role.end == 'present' %}Present{% else %}{{ role.end }}{% endif %} · {{ role.location }}{% if role.end == 'present' %} · Current role{% endif %}</div>
-      <div class="timeline-title">{{ role.title }}</div>
-      <div class="timeline-company">{{ role.org }}</div>
-      {% if role.concurrent %}
-      <div class="timeline-tags"><span class="tag">Concurrent</span></div>
+      {% if logo %}
+      <div class="org-logo{% if logo.dark %} org-logo-dark{% endif %}"><img src="{{ '/assets/img/logos/' | append: logo.file | relative_url }}" alt="{{ role.org }} logo" loading="lazy"></div>
       {% endif %}
+      <div class="timeline-body">
+        <div class="timeline-meta">{{ role.start }} – {% if role.end == 'present' %}Present{% else %}{{ role.end }}{% endif %} · {{ role.location }}{% if role.end == 'present' %} · Current role{% endif %}</div>
+        <div class="timeline-title">{{ role.title }}</div>
+        <div class="timeline-company">{{ role.org }}</div>
+        {% if role.concurrent %}
+        <div class="timeline-tags"><span class="tag">Concurrent</span></div>
+        {% endif %}
+      </div>
     </div>
     {% endfor %}
   </div>
