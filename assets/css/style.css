@@ -524,7 +524,7 @@ h2 {
    end month, and heading blocks sit at that same month unless displaced
    downward (--push-d / --push-m) to avoid overlap. */
 .timeline {
-  --month-px: 44px;
+  --month-px: 48px;
   --bar-left: 3.6rem;
   --bar-width: 6px;
   --bar-axis: calc(var(--bar-left) + (var(--bar-width) / 2));
@@ -810,7 +810,7 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   .timeline-item { grid-template-columns: 1fr; row-gap: .6rem; }
   /* Timeline on mobile: same calendar scale at 7px per month, with the
      mobile displacement simulation and the smaller year-label column */
-  .timeline { --month-px: 48px; --bar-left: 2.8rem; height: var(--h-m); --lane-w: 10px; --lane-step: 15px; }
+  .timeline { --month-px: 53px; --bar-left: 2.8rem; height: var(--h-m); --lane-w: 10px; --lane-step: 15px; }
   .tl-block { top: calc((var(--mpos) + var(--push-m)) * var(--month-px)); }
   .tl-span::after { height: calc((var(--push-m, 0) * var(--month-px)) + 1.05rem); }
   .tl-tick-label { width: 2.2rem; font-size: .62rem; }

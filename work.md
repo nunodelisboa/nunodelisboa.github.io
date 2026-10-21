@@ -87,8 +87,8 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   {% if prev_bottom_d > timeline_months_d %}{% assign timeline_months_d = prev_bottom_d %}{% endif %}
   {% assign timeline_months_m = axis_months %}
   {% if prev_bottom_m > timeline_months_m %}{% assign timeline_months_m = prev_bottom_m %}{% endif %}
-  {% assign timeline_height_d = timeline_months_d | times: 44 | plus: 24 %}
-  {% assign timeline_height_m = timeline_months_m | times: 48 | plus: 24 %}
+  {% assign timeline_height_d = timeline_months_d | times: 48 | plus: 24 %}
+  {% assign timeline_height_m = timeline_months_m | times: 53 | plus: 24 %}
 
   {% assign lanes = lanes_csv | split: "," %}
   {% assign trim_ts = trim_t_csv | split: "," %}
