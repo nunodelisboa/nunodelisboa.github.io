@@ -38,6 +38,7 @@ body {
 }
 
 a { color: var(--cobalt); }
+img { max-width: 100%; }
 ::selection { background: var(--blue); color: #fff; }
 
 .page { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
@@ -409,6 +410,9 @@ h2 {
 
 .pub-meta a:hover { border-bottom-color: var(--cobalt); }
 
+/* Long URL-like link text must never force horizontal overflow */
+.pub-meta a, .downloads a { overflow-wrap: anywhere; }
+
 /* ── CONTEXT / PROVENANCE NOTE ── */
 .context-note-item { border-bottom: none; padding-top: 0; }
 
@@ -431,7 +435,7 @@ h2 {
 .context-note p { font-size: .92rem; color: var(--body); line-height: 1.8; }
 
 /* ── RESEARCH CARDS (legacy component, kept styled) ── */
-.research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 1.5rem; }
 
 .research-card {
   background: var(--paper2);
@@ -455,7 +459,7 @@ h2 {
 .research-year { font-family: var(--mono); font-size: .75rem; color: var(--muted); margin-top: .75rem; }
 
 /* ── SOFTWARE / PROJECT CARDS ── */
-.software-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.software-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; }
 
 .software-card {
   background: var(--paper2);
@@ -524,21 +528,10 @@ h2 {
   background: linear-gradient(to bottom, var(--cobalt), var(--rule));
 }
 
-.timeline-item { position: relative; padding-left: 2rem; padding-bottom: 1.4rem; display: grid; grid-template-columns: 156px 1fr; column-gap: 1.6rem; align-items: start; }
+.timeline-item { position: relative; padding-left: 2rem; padding-bottom: calc(1.6rem + min(var(--dur, 12) * 2px, 150px)); display: grid; grid-template-columns: 156px 1fr; column-gap: 1.6rem; align-items: start; }
 
-/* Elapsed-time spacing: item gaps grow with the calendar gap before the role */
-.timeline-item + .timeline-item { margin-top: calc(1.4rem + var(--gap, 0px)); }
-
-/* Proportional year scale above the timeline (/work) — 1999 → present */
-.timeline-scale { position: relative; height: 2.7rem; margin-bottom: 2.2rem; }
-.timeline-scale::before { content: ''; position: absolute; left: 0; right: 0; top: 1rem; height: 1px; background: var(--ink); opacity: .25; }
-.ts-dot { position: absolute; top: 1rem; width: 7px; height: 7px; border-radius: 50%; background: var(--cobalt); transform: translate(-50%, -50%); }
-.ts-tick { position: absolute; top: calc(1rem - 4px); width: 1px; height: 9px; background: var(--ink); opacity: .35; transform: translateX(-50%); }
-.ts-label, .ts-decade { position: absolute; top: 1.5rem; font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .05em; white-space: nowrap; }
-.ts-decade { transform: translateX(-50%); }
-.ts-label-start { left: 0; }
-.ts-label-end { right: 0; }
-
+/* Each entry's stretch of the line is proportional to the time spent in the role:
+   the item's bottom padding grows with --dur (months in role), set inline per entry. */
 /* Institution logos — one normalized slot per timeline entry (/work) */
 .org-logo { height: 52px; display: flex; align-items: center; }
 .org-logo img { max-height: 40px; max-width: 140px; width: auto; height: auto; object-fit: contain; display: block; }
@@ -735,8 +728,8 @@ footer .foot-links a:hover { color: var(--cobalt); border-bottom-color: var(--co
   .pdf-doc { flex: 1 1 42%; text-align: center; }
   .pdf-viewer iframe { height: 80vh; min-height: 520px; }
   .timeline-item { grid-template-columns: 1fr; row-gap: .6rem; }
-  .ts-decade { display: none; }
+  .timeline-item { padding-bottom: calc(1.4rem + min(var(--dur, 12) * 1.3px, 100px)); }
   .org-logo { height: 44px; }
-  .org-logo img { max-height: 34px; }
-  .org-logo-dark { height: auto; justify-content: flex-start; }
+  .org-logo img { max-height: 34px; max-width: 120px; }
+  .org-logo-dark { height: auto; justify-content: flex-start; justify-self: start; }
 }
