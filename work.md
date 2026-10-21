@@ -22,12 +22,12 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   {% assign month_names = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
   {% assign axis_months = 348 %}
   {% assign stack_months_d = 4 %}
-  {% assign stack_months_m = 11 %}
+  {% assign stack_months_m = 8 %}
 
   {% comment %}
     Pre-pass: find the lowest stacked block bottom at each breakpoint.
     P(y, m) = (2026 - y + 1) * 12 - (m - 1), in months down from Jan 2027.
-    A block occupies 4 months on desktop and 11 months on mobile,
+    A block occupies 4 months on desktop and 8 months on mobile,
     including the minimum gap before the next block.
   {% endcomment %}
   {% assign prev_bottom_d = 0 %}
@@ -57,7 +57,7 @@ description: "Career timeline of Nuno D. Mendes — twenty roles from a first jo
   {% assign timeline_months_m = axis_months %}
   {% if prev_bottom_m > timeline_months_m %}{% assign timeline_months_m = prev_bottom_m %}{% endif %}
   {% assign timeline_height_d = timeline_months_d | times: 35 | plus: 24 %}
-  {% assign timeline_height_m = timeline_months_m | times: 25 | plus: 24 %}
+  {% assign timeline_height_m = timeline_months_m | times: 36 | plus: 24 %}
 
   <div class="timeline" style="--h-d: {{ timeline_height_d }}px; --h-m: {{ timeline_height_m }}px">
     {% for year in (1999..2026) %}
